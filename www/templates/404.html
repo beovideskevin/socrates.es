@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block header %}
+<link rel="canonical" content="https://www.socrates.es" />
+{% endblock %}
+
+{% block content %}
+<!-- Content -->
+<div id="content">
+    <div class="inner">
+        <article class="box post post-excerpt">
+            <header>
+                <!--
+                    Note: Titles and subtitles will wrap automatically when necessary, so don't worry
+                    if they get too long. You can also remove the <p> entirely if you don't
+                    need a subtitle.
+                -->
+                <h2><a href="/" class="underlined">404 Not Found.</a></h2>
+            </header>
+
+            <a href="#" class="image featured"><img src="{% static 'assets/images/social.jpg' %}" alt="Socrates ASCII Art" /></a>
+        </article>
+    </div>
+</div>
+{% endblock %}

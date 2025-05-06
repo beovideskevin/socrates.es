@@ -1,0 +1,15 @@
+<!-- Pagination -->
+<div class="pagination">
+    {% if prevPage  %}
+        <a href="/{% if active == 'blog' %}?page={{ prevPage }}{% endif %}{% if active == 'search' %}search?search={{ words }}&page={{ prevPage }}{% endif %}{% if active == 'thesis' %}thesis?page={{ prevPage }}{% endif %}" class="button previous">Previous Page</a>
+    {% endif %}
+    <div class="pages">
+    {% for n in pageRange %}
+        <a href="/{% if active == 'blog' %}?page={{ n }}{% endif %}{% if active == 'search' %}search?search={{ words }}&page={{ n }}{% endif %}{% if active == 'thesis' %}thesis?page={{ n }}{% endif %}" {% if n == activePage %} class="active" {% endif %}>{{n}}</a>
+        <!-- <span>&hellip;</span> -->
+    {% endfor %}
+    </div>
+    {% if nextPage %}
+        <a href="/{% if active == 'blog' %}?page={{ nextPage }}{% endif %}{% if active == 'search' %}search?search={{ words }}&page={{ nextPage }}{% endif %}{% if active == 'thesis' %}thesis?page={{ nextPage }}{% endif %}" class="button next">Next Page</a>
+    {% endif %}
+</div>

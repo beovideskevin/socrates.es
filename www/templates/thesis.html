@@ -1,0 +1,17 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block header %}
+<link rel="canonical" content="https://www.socrates.es/thesis" />
+{% endblock %}
+
+{% block content %}
+<!-- Content -->
+<div id="content">
+    <div class="inner">
+        {% include 'partials/list.html' %}
+
+        {% include 'partials/pagination.html' %}
+    </div>
+</div>
+{% endblock %}

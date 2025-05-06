@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Page title -->
+    <title>Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal</title>
+    <!-- /Page title -->
+
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <link rel="apple-touch-icon" href="{% static '/assets/images/icon192.png' %}" />
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="{% static '/assets/images/icon.png' %}" />
+    <link rel="favicon" type="image/png" href="{% static '/assets/images/icon.png' %}" />
+    <!-- /favicon -->
+
+    <!-- Meta -->
+    <meta name="keywords" content="filosofia antigua, filosofia griega, filosofia romana, filosofia, estoico, estoicismo, socrates, diogenes, marco aurelio, seneca, musonio rufo, epicteto, zenon, cleantes, crisipo, realidad aumentada, inteligencia artificial, citas, inspiracion, autoayuda, felicidad, sabiduria, motivacion, bienestar, memento mori, amor fati" />
+    <meta name="description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas" />
+    <meta name="author" content="Kevin Beovides Casas" />
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal">
+    <meta itemprop="description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas">
+    <meta itemprop="image" content="{% static '/assets/images/social.png' %}">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@kevinbcasas">
+    <meta name="twitter:title" content="Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal">
+    <meta name="twitter:description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas">
+    <meta name="twitter:creator" content="@kevinbcasas">
+
+    <!-- Twitter summary card with large image must be at least 280x150px -->
+    <meta name="twitter:image:src" content="{% static '/assets/images/social.png' %}">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Todos los hombres son mortales Sócrates es un hombre Sócrates es mortal" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://www.socrates.es/" />
+    <meta property="og:image" content="{% static '/assets/images/social.png' %}" />
+    <meta property="og:description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas" />
+    <meta property="og:site_name" content="Socrates" />
+    <meta property="article:publisher" content="https://www.facebook.com/kevinbcasas/" />
+    <meta property="article:author" content="https://www.facebook.com/kevinbcasas/" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static '/assets/css/main.css' %}" />
+    <link rel="stylesheet" href="{% static '/assets/css/mine.css' %}" />
+
+    {% block header %}{% endblock %}
+</head>
+<body class="is-preload">
+
+	{% block content %}{% endblock %}
+
+	{% include 'partials/sidebar.html' %}
+
+	<!-- Scripts -->
+	<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+	<script src="{% static 'assets/js/browser.min.js' %}"></script>
+	<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+	<script src="{% static 'assets/js/util.js' %}"></script>
+	<script>
+        var	$window = $(window),
+		    $body = $('body'),
+		    $document = $(document);
+
+        $window.on('load', function() {
+		    window.setTimeout(function() {
+				$body.removeClass('is-preload');
+				// Breakpoints
+				breakpoints({
+                    desktop:   [ '737px',   null     ],
+                    wide:      [ '1201px',  null     ],
+                    narrow:    [ '737px',   '1200px' ],
+                    narrower:  [ '737px',   '1000px' ],
+                    mobile:    [ null,      '736px'  ]
+                });
+                // Sidebar
+                $('#sidebar')
+                    .panel({
+                        delay: 500,
+                        hideOnClick: true,
+                        hideOnSwipe: true,
+                        resetScroll: true,
+                        resetForms: true,
+                        side: 'left',
+                        target: $body,
+                        visibleClass: 'sidebar-visible'
+                    });
+                $('<div id="titleBar">' +
+					    '<a href="#sidebar" class="toggle"></a>' +
+					    '<span class="title">' + $('#logo').html() + '</span>' +
+				    '</div>')
+				.appendTo($body);
+				$("#copyYear").text(new Date().getFullYear());
+			}, 100);
+		});
+    </script>
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QELVEZGYC" type="text/javascript"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-6QELVEZGYC');
+	</script>
+
+	{% block script %}{% endblock %}
+	</body>
+</html>
