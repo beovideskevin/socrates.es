@@ -5,3 +5,6 @@
 .env.test
 .env.production
 .venv
+www/__pycache__/
+www/migrations/__pycache__/
+socrates/__pycache__/
