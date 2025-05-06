@@ -1,6 +1,10 @@
 {% extends "layouts/base.html" %}
 {% load static %}
 
+{% block meta %}
+{% include 'partials/meta.html' %}
+{% endblock %}
+
 {% block header %}
 <link rel="canonical" content="https://www.socrates.es/contact" />
 {% endblock %}
@@ -11,10 +15,14 @@
         <div class="box other">
             <header>
                 <h2>Contacto</h2>
-                {% if sent %}
-                <p class="error">Recibí su correo. Le responderé pronto  :)</p>
+                {% if error %}
+                    <p class="error">Hubo un error al enviar el correo. Por favor, inténtelo de nuevo.</p>
                 {% else %}
-                <p>Ya sabes que hacer...</p>
+                    {% if sent %}
+                        <p class="error">Recibí su correo. Le responderé pronto  :)</p>
+                    {% else %}
+                        <p>Ya sabes que hacer...</p>
+                    {% endif %}
                 {% endif %}
             </header>
 
@@ -22,22 +30,21 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label>Name:</label>
-                    <input type="text" name="name" id="name" value="{% if name %}{{name}}{% endif %}" />
+                    <input type="text" name="name" id="name" value="{% if name %}{{name}}{% endif %}" required />
                 </div>
                 <div class="form-group">
                     <label>Correo:</label>
-                    <input type="text" name="email" id="email" value="{% if email %}{{email}}{% endif %}" />
+                    <input type="email" name="email" id="email" value="{% if email %}{{email}}{% endif %}" required />
                 </div>
                 <div class="form-group">
                     <label>Mensaje:</label>
-                    <textarea name="message" id="message" style="width: 100%; height: 200px; resize: vertical">{% if message %}{{message}}{% endif %}</textarea>
+                    <textarea name="message" id="message" style="width: 100%; height: 200px; resize: vertical" required>{% if message %}{{message}}{% endif %}</textarea>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="nothing"  />
                     <div class="cf-turnstile" data-sitekey="0x4AAAAAABY4u5i06SXLgvSz"></div>
                 </div>
                 <div class="form-group">
-                    <div id="error" class="error {% if not error %} hidden {% endif %}">Por favor, complete todos los campos.</div>
                     <a href="javascript:" class="button next" id="submitContact">Enviar</a>
                 </div>
             </form>
@@ -60,7 +67,6 @@
             const email = $("#email").val();
             const message = $("#message").val();
             if (!name || !email || !message) {
-                error.show();
                 return;
             }
             $form.submit();

@@ -1,8 +1,35 @@
 {% extends "layouts/base.html" %}
 {% load static %}
 
+{% block meta %}
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal">
+<meta itemprop="description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas">
+<meta itemprop="image" content="{% static post.poster %}">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@kevinbcasas">
+<meta name="twitter:title" content="Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal">
+<meta name="twitter:description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas">
+<meta name="twitter:creator" content="@kevinbcasas">
+
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="{% static post.poster %}">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Todos los hombres son mortales Sócrates es un hombre Sócrates es mortal" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.socrates.es/post/{{post.slug}}" />
+<meta property="og:image" content="{% static post.poster %}" />
+<meta property="og:description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas" />
+<meta property="og:site_name" content="Socrates" />
+<meta property="article:publisher" content="https://www.facebook.com/kevinbcasas/" />
+<meta property="article:author" content="https://www.facebook.com/kevinbcasas/" />
+{% endblock %}
+
 {% block header %}
-<link rel="canonical" content="https://www.socrates.es/blog/{{post.slug}}" />
+<link rel="canonical" content="https://www.socrates.es/post/{{post.slug}}" />
 {% endblock %}
 
 {% block content %}
@@ -66,10 +93,14 @@
 
             <header>
                 <h2>Si quiere dejar su opinión...</h2>
-                {% if sent %}
-                <p class="error">Muchas gracias. Su comentario será revisado antes de publicarlo.</p>
+                {% if error %}
+                    <p class="error ">No se guardó el comentario. Por favor, inténtelo de nuevo.</p>
                 {% else %}
-                <p>Deje su nombre y su mensaje en el formulario de abajo.</p>
+                    {% if sent %}
+                        <p class="error">Muchas gracias. Su comentario será revisado antes de publicarlo.</p>
+                    {% else %}
+                        <p>Deje su nombre y su mensaje en el formulario de abajo.</p>
+                    {% endif %}
                 {% endif %}
             </header>
 
@@ -77,26 +108,21 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label>Name:</label>
-                    <input type="text" name="name" id="name" value="{% if name %}{{name}}{% endif %}" />
+                    <input type="text" name="name" id="name" value="{% if name %}{{name}}{% endif %}" required />
                 </div>
                 <div class="form-group">
                     <label>Comentario:</label>
-                    <textarea name="message" id="message" style="width: 100%; height: 200px; resize: vertical">{% if message %}{{message}}{% endif %}</textarea>
+                    <textarea name="message" id="message" style="width: 100%; height: 200px; resize: vertical" required>{% if message %}{{message}}{% endif %}</textarea>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="nothing" />
                     <div class="cf-turnstile" data-sitekey="0x4AAAAAABY4u5i06SXLgvSz"></div>
                 </div>
                 <div class="form-group">
-                    <div id="error" class="error {% if not error %} hidden {% endif %}">Por favor, complete todos los campos.</div>
                     <a href="javascript:" class="button next" id="submitComment">Enviar</a>
                 </div>
             </form>
         </div>
-
-<!--        <div class="back">-->
-<!--            <a href="javascript:;" class="button next" id="backBtn">Volver Atrás</a>-->
-<!--        </div>-->
     </div>
 </div>
 {% endblock %}
@@ -106,13 +132,6 @@
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
 
 <script>
-    // Initialize the sidebar
-    /* $(document).ready(function() {
-        $("#backBtn").click(function(){
-            history.back();
-        });
-    }); */
-
     $(document).ready(function() {
         let error = $("#error");
         $('#submitComment').on('click', function(e) {
@@ -121,7 +140,6 @@
             const name = $("#name").val();
             const message = $("#message").val();
             if (!name || !message) {
-                error.show();
                 return;
             }
             $form.submit();

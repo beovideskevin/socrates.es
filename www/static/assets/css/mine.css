@@ -28,10 +28,12 @@
 
 .error {
     color: #b93653;
-    font-weight: bold;
+    /* font-weight: bold;
     font-size: larger;
-    margin: 1em 0;
+    margin: 1em 0; */
 }
+
+/*{% if not error %} hidden {% endif %}*/
 
 .video {
     text-align: center;
@@ -87,6 +89,10 @@ article p {
 }
 
 @media screen and (min-width: 737px) {
+    .error {
+        font-size: 1.6em;
+    }
+
     .logo_img img {
         width: 50px;
     }

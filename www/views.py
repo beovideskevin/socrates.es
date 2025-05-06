@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 def blog(request):
-    posts = Post.objects.all().order_by('-created_at')
+    posts = Post.objects.all().order_by('created_at') # -created_at
 
     page = request.GET.get('page')
     if page is None or page == "":
