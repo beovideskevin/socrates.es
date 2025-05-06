@@ -1,4 +1,3 @@
-import locale
 from django.db import models
 
 # Create your models here.
@@ -46,9 +45,9 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def prettyDate(self):
-        month = self.created_at.strftime("%B").capitalize()
-        day = self.created_at.strftime("%d")
-        year = self.created_at.strftime("%Y")
+        month = 5
+        day = 10
+        year = 2025
         return f"<span class='date'><span class='month'>{month}</span> <span class='day'>{day}</span><span class='year'>, {year}</span></span>"
 
     def allTags(self):
