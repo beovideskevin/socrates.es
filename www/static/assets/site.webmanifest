@@ -1,0 +1,20 @@
+{
+    "name": "socrates.es",
+    "short_name": "socrates",
+    "icons": [
+        {
+            "src": "/static/assets/images/icon192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/assets/images/icon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": ".",
+    "theme_color": "#ffffff",
+    "background_color": "#364050",
+    "display": "standalone"
+}
