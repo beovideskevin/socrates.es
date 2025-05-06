@@ -45,9 +45,9 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def prettyDate(self):
-        month = 5
-        day = 10
-        year = 2025
+        month = self.created_at.strftime("%B").capitalize()
+        day = self.created_at.strftime("%d")
+        year = self.created_at.strftime("%Y")
         return f"<span class='date'><span class='month'>{month}</span> <span class='day'>{day}</span><span class='year'>, {year}</span></span>"
 
     def allTags(self):
