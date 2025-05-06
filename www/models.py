@@ -46,7 +46,6 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def prettyDate(self):
-#         locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
         month = self.created_at.strftime("%B").capitalize()
         day = self.created_at.strftime("%d")
         year = self.created_at.strftime("%Y")
