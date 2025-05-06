@@ -139,13 +139,13 @@ def post(request, slug):
     sent = False
 
     if request.method == "POST":
-        turnstile_response = request.POST["cf-turnstile-response"]
+        turnstile_response = request.POST.get("cf-turnstile-response", "")
         remote_ip = request.META.get('HTTP_CF_CONNECTING_IP')
         name = request.POST["name"]
         message = request.POST["message"]
         nothing = request.POST["nothing"]
 
-        if name == "" or message == "": # or turnstile_response == '' or nothing != "":
+        if name == "" or message == "" or turnstile_response == '' or nothing != "":
             return render(request, "post.html", {
                 "post": post,
                 "active": None,
@@ -155,15 +155,15 @@ def post(request, slug):
                 "comments": comments
             })
 
-        # if validate_turnstile(turnstile_response, remote_ip) is False:
-        #     return render(request, "post.html", {
-        #         "post": post,
-        #         "active": None,
-        #         "error": True,
-        #         "name": name,
-        #         "message": message,
-        #         "comments": comments
-        #     })
+        if validate_turnstile(turnstile_response, remote_ip) is False:
+            return render(request, "post.html", {
+                "post": post,
+                "active": None,
+                "error": True,
+                "name": name,
+                "message": message,
+                "comments": comments
+            })
 
         sent = True
         send_mail(
@@ -248,7 +248,7 @@ def about(request):
 def contact(request):
     sent = False
     if request.method == "POST":
-        turnstile_response = request.POST["cf-turnstile-response"]
+        turnstile_response = request.POST.get("cf-turnstile-response", "")
         remote_ip = request.META.get('HTTP_CF_CONNECTING_IP')
         name = request.POST["name"]
         email = request.POST["email"]
