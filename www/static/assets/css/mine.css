@@ -70,20 +70,16 @@ article p {
 }
 
 .logo_img {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
 .logo_img img {
-   width: 46px;
+   width: 36px;
 }
 
 @media screen and (min-width: 737px) {
-    .logo_img {
-        margin-bottom: 10px;
-    }
-
     .logo_img img {
-        width: 75px;
+        width: 50px;
     }
 }
