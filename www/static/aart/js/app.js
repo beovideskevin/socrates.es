@@ -16,6 +16,7 @@ var resultCanvas; // The result canvas
 var resultCtx; // The result context
 var config = { // The config
   chars: undefined,
+  family: undefined,
   font: undefined,
   map: undefined,
   inferior: undefined,
@@ -27,7 +28,6 @@ var config = { // The config
   invertGray: undefined,
   letterBg: undefined,
   mixOriginal: undefined,
-  // arLayer: undefined,
   printSize: undefined,
   lights: undefined
 };
@@ -72,6 +72,7 @@ function createFilename() {
   let t = d.getTime();
   let filename = prefix +
     "_" + config.chars +
+    "-" + config.family +
     "_" + config.font +
     "_" + config.map +
     "_" + config.inferior +
@@ -102,16 +103,18 @@ function assignConfig(revert) {
 
     // Revert he config
     form.chars.value = config.chars;
+    form.family.value = config.family;
+    selectElems[0].M_FormSelect.input.value = config.family;
     form.font.value = config.font;
-    selectElems[0].M_FormSelect.input.value = config.font;
+    selectElems[1].M_FormSelect.input.value = config.font;
     form.map.value = config.map;
-    selectElems[1].M_FormSelect.input.value = config.map || "Sin umbral";
+    selectElems[2].M_FormSelect.input.value = config.map || "Sin umbral";
     form.inferior.value = config.inferior;
-    selectElems[2].M_FormSelect.input.value = config.inferior || "Sin umbral";
+    selectElems[3].M_FormSelect.input.value = config.inferior || "Sin umbral";
     form.superior.value = config.superior;
-    selectElems[3].M_FormSelect.input.value = config.superior == 255 ? "Sin umbral" : config.superior;
+    selectElems[4].M_FormSelect.input.value = config.superior == 255 ? "Sin umbral" : config.superior;
     form.gray.value = config.gray;
-    selectElems[4].M_FormSelect.input.value = config.gray || "Sin umbral";
+    selectElems[5].M_FormSelect.input.value = config.gray || "Sin umbral";
     form.text.value = config.text;
     form.blackWhite.checked = config.blackWhite;
     form.invertMap.checked = config.invertMap;
@@ -126,6 +129,7 @@ function assignConfig(revert) {
     // Get the config values
     config = {
       chars: parseInt(form.chars.value, 10),
+      family: form.family.value,
       font: parseInt(form.font.value, 10),
       map: parseInt(form.map.value, 10),
       inferior: parseInt(form.inferior.value, 10),
@@ -281,7 +285,7 @@ function processImage() {
         resultCtx.fillRect(0, -1.0 / fSize, 1.0 / fSize, 1.0);
       }
       resultCtx.fillStyle = colorMatrix[pos];
-      resultCtx.font = fontMatrix[pos] + "px aAFont";
+      resultCtx.font = fontMatrix[pos] + "px " + config.family;
       resultCtx.fillText(letterMatrix[pos], 0, 0);
       resultCtx.translate(1.0 / fSize, 0);
     }
@@ -402,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Create an array with the letters in the correct order
   letters = new Array(256);
   for (let i = 0; i < 256; i++) {
-    let j = parseInt(mapNumber(i, 0, 256, 0, letterOrder.length), 10);
+    let j = parseInt(mapNumber(i, 0, 255, 0, letterOrder.length), 10);
     letters[i] = letterOrder[j];
   }
 
