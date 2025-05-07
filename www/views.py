@@ -132,7 +132,7 @@ def post(request, slug):
     try:
         post = Post.objects.get(slug=slug)
     except Post.DoesNotExist:
-        logger.error(f"Post with slug {slug} does not exist.")
+        logger.error(f"Post: post with slug {slug} does not exist.")
         return render(request, "404.html")
 
     comments = Comment.objects.filter(post_id=post.id, approved=True)
@@ -188,7 +188,7 @@ def like(request, slug):
     try:
         post = Post.objects.get(slug=slug)
     except Post.DoesNotExist:
-        logger.error(f"Post with slug {slug} does not exist.")
+        logger.error(f"Like: post with slug {slug} does not exist.")
         data = {
             'message': 0,
             'status': 404
@@ -207,7 +207,7 @@ def facebook(request, slug):
     try:
         post = Post.objects.get(slug=slug)
     except Post.DoesNotExist:
-        logger.error(f"Post with slug {slug} does not exist.")
+        logger.error(f"Facebook: post with slug {slug} does not exist.")
         data = {
             'message': 0,
             'status': 404
@@ -226,7 +226,7 @@ def twitter(request, slug):
     try:
         post = Post.objects.get(slug=slug)
     except Post.DoesNotExist:
-        logger.error(f"Post with slug {slug} does not exist.")
+        logger.error(f"Twitter: post with slug {slug} does not exist.")
         data = {
             'message': 0,
             'status': 404

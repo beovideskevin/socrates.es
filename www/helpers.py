@@ -3,14 +3,12 @@ import logging
 import re
 
 def validate_turnstile(secret, turnstile_response, remote_ip=None):
-    logger = logging.getLogger(__name__)
     data = {
         'secret': secret,
         'response': turnstile_response,
     }
     if remote_ip:
         data['remoteip'] = remote_ip
-    logger.error(data)
 
     try:
         response = requests.post('https://challenges.cloudflare.com/turnstile/v0/siteverify', data=data)
@@ -18,8 +16,9 @@ def validate_turnstile(secret, turnstile_response, remote_ip=None):
         result = response.json()
         return result.get('success', False)
     except requests.exceptions.RequestException as e:
-        logger.error("validate_turnstile error")
-        logger.error(e)
+        logger = logging.getLogger(__name__)
+        logger.error(f"validate_turnstile error: {e}")
+        logger.error(data)
         return False
 
 def is_valid_email(email):
