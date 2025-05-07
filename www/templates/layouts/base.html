@@ -62,34 +62,38 @@
 		    $document = $(document);
 
         $window.on('load', function() {
+            // Breakpoints
+            breakpoints({
+                desktop:   [ '737px',   null     ],
+                wide:      [ '1201px',  null     ],
+                narrow:    [ '737px',   '1200px' ],
+                narrower:  [ '737px',   '1000px' ],
+                mobile:    [ null,      '736px'  ]
+            });
+
+            $('<div id="titleBar">' +
+                    '<a href="#sidebar" class="toggle"></a>' +
+                    '<span class="title">' + $('#logo').html() + '</span>' +
+                '</div>')
+            .appendTo($body);
+
+            // Sidebar
+            $('#sidebar')
+                .panel({
+                    delay: 500,
+                    hideOnClick: true,
+                    hideOnSwipe: true,
+                    resetScroll: true,
+                    resetForms: true,
+                    side: 'left',
+                    target: $body,
+                    visibleClass: 'sidebar-visible'
+                });
+
+            $("#copyYear").text(new Date().getFullYear());
+
 		    window.setTimeout(function() {
 				$body.removeClass('is-preload');
-				// Breakpoints
-				breakpoints({
-                    desktop:   [ '737px',   null     ],
-                    wide:      [ '1201px',  null     ],
-                    narrow:    [ '737px',   '1200px' ],
-                    narrower:  [ '737px',   '1000px' ],
-                    mobile:    [ null,      '736px'  ]
-                });
-                // Sidebar
-                $('#sidebar')
-                    .panel({
-                        delay: 500,
-                        hideOnClick: true,
-                        hideOnSwipe: true,
-                        resetScroll: true,
-                        resetForms: true,
-                        side: 'left',
-                        target: $body,
-                        visibleClass: 'sidebar-visible'
-                    });
-                $('<div id="titleBar">' +
-					    '<a href="#sidebar" class="toggle"></a>' +
-					    '<span class="title">' + $('#logo').html() + '</span>' +
-				    '</div>')
-				.appendTo($body);
-				$("#copyYear").text(new Date().getFullYear());
 			}, 100);
 		});
     </script>
