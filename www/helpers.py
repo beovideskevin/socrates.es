@@ -4,6 +4,7 @@ import logging
 import re
 
 def validate_turnstile(turnstile_response, remote_ip=None):
+    logger = logging.getLogger(__name__)
     data = {
         'secret': settings.TURNSTILE_SECRET,
         'response': turnstile_response,
@@ -18,7 +19,6 @@ def validate_turnstile(turnstile_response, remote_ip=None):
         result = response.json()
         return result.get('success', False)
     except requests.exceptions.RequestException as e:
-        logger = logging.getLogger(__name__)
         logger.error("validate_turnstile error")
         logger.error(e)
         return False
