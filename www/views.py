@@ -139,6 +139,7 @@ def post(request, slug):
     sent = False
 
     if request.method == "POST":
+        secret = settings.TURNSTILE_SECRET
         turnstile_response = request.POST.get("cf-turnstile-response", "")
         remote_ip = request.META.get('HTTP_CF_CONNECTING_IP')
         name = request.POST["name"]
@@ -155,7 +156,7 @@ def post(request, slug):
                 "comments": comments
             })
 
-        if validate_turnstile(turnstile_response, remote_ip) is False:
+        if validate_turnstile(secret, turnstile_response, remote_ip) is False:
             return render(request, "post.html", {
                 "post": post,
                 "active": None,
@@ -248,6 +249,7 @@ def about(request):
 def contact(request):
     sent = False
     if request.method == "POST":
+        secret = settings.TURNSTILE_SECRET
         turnstile_response = request.POST.get("cf-turnstile-response", "")
         remote_ip = request.META.get('HTTP_CF_CONNECTING_IP')
         name = request.POST["name"]
@@ -265,7 +267,7 @@ def contact(request):
                 "message": message
             })
 
-        if validate_turnstile(turnstile_response, remote_ip) is False:
+        if validate_turnstile(secret, turnstile_response, remote_ip) is False:
             return render(request, "contact.html", {
                 "active": "contact",
                 "error": True,

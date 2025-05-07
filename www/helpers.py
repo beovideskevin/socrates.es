@@ -1,12 +1,11 @@
-from django.conf import settings
 import requests
 import logging
 import re
 
-def validate_turnstile(turnstile_response, remote_ip=None):
+def validate_turnstile(secret, turnstile_response, remote_ip=None):
     logger = logging.getLogger(__name__)
     data = {
-        'secret': settings.TURNSTILE_SECRET,
+        'secret': secret,
         'response': turnstile_response,
     }
     if remote_ip:
