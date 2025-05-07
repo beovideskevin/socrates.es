@@ -26,15 +26,15 @@
                 {% endif %}
             </header>
 
-            <form method="POST" action="/contact">
+            <form method="POST" action="/contact" id="contactForm">
                 {% csrf_token %}
                 <div class="form-group">
                     <label>Name:</label>
-                    <input type="text" name="name" id="name" value="{% if name %}{{name}}{% endif %}" required />
+                    <input type="text" name="name" id="name" value="{% if name %}{{name}}{% endif %}" required >
                 </div>
                 <div class="form-group">
                     <label>Correo:</label>
-                    <input type="email" name="email" id="email" value="{% if email %}{{email}}{% endif %}" required />
+                    <input type="email" name="email" id="email" value="{% if email %}{{email}}{% endif %}" required >
                 </div>
                 <div class="form-group">
                     <label>Mensaje:</label>
@@ -45,7 +45,7 @@
                     <div class="cf-turnstile" data-sitekey="0x4AAAAAABY4u5i06SXLgvSz"></div>
                 </div>
                 <div class="form-group">
-                    <a href="javascript:" class="button next" id="submitContact">Enviar</a>
+                    <input type="submit" class="button next" id="submitContact" name="submitContact" value="Enviar" >
                 </div>
             </form>
         </div>
@@ -59,17 +59,12 @@
 
 <script>
     $(document).ready(function() {
-        let error = $("#error");
-        $('#submitContact').on('click', function(e) {
-            e.preventDefault();
-            const $form = $(this).closest('form');
-            const name = $("#name").val();
-            const email = $("#email").val();
-            const message = $("#message").val();
-            if (!name || !email || !message) {
-                return;
+        $('#contactForm').on('submit', function(e) {
+            if (!$("#name").val() || !$("#email").val() || !$("#message").val()) {
+                e.preventDefault();
+                return false;
             }
-            $form.submit();
+            return true;
         });
     });
 </script>

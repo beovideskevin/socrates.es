@@ -104,7 +104,7 @@
                 {% endif %}
             </header>
 
-            <form method="POST" action="/post/{{post.slug}}#comments">
+            <form method="POST" action="/post/{{post.slug}}#comments" id="commentForm">
                 {% csrf_token %}
                 <div class="form-group">
                     <label>Name:</label>
@@ -119,7 +119,7 @@
                     <div class="cf-turnstile" data-sitekey="0x4AAAAAABY4u5i06SXLgvSz"></div>
                 </div>
                 <div class="form-group">
-                    <a href="javascript:" class="button next" id="submitComment">Enviar</a>
+                    <input type="submit" class="button next" id="submitComment" name="submitComment" value="Enviar">
                 </div>
             </form>
         </div>
@@ -133,16 +133,12 @@
 
 <script>
     $(document).ready(function() {
-        let error = $("#error");
-        $('#submitComment').on('click', function(e) {
-            e.preventDefault();
-            const $form = $(this).closest('form');
-            const name = $("#name").val();
-            const message = $("#message").val();
-            if (!name || !message) {
-                return;
+        $('#commentForm').on('submit', function(e) {
+            if (!$("#name").val() || !$("#message").val()) {
+                e.preventDefault();
+                return false;
             }
-            $form.submit();
+            return true;
         });
     });
 </script>

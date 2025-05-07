@@ -171,7 +171,7 @@ def post(request, slug):
             f"{message}\nNombre: {name}",
             settings.EMAIL_HOST_USER,
             [settings.ADMIN_USER_EMAIL],
-            fail_silently=False,
+            fail_silently=True,
         )
 
         Comment.objects.create(name=name, content=message, post=post)
@@ -280,7 +280,7 @@ def contact(request):
             f"{message}\nNombre: {name}\nCorreo: {email}",
             settings.EMAIL_HOST_USER,
             [settings.ADMIN_USER_EMAIL],
-            fail_silently=False,
+            fail_silently=True,
         )
 
     return render(request, "contact.html", {
