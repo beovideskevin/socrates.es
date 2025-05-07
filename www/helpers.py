@@ -19,6 +19,7 @@ def validate_turnstile(turnstile_response, remote_ip=None):
     except requests.exceptions.RequestException as e:
         logger = logging.getLogger(__name__)
         logger.error(e)
+        logger.error(data)
         return False
 
 def is_valid_email(email):
