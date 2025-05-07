@@ -2806,9 +2806,9 @@ input, select, textarea {
 				margin-top: 0 !important;
 			}
 
-				#nav:before {
+				/* #nav:before {
 					display: none !important;
-				}
+				} */
 
 				#nav li:hover a {
 					background: none;
@@ -2940,9 +2940,9 @@ input, select, textarea {
 				margin-top: 0 !important;
 			}
 
-				#nav:before {
+				/* #nav:before {
 					display: none !important;
-				}
+				} */
 
 				#nav li:hover a {
 					background: none;
