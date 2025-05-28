@@ -170,7 +170,6 @@ def post(request, slug):
 
         name = strip_tags(escape(name))
         message = strip_tags(escape(message))
-        post = strip_tags(escape(post))
 
         sent = True
         send_mail(
