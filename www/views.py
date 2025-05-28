@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import JsonResponse
+from django.utils.html import escape, strip_tags
 from www.models import Tag, Category, Post, Comment, Subscriber
 from www.helpers import *
 
@@ -167,6 +168,10 @@ def post(request, slug):
                 "comments": comments
             })
 
+        name = strip_tags(escape(name))
+        message = strip_tags(escape(message))
+        post = strip_tags(escape(post))
+
         sent = True
         send_mail(
             "Comentario de Socrates.es",
@@ -276,6 +281,10 @@ def contact(request):
                 "email": email,
                 "message": message
             })
+
+        name = strip_tags(escape(name))
+        message = strip_tags(escape(message))
+        email = strip_tags(escape(email))
 
         sent = True
         send_mail(
