@@ -82,7 +82,8 @@ article p {
 }
 
 .coffee a {
-    padding: 0.5em
+    padding: 0.4em;
+    font-size: 1em;
 }
 
 @media screen and (min-width: 737px) {
@@ -96,6 +97,6 @@ article p {
     }
 
     .coffee a {
-        padding: 0.5em 1em
+        padding: 0.7em;
     }
 }
