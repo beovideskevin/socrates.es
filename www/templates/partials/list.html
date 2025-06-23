@@ -31,7 +31,7 @@
             <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.socrates.es/post/{{post.slug}}" target="_blank" class="icon brands fa-facebook-f" id="facebook-{{post.slug}}" onclick="callSocialEndpoint('{{post.slug}}', 'facebook')">{{post.facebook}}</a></li>
         </ul>
     </div>
-    <a href="/post/{{post.slug}}" class="image featured"><img src="{% static post.poster %}" alt="Image for {{ post.title }}" /></a>
+    <a href="javascript:;" class="image featured"><img class="postImg" src="{% static post.poster %}" alt="Image for {{ post.title }}" /></a>
     {{ post.abstract|safe }}
 </article>
 {% empty %}
@@ -44,6 +44,16 @@
         -->
         <h2><a href="/" class="underlined">No hay artículos para leer.</a></h2>
     </header>
-    <a href="#" class="image featured"><img src="{% static 'assets/images/social.jpg' %}" alt="Socrates ASCII Art" /></a>
+    <a href="javascript:;" class="image featured"><img class="postImg" src="{% static 'assets/images/social.jpg' %}" alt="Socrates ASCII Art" /></a>
 </article>
 {% endfor %}
+
+<!-- The Modal -->
+<div id="modal" class="modal">
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="imgModal">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>

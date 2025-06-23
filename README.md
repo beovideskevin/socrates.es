@@ -8,6 +8,7 @@ TODO:
 
 - [ ] mover el diletante digital a un subdominio
 - [ ] Que las imágenes se muestren grandes como en edd
+- [ ] Que las imagenes tengan el caption correcto
 
 Test:
 
