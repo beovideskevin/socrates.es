@@ -81,5 +81,6 @@
 @media only screen and (max-width: 1000px){
   .close {
     top: 55px;
+    right: 15px;
   }
 }
