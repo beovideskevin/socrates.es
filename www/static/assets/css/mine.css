@@ -86,7 +86,7 @@ article p {
     font-size: 1em;
 }
 
-.ego {
+.ego img {
     width: 100%;
     padding: 1.5em;
 }
@@ -107,7 +107,10 @@ article p {
 
     .ego {
         float: right;
-        padding: 0 0 0 1.5em;
+    }
+
+    .ego img {
+        padding: 0 0 0 1.5em ;
     }
 }
 
