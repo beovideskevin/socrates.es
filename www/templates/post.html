@@ -67,7 +67,7 @@
                     <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.socrates.es/post/{{post.slug}}" target="_blank" class="icon brands fa-facebook-f" id="facebook-{{post.slug}}" onclick="callSocialEndpoint('{{post.slug}}', 'facebook')">{{post.facebook}}</a></li>
                 </ul>
             </div>
-            <a href="javascript:;" class="image featured"><img class="postImg" src="{% static post.poster %}" alt="{{ post.title }}" /></a>
+            <a href="javascript:;" class="image featured"><img class="postImg" src="{% static post.poster %}" alt="{{ post.alt }}" /></a>
 
             {{ post.content|safe }}
         </article>

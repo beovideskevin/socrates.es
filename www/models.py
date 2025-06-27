@@ -38,6 +38,7 @@ class Post(models.Model):
     )
     content = models.TextField()
     poster = models.CharField(max_length=200, blank=True, null=True)
+    alt = models.CharField(max_length=200, blank=True, null=True, default="")
     like = models.IntegerField(default=0)
     facebook = models.IntegerField(default=0)
     twitter = models.IntegerField(default=0)
