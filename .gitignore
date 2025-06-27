@@ -4,7 +4,8 @@
 .env.development
 .env.test
 .env.production
+.venv
 www/__pycache__/
 www/migrations/__pycache__/
 socrates/__pycache__/
-db.sqlite3
+www/db.sqlite3
