@@ -1,0 +1,25 @@
+                                                          {% extends "layouts/base.html" %}
+{% load static %}
+
+{% block meta %}
+{% include 'partials/meta.html' %}
+{% endblock %}
+
+{% block header %}
+<link rel="canonical" content="https://www.socrates.es/art" />
+{% endblock %}
+
+{% block content %}
+<!-- Content -->
+<div id="content">
+    <div class="inner">
+        {% include 'partials/list.html' %}
+
+        {% include 'partials/pagination.html' %}
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'assets/js/img.js' %}"></script>
+{% endblock %}
