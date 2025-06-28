@@ -10,6 +10,35 @@ from www.helpers import *
 import logging
 logger = logging.getLogger(__name__)
 
+def art(request):
+    arteCat = Category.objects.get(name="arte")
+    posts = Post.objects.filter(category=arteCat).order_by('-created_at')
+    page = request.GET.get('page')
+    if page is None or page == "":
+        page = 1
+    else:
+        try:
+            page = int(page)
+        except ValueError:
+            page = 1
+
+    paginator = Paginator(posts, 5)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, "art.html", {
+        "posts": posts,
+        "active": "art",
+        "prevPage": page - 1 if page > 1 else None,
+        "nextPage": page + 1 if page < paginator.num_pages else None,
+        "activePage": page if page else 1,
+        "pageRange": range(1, paginator.num_pages + 1)
+    })
+
 # Create your views here.
 def blog(request):
     diarioCat = Category.objects.get(name="diario")
@@ -46,7 +75,7 @@ def search(request):
     if q is None or q == "":
         return render(request, "blog.html", {
             "posts": [],
-            "active": "blog",
+            "active": "",
             "search": True,
             "words": "",
             "prevPage": 1,
@@ -58,7 +87,7 @@ def search(request):
     if not words:
         return render(request, "blog.html", {
             "posts": [],
-            "active": "blog",
+            "active": "",
             "search": True,
             "words": "",
             "prevPage": 1,
@@ -91,7 +120,7 @@ def search(request):
 
     return render(request, "blog.html", {
         "posts": posts,
-        "active": "search",
+        "active": "",
         "search": True,
         "words": '+'.join(words),
         "prevPage": page - 1 if page > 1 else None,
