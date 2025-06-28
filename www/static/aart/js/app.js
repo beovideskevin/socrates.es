@@ -243,11 +243,6 @@ function processImage() {
     // Set the letter
     if (config.text == "") {
       letterMatrix[pos] = letters[pixelBright];
-      if (!letterMatrix[pos]) {
-        console.log(pixelBright);
-        console.log(letters.length)
-      }
-
     }
     else {
       letterMatrix[pos] = config.text[pos % config.text.length];
