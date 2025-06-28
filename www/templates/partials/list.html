@@ -33,6 +33,19 @@
     </div>
     <a href="javascript:;" class="image featured"><img class="postImg" src="{% static post.poster %}" alt="{{ post.alt }}" /></a>
     {{ post.abstract|safe }}
+
+    <div class="more">
+        <a href="/post/{{post.slug}}" class="nodecoration">Leer más...</a>
+    </div>
+
+    {% if post.video_url %}
+    <div class="video">
+        <p class='subtitle'>{{ post.video_quote|safe }}</p>
+        <video controls>
+            <source src="{% static post.video_url %}#t=0.1" type="video/mp4" poster="{% static post.video_poster %}">
+        </video>
+    </div>
+    {% endif %}
 </article>
 {% empty %}
 <article class="box post post-excerpt">
