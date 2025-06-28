@@ -243,6 +243,11 @@ function processImage() {
     // Set the letter
     if (config.text == "") {
       letterMatrix[pos] = letters[pixelBright];
+      if (!letterMatrix[pos]) {
+        console.log(pixelBright);
+        console.log(letters.length)
+      }
+
     }
     else {
       letterMatrix[pos] = config.text[pos % config.text.length];
@@ -406,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Create an array with the letters in the correct order
   letters = new Array(256);
   for (let i = 0; i < 256; i++) {
-    let j = parseInt(mapNumber(i, 0, 255, 0, letterOrder.length), 10);
+    let j = parseInt(mapNumber(i, 0, 256, 0, letterOrder.length), 10);
     letters[i] = letterOrder[j];
   }
 
