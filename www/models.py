@@ -82,3 +82,22 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.email
+
+class Video(models.Model):
+    philosopher = models.CharField(max_length=200)
+    url = models.CharField(max_length=200, blank=True, null=True, default="")
+    poster = models.CharField(max_length=200, blank=True, null=True, default="")
+    quote = models.TextField(blank=True, null=True, default="")
+    width = models.IntegerField(default=640)
+    height = models.IntegerField(default=640)
+    mask = models.CharField(max_length=10, blank=True, null=True, default="")
+    tags = models.ManyToManyField(
+        Tag,
+        blank=True,
+        related_name="video"
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.quote

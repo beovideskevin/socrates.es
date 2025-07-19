@@ -15,4 +15,6 @@ urlpatterns = [
     path("contact", views.contact, name="contact"),
     path("ar", views.ar, name="ar"),
     path("aart", views.aart, name="aart"),
+    path("api", views.api, name="api"),
+    path("api/<str:tag>", views.api, name="api"),
 ]

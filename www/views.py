@@ -4,9 +4,10 @@ from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import JsonResponse
 from django.utils.html import escape, strip_tags
-from www.models import Tag, Category, Post, Comment, Subscriber
+from www.models import Tag, Category, Post, Comment, Subscriber, Video
 from www.helpers import *
-
+import random
+import json
 import logging
 logger = logging.getLogger(__name__)
 
@@ -334,3 +335,28 @@ def ar(request):
 
 def aart(request):
     return render(request, "aart.html")
+
+def api(request, tag=None):
+    try:
+        videos = Video.objects.all() if not tag else Video.objects.filter(tags__in=[Tag.objects.get(name=tag)])
+    except Tag.DoesNotExist:
+        logger.error(f"Video: video with tag {tag} does not exist.")
+        return JsonResponse({"error": "Tag is not valid"}, status=400)
+
+    videoJson = [
+        {
+            "philosopher": vid.philosopher,
+            "url": vid.url,
+            "poster": vid.poster,
+            "quote": vid.quote,
+            "width": vid.width,
+            "height": vid.height,
+            "mask": vid.mask
+        }
+        for vid in videos
+    ]
+
+    if tag is None:
+        random.shuffle(videoJson)
+
+    return JsonResponse({"success": videoJson}, status=200)
