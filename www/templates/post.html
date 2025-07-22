@@ -83,11 +83,11 @@
 
         <!-- Post -->
         <div class="box other" id="comments">
+            {% if comments %}
             <header>
                 <h2>Comentarios:</h2>
             </header>
 
-            {% if comments %}
             <div class="box">
                 <ul class="recent-comments">
                     {% for comment in comments %}

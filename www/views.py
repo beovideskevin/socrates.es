@@ -122,7 +122,7 @@ def search(request):
 
     return render(request, "blog.html", {
         "posts": posts,
-        "active": "",
+        "active": "search",
         "search": True,
         "words": '+'.join(words),
         "prevPage": page - 1 if page > 1 else None,
