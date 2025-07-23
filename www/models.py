@@ -101,3 +101,10 @@ class Video(models.Model):
 
     def __str__(self):
         return self.quote
+
+class Clipboard(models.Model):
+    code = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.code.splitlines()[0]
