@@ -8,4 +8,4 @@
 www/__pycache__/
 www/migrations/__pycache__/
 socrates/__pycache__/
-www/db.sqlite3
+db.sqlite3
