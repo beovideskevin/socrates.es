@@ -88,7 +88,7 @@ article p {
 
 .ego img {
     width: 100%;
-    padding: 1.5em;
+    margin-bottom: 2em;
 }
 
 .more {
@@ -117,10 +117,12 @@ article p {
 
     .ego {
         float: right;
+        margin-bottom: 5px;
     }
 
     .ego img {
         padding: 0 0 0 1.5em ;
+        padding: 1.5em;
     }
 }
 
