@@ -17,5 +17,4 @@ urlpatterns = [
     path("aart", views.aart, name="aart"),
     path("api", views.api, name="api"),
     path("api/<str:tag>", views.api, name="api"),
-    path("clipboard", views.clipboard, name="clipboard"),
 ]

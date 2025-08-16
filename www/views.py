@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import JsonResponse
 from django.utils.html import escape, strip_tags
-from www.models import Tag, Category, Post, Comment, Subscriber, Video, Clipboard
+from www.models import Tag, Category, Post, Comment, Subscriber, Video
 from www.helpers import *
 import random
 import json
@@ -360,42 +360,3 @@ def api(request, tag=None):
         random.shuffle(videoJson)
 
     return JsonResponse({"success": videoJson}, status=200)
-
-def clipboard(request):
-    clipboard_items = Clipboard.objects.all().order_by('-created_at')
-    sent = False
-
-    if request.method == "POST":
-        code = request.POST.get("code", "")
-
-        if code:
-            secret = settings.TURNSTILE_SECRET
-            turnstile_response = request.POST.get("cf-turnstile-response", "")
-            remote_ip = request.META.get('HTTP_CF_CONNECTING_IP')
-
-            if validate_turnstile(secret, turnstile_response, remote_ip) is False:
-                clipboard_items = Clipboard.objects.all().order_by('-created_at')
-                return render(request, "clipboard.html", {
-                    "clipboard_items": clipboard_items,
-                    "active": None,
-                    "error": True,
-                    "code": code
-                })
-
-            code = strip_tags(escape(code)).replace('\n', '<br />').replace('\t', '&nbsp;&nbsp;')
-            Clipboard.objects.create(code=code)
-            clipboard_items = Clipboard.objects.all().order_by('-created_at')
-            sent = True
-        else:
-            return render(request, "clipboard.html", {
-                "clipboard_items": clipboard_items,
-                "active": None,
-                "error": True,
-                "code": code
-            })
-
-    return render(request, "clipboard.html", {
-        "active": None,
-        "sent": sent,
-        "clipboard_items": clipboard_items
-    })
