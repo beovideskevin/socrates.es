@@ -152,6 +152,7 @@ article p {
   transform: translateY(-50%);
   z-index: 10;
   border-radius: 50%;
+  padding: 0em 0.5em 0em 0.5em;
 }
 
 #carousel-prev-btn {
