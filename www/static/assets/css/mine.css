@@ -126,3 +126,37 @@ article p {
     }
 }
 
+/* Carousel styles */
+.carousel-container {
+  overflow: hidden; /* Hides extra slides */
+  width: 100%;
+  position: relative;
+}
+
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.5s ease; /* Smooth slide animation */
+}
+
+.carousel-slide {
+  flex: 0 0 100%; /* Makes each slide take full width */
+  text-align: center;
+  font-size: 2em;
+  background-color: lightgray;
+  box-sizing: border-box;
+}
+
+#prev-btn, #next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+#prev-btn {
+  left: 10px;
+}
+
+#next-btn {
+  right: 10px;
+}
