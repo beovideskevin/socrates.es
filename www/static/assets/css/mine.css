@@ -128,6 +128,7 @@ article p {
 
 /* Carousel styles */
 .carousel-container {
+  margin: 2em 0 0 0;
   overflow: hidden; /* Hides extra slides */
   width: 100%;
   position: relative;
@@ -153,7 +154,6 @@ article p {
   border-radius: 50%;
   padding: 1em;
   border: 0;
-  margin: 2em 0 0 0;
   color: #fff;
 }
 
