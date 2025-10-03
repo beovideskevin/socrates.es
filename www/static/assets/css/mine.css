@@ -140,14 +140,14 @@ article p {
 }
 
 .carousel-slide {
-  flex: 1 0 100%; /* Makes each slide take full width */
+  flex: 0 0 100%; /* Makes each slide take full width */
   text-align: center;
   font-size: 2em;
   box-sizing: border-box;
 }
 
 .carousel-slide img {
-    width: 100%;
+    
 }
 
 .carousel-container button {
