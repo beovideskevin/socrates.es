@@ -20,10 +20,10 @@ $(document).ready(function() {
 document.addEventListener("DOMContentLoaded", () => {
   const wrapper = document.querySelector(".carousel-wrapper");
   const slides = document.querySelectorAll(".carousel-slide");
-  const prevBtn = document.getElementById("carousel-btn");
-  const nextBtn = document.getElementById("carousel-btn");
+  const prevBtn = document.getElementById("carousel-prev-btn");
+  const nextBtn = document.getElementById("carousel-next-btn");
 
-  if (!wrapper || !slides) {
+  if (!wrapper || !slides || !prevBtn || !nextBtn) {
     return;
   }
 

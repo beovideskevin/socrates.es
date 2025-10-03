@@ -151,6 +151,7 @@ article p {
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
+  border-radius: 50%;
 }
 
 #prev-btn {
@@ -160,3 +161,4 @@ article p {
 #next-btn {
   right: 10px;
 }
+
