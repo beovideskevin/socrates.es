@@ -146,7 +146,7 @@ article p {
   box-sizing: border-box;
 }
 
-#prev-btn, #next-btn {
+.carousel-container button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -154,11 +154,11 @@ article p {
   border-radius: 50%;
 }
 
-#prev-btn {
+#carousel-prev-btn {
   left: 10px;
 }
 
-#next-btn {
+#carousel-next-btn {
   right: 10px;
 }
 
