@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.getElementById("carousel-next-btn");
 
   if (!wrapper || !slides || !prevBtn || !nextBtn) {
-    return;
+    return false;
   }
 
   let currentSlide = 0;
