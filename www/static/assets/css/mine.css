@@ -146,6 +146,10 @@ article p {
   box-sizing: border-box;
 }
 
+.carousel-slide img {
+    width: 100%;
+}
+
 .carousel-container button {
   position: absolute;
   top: 50%;
@@ -165,14 +169,3 @@ article p {
 #carousel-next-btn {
   right: 10px;
 }
-
-@media screen and (min-width: 737px) {
-    .carousel-container {
-        
-    }
-    
-    .carousel-container button {
-        
-    }
-}
-
