@@ -142,7 +142,6 @@ article p {
   flex: 0 0 100%; /* Makes each slide take full width */
   text-align: center;
   font-size: 2em;
-  background-color: lightgray;
   box-sizing: border-box;
 }
 
