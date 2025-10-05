@@ -1,6 +1,10 @@
 /**
- * DESCRIPTION: this file contains the code to show the post image in a popup and in a carousel
+ * Usage:
+
+  <img class="postImg" src="/static/assets/images/blog/david-dead-of-socrates.jpg" alt="La muerte de Sócrates, por Jacques-Louis David (1787)">
  */
+
+
 $(document).ready(function() {
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("imgModal");
@@ -17,6 +21,27 @@ $(document).ready(function() {
     }
 });
 
+
+/**
+ * Usage:
+
+    <div class="carousel-container">
+      <div class="carousel-wrapper">
+        <div class="carousel-slide">
+            <img src="/static/assets/images/art/athens-show-02.jpg" alt="Yo frente a mi obra el día de la inauguración." class="postImg">
+        </div>
+        <div class="carousel-slide">
+            <img src="/static/assets/images/social.jpg" alt="Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal." class="postImg">
+        </div>
+        <div class="carousel-slide">
+            <img src="/static/assets/images/art/athens-show-03.jpg" alt="La posición de la galería en el mapa." class="postImg">
+        </div>
+      </div>
+      <button id="carousel-prev-btn" class="fa fa-arrow-left"></button>
+      <button id="carousel-next-btn" class="fa fa-arrow-right"></button>
+    </div>
+
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const wrapper = document.querySelector(".carousel-wrapper");
   const slides = document.querySelectorAll(".carousel-slide");
