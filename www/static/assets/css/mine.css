@@ -74,7 +74,7 @@ article p {
 }
 
 .logo_img img {
-   width: 36px;
+   width: 100px; /* 36px; */
 }
 
 .coffee {
@@ -101,6 +101,12 @@ article p {
     font-weight: 300;
 }
 
+@media screen and (max-width: 737px) {
+    body {
+		background-color: #ffffff;
+    }
+}
+
 @media screen and (min-width: 737px) {
     .error {
         font-size: 1.6em;
@@ -108,7 +114,7 @@ article p {
     }
 
     .logo_img img {
-        width: 50px;
+        width: 140px;
     }
 
     .coffee a {
