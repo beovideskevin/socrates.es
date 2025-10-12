@@ -186,7 +186,7 @@ def post(request, slug):
         if (name == "" or message == "" or turnstile_response == '' or nothing != "" 
                 or validate_turnstile(secret, turnstile_response, remote_ip) is False):
             error = True
-            url = reverse('contact') + f"?name={name}&message={message}&error={error}&sent={sent}"
+            url = reverse('post/' + f"{slug}/") + f"?name={name}&message={message}&error={error}&sent={sent}"
             return redirect(url)
 
         Comment.objects.create(name=name, content=message, post=post)
