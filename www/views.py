@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.core.mail import send_mail
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import JsonResponse
 from django.utils.html import escape, strip_tags
+from django.db.models import Q
 from www.models import Tag, Category, Post, Comment, Subscriber, Video
 from www.helpers import *
 import random
@@ -44,7 +46,8 @@ def art(request):
 # Create your views here.
 def blog(request):
     diarioCat = Category.objects.get(name="diario")
-    posts = Post.objects.filter(category=diarioCat).order_by('-created_at')
+    artCat = Category.objects.get(name="arte")
+    posts = Post.objects.filter(Q(category=diarioCat) | Q(category=artCat)).order_by('-created_at')
 
     page = request.GET.get('page')
     if page is None or page == "":
@@ -169,40 +172,25 @@ def post(request, slug):
         return render(request, "404.html")
 
     comments = Comment.objects.filter(post_id=post.id, approved=True)
-    sent = False
-
+    
     if request.method == "POST":
         secret = settings.TURNSTILE_SECRET
         turnstile_response = request.POST.get("cf-turnstile-response", "")
         remote_ip = request.META.get('HTTP_CF_CONNECTING_IP')
-        name = request.POST["name"]
-        message = request.POST["message"]
-        nothing = request.POST["nothing"]
+        name = strip_tags(escape(request.POST["name"]))
+        message = strip_tags(escape(request.POST["message"]))
+        nothing = strip_tags(escape(request.POST["nothing"]))
+        sent = False
+        error = False
 
-        if name == "" or message == "" or turnstile_response == '' or nothing != "":
-            return render(request, "post.html", {
-                "post": post,
-                "active": None,
-                "error": True,
-                "name": name,
-                "message": message,
-                "comments": comments
-            })
+        if (name == "" or message == "" or turnstile_response == '' or nothing != "" 
+                or validate_turnstile(secret, turnstile_response, remote_ip) is False):
+            error = True
+            url = reverse('contact') + f"?name={name}&message={message}&error={error}&sent={sent}"
+            return redirect(url)
 
-        if validate_turnstile(secret, turnstile_response, remote_ip) is False:
-            return render(request, "post.html", {
-                "post": post,
-                "active": None,
-                "error": True,
-                "name": name,
-                "message": message,
-                "comments": comments
-            })
+        Comment.objects.create(name=name, content=message, post=post)
 
-        name = strip_tags(escape(name))
-        message = strip_tags(escape(message))
-
-        sent = True
         send_mail(
             "Comentario de Socrates.es",
             f"{message}\nNombre: {name}",
@@ -211,7 +199,9 @@ def post(request, slug):
             fail_silently=True,
         )
 
-        Comment.objects.create(name=name, content=message, post=post)
+        sent = True
+        url = reverse('contact') + f"?sent={sent}"
+        return redirect(url)
 
     return render(request, "post.html", {
         "post": post,
@@ -283,40 +273,23 @@ def about(request):
     })
 
 def contact(request):
-    sent = False
     if request.method == "POST":
         secret = settings.TURNSTILE_SECRET
         turnstile_response = request.POST.get("cf-turnstile-response", "")
         remote_ip = request.META.get('HTTP_CF_CONNECTING_IP')
-        name = request.POST["name"]
-        email = request.POST["email"]
-        message = request.POST["message"]
-        nothing = request.POST["nothing"]
+        name = strip_tags(escape(request.POST["name"]))
+        email = strip_tags(escape(request.POST["email"]))
+        message = strip_tags(escape(request.POST["message"]))
+        nothing = strip_tags(escape(request.POST["nothing"]))
+        sent = False
+        error = False
 
-        if (name == "" or email == "" or is_valid_email(email) is False or message == ""
-                or turnstile_response == '' or nothing != ""):
-            return render(request, "contact.html", {
-                "active": "contact",
-                "error": True,
-                "name": name,
-                "email": email,
-                "message": message
-            })
+        if (name == "" or email == "" or is_valid_email(email) is False or message == "" or nothing != ""
+                or turnstile_response == '' or validate_turnstile(secret, turnstile_response, remote_ip) is False):
+            error = True
+            url = reverse('contact') + f"?name={name}&email={email}&message={message}&error={error}&sent={sent}"
+            return redirect(url)
 
-        if validate_turnstile(secret, turnstile_response, remote_ip) is False:
-            return render(request, "contact.html", {
-                "active": "contact",
-                "error": True,
-                "name": name,
-                "email": email,
-                "message": message
-            })
-
-        name = strip_tags(escape(name))
-        message = strip_tags(escape(message))
-        email = strip_tags(escape(email))
-
-        sent = True
         send_mail(
             "Mensaje de Socrates.es",
             f"{message}\nNombre: {name}\nCorreo: {email}",
@@ -324,9 +297,23 @@ def contact(request):
             [settings.ADMIN_USER_EMAIL],
             fail_silently=True,
         )
+        
+        sent = True
+        url = reverse('contact') + f"?sent={sent}"
+        return redirect(url)
 
+    name = request.GET.get('name', "") 
+    message = request.GET.get('message', "")
+    email = request.GET.get('email', "")
+    sent = request.GET.get('sent', False)
+    error = request.GET.get('error', False)
+    
     return render(request, "contact.html", {
         "active": "contact",
+        "error": error,
+        "name": name,
+        "email": email,
+        "message": message,
         "sent": sent
     })
 
