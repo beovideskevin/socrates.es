@@ -200,7 +200,7 @@ def post(request, slug):
         )
 
         sent = True
-        url = reverse('post') + f"/{slug}?sent={sent}"
+        url = reverse(f"post/{slug}") + f"?sent={sent}"
         return redirect(url)
 
     name = request.GET.get('name', "") 
