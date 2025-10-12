@@ -203,11 +203,19 @@ def post(request, slug):
         url = reverse('contact') + f"?sent={sent}"
         return redirect(url)
 
+    name = request.GET.get('name', "") 
+    message = request.GET.get('message', "")
+    sent = request.GET.get('sent', False)
+    error = request.GET.get('error', False)
+    
     return render(request, "post.html", {
         "post": post,
         "active": None,
-        "sent": sent,
-        "comments": comments
+        "error": error,
+        "name": name,
+        "message": message,
+        "comments": comments,
+        "sent": sent
     })
 
 def like(request, slug):
