@@ -23,6 +23,8 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
+    keywords = models.CharField(max_length=200, blank=True, null=True, default="")
+    description = models.CharField(max_length=200, blank=True, null=True, default="")
     subtitle = models.CharField(max_length=200)
     abstract = models.TextField(blank=True, null=True)
     slug = models.CharField(max_length=200)

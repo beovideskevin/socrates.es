@@ -7,39 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-    <meta name="theme-color" content="#364050" />
-
-    <!-- Page title -->
-    <title>Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal.</title>
-    <!-- /Page title -->
-
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <link rel="apple-touch-icon" href="{% static '/assets/images/apple-touch-icon.png' %}" />
+    <meta name="theme-color" content="#364050" />\
 
     <!-- favicon -->
     <link rel="icon" type="image/png" href="{% static '/assets/images/favicon64.png' %}" />
     <link rel="favicon" type="image/png" href="{% static '/assets/images/favicon64.png' %}" />
-    <!-- /favicon -->
-
+    <link rel="apple-touch-icon" href="{% static '/assets/images/apple-touch-icon.png' %}" />
+    
     <!-- manifest -->
     <link rel="manifest" href="{% static '/assets/site.webmanifest' %}">
 
     {% block meta %}{% endblock %}
 
+    {% block header %}{% endblock %}
+
     <!-- Styles -->
     <link rel="stylesheet" href="{% static '/assets/css/main.css' %}" />
     <link rel="stylesheet" href="{% static '/assets/css/mine.css' %}" />
     <link rel="stylesheet" href="{% static '/assets/css/img.css' %}" />
-
-    {% block header %}{% endblock %}
 </head>
 <body class="is-preload">
 
@@ -106,5 +91,5 @@
     </script>
 
 	{% block script %}{% endblock %}
-	</body>
+</body>
 </html>

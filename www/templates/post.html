@@ -2,27 +2,36 @@
 {% load static %}
 
 {% block meta %}
+<!-- Page title -->
+<title>{{ post.title }}</title>
+<!-- /Page title -->
+
+<!-- Meta -->
+<meta name="keywords" content="{{ post.keywords }}" />
+<meta name="description" content="{{ post.description }}" />
+<meta name="author" content="Kevin Beovides Casas" />
+    
 <!-- Schema.org markup for Google+ -->
-<meta itemprop="name" content="Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal">
-<meta itemprop="description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas">
+<meta itemprop="name" content="{{ post.title }}">
+<meta itemprop="description" content="{{ post.description }}">
 <meta itemprop="image" content="{% static post.poster %}">
 
 <!-- Twitter Card data -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@kevinbcasas">
-<meta name="twitter:title" content="Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal">
-<meta name="twitter:description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas">
+<meta name="twitter:title" content="{{ post.title }}">
+<meta name="twitter:description" content="{{ post.description }}">
 <meta name="twitter:creator" content="@kevinbcasas">
 
 <!-- Twitter summary card with large image must be at least 280x150px -->
 <meta name="twitter:image:src" content="{% static post.poster %}">
 
 <!-- Open Graph data -->
-<meta property="og:title" content="Todos los hombres son mortales Sócrates es un hombre Sócrates es mortal" />
+<meta property="og:title" content="{{ post.title }}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://www.socrates.es/post/{{post.slug}}" />
 <meta property="og:image" content="{% static post.poster %}" />
-<meta property="og:description" content="Investigación sobre filosofía antigua y diario de Kevin Beovides Casas" />
+<meta property="og:description" content="{{ post.description }}" />
 <meta property="og:site_name" content="Socrates" />
 <meta property="article:publisher" content="https://www.facebook.com/kevinbcasas/" />
 <meta property="article:author" content="https://www.facebook.com/kevinbcasas/" />
