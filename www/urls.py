@@ -14,7 +14,8 @@ urlpatterns = [
     path("about", views.about, name="about"),
     path("contact", views.contact, name="contact"),
     path("ar", views.ar, name="ar"),
+    path("ar/<str:slug>", views.ar, name="ar"),
     path("aart", views.aart, name="aart"),
     path("api", views.api, name="api"),
-    path("api/<str:tag>", views.api, name="api"),
+    path("api/<str:slug>", views.api, name="api"),
 ]

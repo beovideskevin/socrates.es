@@ -6,27 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="ASCII art application for Kevin Beovides Casas">
-  <meta name="keywords" content="ASCII art, digital art, digital photo, application, software art">
+  <meta name="keywords" content="Artist gallery, Galeria de artista, Arte digital, Digital art, ASCII art, digital art, digital photo, application, software art">
   <meta name="author" content="Kevin Beovides Casas">
   <title>aArt | Kevin Beovides Casas </title>
 
-  <link rel="icon" type="image/png" href="{% static '/aart/favicon.png' %}" />
+  <link rel="icon" type="image/png" href="{% static '/assets/aart/favicon.png' %}" />
 
   <!-- manifest -->
-  <link rel="manifest" href="{% static '/aart/manifest.json' %}">
+  <link rel="manifest" href="{% static '/assets/aart/manifest.json' %}">
 
   <!-- ios support -->
-  <link rel="apple-touch-icon" href="{% static '/aart/icons/icon-96x96.png' %}">
+  <link rel="apple-touch-icon" href="{% static '/assets/aart/icons/icon-96x96.png' %}">
   <meta name="apple-mobile-web-app-status-bar" content="#FFE9D2">
   <meta name="theme-color" content="#FFE9D2">
 
   <!-- materialize icons & css -->
-  <link type="text/css" href="{% static '/aart/css/material-icons.css' %}" rel="stylesheet" type="text/css">
-  <link type="text/css" href="{% static '/aart/css/materialize.min.css' %}" rel="stylesheet" type="text/css">
-  <link type="text/css" href="{% static '/aart/css/styles.css' %}" rel="stylesheet" type="text/css">
+  <link type="text/css" href="{% static '/assets/aart/css/material-icons.css' %}" rel="stylesheet" type="text/css">
+  <link type="text/css" href="{% static '/assets/aart/css/materialize.min.css' %}" rel="stylesheet" type="text/css">
+  <link type="text/css" href="{% static '/assets/aart/css/styles.css' %}" rel="stylesheet" type="text/css">
   <!-- aArt font -->
-  <link rel="preload" href="{% static '/aart/fonts/SpaceMono-Regular.ttf' %}" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="{% static '/aart/fonts/URWBookman-Light.ttf' %}" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="{% static '/assets/aart/fonts/SpaceMono-Regular.ttf' %}" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="{% static '/assets/aart/fonts/URWBookman-Light.ttf' %}" as="font" type="font/ttf" crossorigin>
 </head>
 <body class="black">
   <!-- top nav -->
@@ -210,15 +210,12 @@
   <footer>
     <div class="footer-copyright center">
       © 2022 Kevin Beovides Casas
-      <a target="_blank" href="https://www.socrates.es">
-        <span class="grey-text text-darken-1">socrates.es</span>
-      </a>
     </div>
   </footer>
 
   <div id="qrcode"></div>
 
-  <script type="text/javascript" src="{% static '/aart/js/materialize.min.js' %}"></script>
-  <script type="text/javascript" src="{% static '/aart/js/app.js' %}"></script>
+  <script type="text/javascript" src="{% static '/assets/aart/js/materialize.min.js' %}"></script>
+  <script type="text/javascript" src="{% static '/assets/aart/js/app.js' %}"></script>
 </body>
 </html>

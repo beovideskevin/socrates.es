@@ -90,16 +90,26 @@ class Video(models.Model):
     url = models.CharField(max_length=200, blank=True, null=True, default="")
     poster = models.CharField(max_length=200, blank=True, null=True, default="")
     quote = models.TextField(blank=True, null=True, default="")
-    width = models.IntegerField(default=640)
+    width = models.IntegerField(default=480)
     height = models.IntegerField(default=640)
     mask = models.CharField(max_length=10, blank=True, null=True, default="")
-    tags = models.ManyToManyField(
-        Tag,
-        blank=True,
-        related_name="video"
-    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.quote
+
+class ArtWork(models.Model):
+    marker = models.CharField(max_length=200)
+    slug = models.CharField(max_length=200, blank=True, null=True, default="")
+    videos = models.ManyToManyField(
+        Video,
+        blank=False,
+        related_name="artwork"
+    )
+    default = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.slug

@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import JsonResponse
 from django.utils.html import escape, strip_tags
 from django.db.models import Q
-from www.models import Tag, Category, Post, Comment, Subscriber, Video
+from www.models import Tag, Category, Post, Comment, Subscriber, Video, ArtWork
 from www.helpers import *
 import random
 import json
@@ -325,18 +325,21 @@ def contact(request):
         "sent": sent
     })
 
-def ar(request):
-    return render(request, "ar.html")
+def ar(request, slug=None):
+    url = ("/" + slug) if slug is not None else ""
+    return render(request, "ar.html", {
+        "url": url
+    })
 
-def aart(request):
-    return render(request, "aart.html")
-
-def api(request, tag=None):
+def api(request, slug=None):
     try:
-        videos = Video.objects.all() if not tag else Video.objects.filter(tags__in=[Tag.objects.get(name=tag)])
-    except Tag.DoesNotExist:
-        logger.error(f"Video: video with tag {tag} does not exist.")
-        return JsonResponse({"error": "Tag is not valid"}, status=400)
+        if slug is None:
+            artWork = ArtWork.objects.get(default=True)
+        else :
+            artWork = ArtWork.objects.get(slug=slug)
+    except ArtWork.DoesNotExist:
+        logger.error(f"API: artwork with slug {slug} does not exist.")
+        return JsonResponse({"data": {}}, status=404)
 
     videoJson = [
         {
@@ -348,10 +351,16 @@ def api(request, tag=None):
             "height": vid.height,
             "mask": vid.mask
         }
-        for vid in videos
+        for vid in artWork.videos.all()
     ]
 
-    if tag is None:
-        random.shuffle(videoJson)
+    artJson = {
+        "marker": artWork.marker,
+        "slug": artWork.slug,
+        "videos": videoJson
+    }
+        
+    return JsonResponse({"data": artJson}, status=200)
 
-    return JsonResponse({"success": videoJson}, status=200)
+def aart(request):
+    return render(request, "aart.html")

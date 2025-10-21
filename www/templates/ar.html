@@ -13,152 +13,37 @@
         <link rel="canonical" href="https://socrates.es/ar">
 
         <!-- Favicon -->
-	    <link rel="icon" type="image/png" href="{% static '/assets/images/icon.png' %}">
+	    <link rel="icon" type="image/png" href="{% static '/assets/images/favicon64.png' %}" />
+        <link rel="favicon" type="image/png" href="{% static '/assets/images/favicon64.png' %}" />
+        <link rel="apple-touch-icon" href="{% static '/assets/images/apple-touch-icon.png' %}" />
+        
+        <!-- manifest -->
+        <link rel="manifest" href="{% static '/assets/site.webmanifest' %}">
 
-        <style>
-            html {
-                line-height: 1.5;
-                -webkit-text-size-adjust: 100%;
-                -moz-tab-size: 4;
-                -o-tab-size: 4;
-                tab-size: 4;
-                font-family: Figtree,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
-                font-feature-settings: normal;
-                font-variation-settings: normal
-            }
+        <!-- Some styles -->
+        <link rel="stylesheet" href="{% static '/assets/css/ar.css' %}" />
 
-            html, body {
-                position: relative;
-                margin: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                background: transparent;
-            }
-
-            #splash {
-                position: absolute;
-
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-
-                width: 100%;
-                height: 100%;
-
-                margin: auto;
-
-                background-image: url({% static '/assets/images/icon72round.png' %});
-                background-repeat: no-repeat;
-                background-position: center;
-
-                background-color: #000000;
-                z-index: 20;
-            }
-
-            @keyframes spin {
-                0% {
-                    transform-origin: center;
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform-origin: center;
-                    transform: rotate(360deg);
-                }
-            }
-
-            .loader {
-                width: 128px;
-                height: 128px;
-                border-radius: 50%;
-                animation: spin 1s infinite linear;
-                border-top: 2px solid #ffffff;
-            }
-
-            #quoteWrapper {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                z-index: 10;
-                position: fixed;
-                bottom: 10px;
-                width: 100%;
-                padding: 2.0rem 0;
-            }
-
-            @media (orientation: landscape) {
-                #quoteWrapper {
-                    display: none;
-                }
-            }
-
-            #quote {
-                max-width: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                color: #ffffff;
-                display: none;
-            }
-
-            #quote div {
-                text-align: center;
-                padding: 0 1em 0 1em
-            }
-
-            h1, h3 {
-                font-weight:300;
-            }
-
-            #quoteH1 {
-                font-size: 1.4rem;
-                line-height: 1.4rem;
-            }
-
-            #quoteH3 {
-                font-size: 1.0rem;
-                line-height: 1.4rem;
-            }
-
-            #playBtnWrapper {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                z-index: 10;
-                top: 50%;
-                min-height: 50px;
-                width: 100%;
-            }
-
-            #playBtn {
-                /*color: #000;  #ffffff; */
-                /*background-color: #fff;  #0e5166; */
-                border: none;
-                /* border-radius: 50%;
-                padding: 5px;  */
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                /* font-size: 16px; */
-                display: none;
-            }
-
-            #playBtn svg {
-                width: 60px;
-                height: auto;
-            }
-        </style>
-
+        <!-- The main AR lib -->
         <script src="{% static '/assets/js/mindar-image-three.prod.js' %}"></script>
     </head>
     <body>
         <div id="splash">
             <div class="loader">
+            </div>
+        </div>
+
+        <div id="errorDiv">
+            <div class="content">
+                <h1>Failed to launch :(</h1> <br/>
+                <p>Please check the url and refresh the page.</p>
+                <br>
+                <p>
+                    <a href="javascript:" onclick="window.location.reload();">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-cw">
+                            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>
+                        </svg>
+                    </a>
+                </p>
             </div>
         </div>
 
@@ -173,9 +58,15 @@
 
         <div id="playBtnWrapper">
             <a id="playBtn" href="javascript:;" data-video-id="-1">
-                <svg fill="none" style="" viewBox="-1 -1 41 41" >
+                <!-- <svg fill="none" style="" viewBox="-1 -1 41 41" >
                     <circle cx="20" cy="20" r="20" fill="#fff"></circle>
                     <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M13.5 13.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L16.28 27.99c-1.25.687-2.779-.217-2.779-1.643V13.653Z" fill="#fff"></path>
+                </svg> -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-circle-play">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polygon points="10 8 16 12 10 16 10 8"/>
                 </svg>
             </a>
         </div>
@@ -189,113 +80,12 @@
             const quoteH1 = document.getElementById("quoteH1");
             const playBtn = document.getElementById("playBtn");
             let targetFound = -1;
-            const marker = "{% static 'assets/markers/stoicism.mind' %}";
-            let videos = [
-                {
-                    src: "{% static 'assets/videos/socrates/socrates_01_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "Solo sé que no sé nada.",
-                    philosopher: "Sócrates",
-                    el: null
-                },
-                {
-                    src: "{% static 'assets/videos/diogenes/diogenes_01_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "los esclavos sirven a sus amos, y los hombres malos a sus deseos.",
-                    philosopher: "Diógenes de Sinope",
-                    el: null
-                },
-                {
-                    src: "{% static 'assets/videos/zenon/zenon_02_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "El fin es vivir conforme a la naturaleza.",
-                    philosopher: "Zenón de Citio",
-                    el: null
-                },
-                {
-                    src: "{% static 'assets/videos/cleantes/cleantes_01_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "El destino guía a los dispuestos y arrastra a los renuentes.",
-                    philosopher: "Cleantes de Aso",
-                    el: null
-                },
-                {
-                    src: "{% static 'assets/videos/seneca/seneca_05_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "El hombre que sufre antes de que sea necesario, sufre más de lo necesario.",
-                    philosopher: "Lucio Anneo Séneca",
-                    el: null
-                },
-                {
-                    src: "{% static 'assets/videos/epicteto/epicteto_01_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "A las personas no les molestan las cosas, sino las opiniones que les dan a esas cosas.",
-                    philosopher: "Epicteto",
-                    el: null
-                },
-                {
-                    src: "{% static 'assets/videos/epicteto/epicteto_02_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "Nunca digas respecto a nada: lo he perdido. Piensa: lo he devuelto.",
-                    philosopher: "Epicteto",
-                    el: null
-                },
-                {
-                    src: "{% static 'assets/videos/marcoaurelio/marcoaurelio_01_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "Piensa que estás muerto. Ya has vivido tu vida. Ahora aprovecha lo que te queda de ella y vívela como deberías.",
-                    philosopher: "Marco Aurelio Antonino",
-                    el: null
-                },
-                {
-                    src: "{% static 'assets/videos/marcoaurelio/marcoaurelio_02_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "La vida de un hombre es lo que sus pensamientos hacen de ella.",
-                    philosopher: "Marco Aurelio Antonino",
-                    el: null
-                },
-                {
-                    src: "{% static 'assets/videos/marcoaurelio/marcoaurelio_11_bg_sm22.mp4' %}#t=0.1",
-                    width: 480,
-                    height: 640,
-                    mask: 0x00ff00,
-                    quote: "Cualquier cosa que te ocurra ha estado esperando a ocurrir desde el principio de los tiempos.",
-                    philosopher: "Marco Aurelio Antonino",
-                    el: null
-                }
-            ];
+            let marker = "";
+            let videos = [];
 
-            const loadVideo = (path) => {
-                return new Promise((resolve, reject) => {
-                    const video = document.createElement("video");
-                    video.addEventListener('loadedmetadata', () => {
-                        video.setAttribute('playsinline', '');
-                        console.log("Finished loading: " + path);
-                        resolve(video);
-                    });
-                    video.src = path;
-                    video.preload = "metadata";
-                });
-            }
-
+            /**
+             * Setup the AR system
+             */
             const setup = () => {
                 mindarThree = new window.MINDAR.IMAGE.MindARThree({
                     container: document.body,
@@ -303,15 +93,15 @@
                     uiLoading: "no",
                     uiScanning: "yes",
                     uiError: "yes",
-                    filterMinCF: 0.01, // default: 1 ----  working for me before: 0.0001 ---- WM.ai 0.01
-                    filterBeta: 0.1, // default: 10000 ---- kind of working for me before: 0.001 ---- WM.ai 0.01
+                    filterMinCF: 0.001, // default: 1 ----  working for me before: 0.0001 ---- WM.ai 0.01
+                    filterBeta: 0.01, // default: 10000 ---- kind of working for me before: 0.001 ---- WM.ai 0.01
                     missTolerance: 0, // default 0, ---- working for me before: 3 ---- WM.ai 3
                     warmupTolerance: 10, // default 0, ---- working for me before: 3
                 });
 
                 const anchor = [];
                 for (let i = 0; i < videos.length; i++) {
-                    loadVideo(videos[i].src).then((videoEle) => {
+                    loadVideo(videos[i].src, videos[i].poster).then((videoEle) => {
                         videos[i].el = videoEle;
                         let texture = new window.MINDAR.IMAGE.THREE.VideoTexture(videos[i].el);
                         let geometry = new window.MINDAR.IMAGE.THREE.PlaneGeometry(1, videos[i].height / videos[i].width);
@@ -325,35 +115,29 @@
                             targetFound = i;
                             videos[i].el.currentTime = 0;
                             videos[i].el.muted = false;
-                            playBtn.setAttribute("data-video-id", i);
-                            playBtn.style.display = "block";
-                            quoteH3.innerHTML = videos[i].quote;
-                            quoteH1.innerHTML = videos[i].philosopher;
-                            quote.style.display = "block";
+                            setBtnAndQuote(i);
                         }
                         anchor[i].onTargetLost = () => {
                             videos[i].el.pause();
                             videos[i].el.muted = true;
-                            if (targetFound == i) {
-                                targetFound = -1;
-                                playBtn.setAttribute("data-video-id", -1);
-                                playBtn.style.display = "none";
-                                quote.style.display = "none";
-                                quoteH3.innerHTML = "";
-                                quoteH1.innerHTML = "";
-                                // Do I want to show the scan UI again?
-                                mindarThree.ui.showScanning();
-                            }
+                            targetFound = -1;
+                            unsetBtnAndQuote();
+                            mindarThree.ui.showScanning();
                         }
                         videos[i].el.addEventListener("ended", event => {
                             videos[i].el.currentTime = 0;
-                            playBtn.style.display = "block";
-                            quote.style.display = "block";
+                            showBtnAndQuote();
                         });
+                    }).catch(error => {
+                        console.log(error);
+                        showError();
                     });
                 }
             }
 
+            /**
+             * Start the AR system
+             */
             const start = async () => {
                 if (!mindarThree) {
                     setup();
@@ -363,30 +147,53 @@
                 renderer.setAnimationLoop(() => {
                     renderer.render(scene, camera);
                 });
-
-                document.getElementById("splash").style.display = "none";
+                hideSplash();
             }
 
-            const restart = async () => {
-                if (!mindarThree) {
-                    return;
+            /**
+             * Fetch the videos and start the AR system
+             */
+            document.addEventListener('DOMContentLoaded', async () => {
+                try {
+                    const response = await fetch(`/api{{ url }}`);
+                    if (!response.ok || response.status != 200) {
+                        throw new Error("It returned an error!");
+                    }
+                    const content = await response.json();
+                    if (!content.data.marker || !content.data.videos) {
+                        throw new Error("No marker or videos!");
+                    }
+                    marker = "/static" + content.data.marker;
+                    for (const video of content.data.videos) {
+                        videos.push({
+                            src: "/static" + video.url + "#t=0.1",
+                            poster: "/static" + video.poster,
+                            width: video.width,
+                            height: video.height,
+                            mask: parseInt(video.mask),
+                            quote: video.quote,
+                            philosopher: video.philosopher,
+                            el: null
+                        });
+                    }
+                    await start();
                 }
-                document.getElementById("splash").style.display = "flex";
-                await mindarThree.stop();
-                mindarThree.renderer.setAnimationLoop(null);
-                start();
-            }
-
-            document.addEventListener('DOMContentLoaded', () => {
-                start();
+                catch (error) {
+                    console.log(error);
+                    hideSplash();
+                    showError();
+                }
             });
 
+            /**
+             * This handles the click on the play btn
+             */ 
             playBtn.addEventListener("click", function () {
                 let id = this.getAttribute("data-video-id");
                 if (id >= 0) {
+                    videos[id].el.currentTime = 0;
                     videos[id].el.play();
-                    this.style.display = "none";
-                    quote.style.display = "none";
+                    hideBtnAndQuote()
                 }
             });
 
@@ -394,7 +201,8 @@
              * Add event so the AR is restarted when the phone changes orientation
              */
              screen.orientation.addEventListener("change", (event) => {
-                restart();
+                showSplash();
+                window.location.reload();
             });
 
             /**
@@ -403,9 +211,77 @@
             window.addEventListener('pageshow', (event) => {
                 if (event.persisted) {
                     // I need to do this because of the back-forward cache, the videos are not loading when the back button is pressed in the browser
-                     window.location.reload();
+                    showSplash();
+                    window.location.reload();
                 }
             });
+
+            /**
+             *  UTILS 
+             */
+            
+            const loadVideo = (path, poster) => {
+                return new Promise((resolve, reject) => {
+                    const video = document.createElement("video");
+                    video.addEventListener('loadedmetadata', () => {
+                        video.setAttribute('playsinline', '');
+                        video.setAttribute('loop', '');
+                        video.setAttribute('playsInline', '');
+                        video.setAttribute('muted', '');
+                        video.setAttribute('poster', poster);
+                        resolve(video);
+                    });
+                    video.src = path;
+                    video.preload = "metadata";
+                });
+            }
+
+            const showSplash = () => {
+                document.body.style.backgroundColor = 'black';
+                const otherDivs = document.querySelectorAll('div:not(#splash)');
+                otherDivs.forEach(div => {
+                    div.remove();
+                });
+                const splash = document.getElementById("splash");
+                splash.style. width = "100vw";
+                splash.style.height = "100vh";
+                splash.style.display = "flex";                
+            }
+
+            const hideSplash = () => {
+                document.body.style.backgroundColor = 'transparent';
+                document.getElementById("splash").style.display = "none";
+            }
+
+            const showError = () => {
+                document.getElementById("errorDiv").style.display = "flex";
+            }
+
+            const setBtnAndQuote = (i) => {
+                playBtn.setAttribute("data-video-id", i);
+                playBtn.style.display = "block";
+                quoteH3.innerHTML = videos[i].quote;
+                quoteH1.innerHTML = videos[i].philosopher;
+                quote.style.display = "block";
+            }
+
+            const unsetBtnAndQuote = () => {
+                playBtn.setAttribute("data-video-id", -1);
+                playBtn.style.display = "none";
+                quote.style.display = "none";
+                quoteH3.innerHTML = "";
+                quoteH1.innerHTML = "";                
+            }
+
+            const showBtnAndQuote = () => {
+                playBtn.style.display = "block";
+                quote.style.display = "block";
+            }
+
+            const hideBtnAndQuote = () => {
+                playBtn.style.display = "none";
+                quote.style.display = "none";    
+            }
         </script>
     </body>
 </html>

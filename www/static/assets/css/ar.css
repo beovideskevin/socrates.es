@@ -1,0 +1,160 @@
+html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    font-family: Figtree,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
+    font-feature-settings: normal;
+    font-variation-settings: normal
+}
+
+html, body {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* background: transparent; */
+    background-color: #000000;
+}
+
+#splash {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    background-image: url('/static/assets/images/icon72round.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #000000;
+    z-index: 20;
+}
+
+@keyframes spin {
+    0% {
+        transform-origin: center;
+        transform: rotate(0deg);
+    }
+    100% {
+        transform-origin: center;
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+    border-top: 2px solid #ffffff;
+}
+
+#quoteWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    padding: 2.0rem 0;
+}
+
+@media (orientation: landscape) {
+    #quoteWrapper {
+        display: none;
+    }
+}
+
+#quote {
+    max-width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    display: none;
+}
+
+#quote div {
+    text-align: center;
+    padding: 0 1em 0 1em
+}
+
+h1, h3 {
+    font-weight:300;
+}
+
+#quoteH1 {
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+}
+
+#quoteH3 {
+    font-size: 1.0rem;
+    line-height: 1.4rem;
+}
+
+#playBtnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    min-height: 50px;
+    width: 100%;
+}
+
+#playBtn {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    display: none;
+}
+
+#playBtn svg {
+    width: 80px;
+    height: auto;
+    color: #ffffff;
+}
+
+#errorDiv {
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: #000000;
+    color: #ffffff;
+    z-index: 60;
+}
+
+#errorDiv .content {
+    text-align: center;
+}
+
+#errorDiv .content a {
+    text-align: center;
+    color: #ffffff;
+}
+
+.mindar-ui-compatibility {
+    z-index: 100 !important;
+    background-color: #000 !important;
+}
+
+.mindar-ui-compatibility a {
+    color: #ffffff !important;
+}
