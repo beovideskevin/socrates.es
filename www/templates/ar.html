@@ -225,9 +225,6 @@
                     const video = document.createElement("video");
                     video.addEventListener('loadedmetadata', () => {
                         video.setAttribute('playsinline', '');
-                        video.setAttribute('loop', '');
-                        video.setAttribute('playsInline', '');
-                        video.setAttribute('muted', '');
                         video.setAttribute('poster', poster);
                         resolve(video);
                     });
