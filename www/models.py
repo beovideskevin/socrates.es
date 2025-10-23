@@ -92,7 +92,8 @@ class Video(models.Model):
     quote = models.TextField(blank=True, null=True, default="")
     width = models.IntegerField(default=480)
     height = models.IntegerField(default=640)
-    mask = models.CharField(max_length=10, blank=True, null=True, default="")
+    mask = models.CharField(max_length=10, blank=True, null=True, default="0x00ff00")
+    position = models.IntegerField(null=True, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

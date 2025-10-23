@@ -351,7 +351,7 @@ def api(request, slug=None):
             "height": vid.height,
             "mask": vid.mask
         }
-        for vid in artWork.videos.all()
+        for vid in artWork.videos.all().order_by('position')
     ]
 
     artJson = {
