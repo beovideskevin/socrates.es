@@ -29,7 +29,7 @@ class Post(models.Model):
     description = models.CharField(max_length=200, blank=True, null=True, default="")
     subtitle = models.CharField(max_length=200)
     # abstract = models.TextField(blank=True, null=True)
-    abstract =  RichTextField()
+    abstract =  RichTextField(blank=True, null=True)
     slug = models.CharField(max_length=200)
     tags = models.ManyToManyField(
         Tag,
