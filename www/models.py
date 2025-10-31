@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField 
+from ckeditor_uploader.fields import RichTextUploadingField # if using uploader
 
 # Create your models here.
 class Tag(models.Model):
@@ -26,7 +28,8 @@ class Post(models.Model):
     keywords = models.CharField(max_length=200, blank=True, null=True, default="")
     description = models.CharField(max_length=200, blank=True, null=True, default="")
     subtitle = models.CharField(max_length=200)
-    abstract = models.TextField(blank=True, null=True)
+    # abstract = models.TextField(blank=True, null=True)
+    abstract =  RichTextField()
     slug = models.CharField(max_length=200)
     tags = models.ManyToManyField(
         Tag,
@@ -38,7 +41,8 @@ class Post(models.Model):
         blank=False,
         related_name="post"
     )
-    content = models.TextField()
+    # content = models.TextField()
+    content = RichTextUploadingField() # if using uploader
     poster = models.CharField(max_length=200, blank=True, null=True)
     alt = models.CharField(max_length=200, blank=True, null=True, default="")
     video_url = models.CharField(max_length=200, blank=True, null=True, default="")
@@ -47,6 +51,7 @@ class Post(models.Model):
     like = models.IntegerField(default=0)
     facebook = models.IntegerField(default=0)
     twitter = models.IntegerField(default=0)
+    published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

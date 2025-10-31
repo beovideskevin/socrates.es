@@ -24,5 +24,6 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path("", include("www.urls")),
     path("admin/", admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')), 
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]

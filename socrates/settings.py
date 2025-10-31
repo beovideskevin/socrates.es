@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, "www/static")
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "www/media/")
+
+# If using ckeditor_uploader, also define where files are uploaded
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CKEDITOR_UPLOAD_PATH = "uploads/" 
+# Optional: Add custom configurations for the editor
+CKEDITOR_CONFIGS = {
+    'default': {
+#        'toolbar': 'full',
+        'height': 300,
+        'width': 1200,
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

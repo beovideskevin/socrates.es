@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 def art(request):
     arteCat = Category.objects.get(name="arte")
-    posts = Post.objects.filter(category=arteCat).order_by('-created_at')
+    posts = Post.objects.filter(category=arteCat).filter(published=True).order_by('-created_at')
 
     page = request.GET.get('page')
     if page is None or page == "":
@@ -47,7 +47,7 @@ def art(request):
 def blog(request):
     diarioCat = Category.objects.get(name="diario")
     artCat = Category.objects.get(name="arte")
-    posts = Post.objects.filter(Q(category=diarioCat) | Q(category=artCat)).order_by('-created_at')
+    posts = Post.objects.filter(Q(category=diarioCat) | Q(category=artCat)).filter(published=True).order_by('-created_at')
 
     page = request.GET.get('page')
     if page is None or page == "":
@@ -101,7 +101,7 @@ def search(request):
             "pageRange": range(1, 1)
         })
 
-    posts = Post.objects.filter(content__icontains=words[0]).order_by('-created_at')
+    posts = Post.objects.filter(content__icontains=words[0]).filter(published=True).order_by('-created_at')
 
     for word in words[1:]:
         posts = posts.filter(content__icontains=word)
@@ -136,7 +136,7 @@ def search(request):
 
 def thesis(request):
     thesisCat = Category.objects.get(name="tesis")
-    posts = Post.objects.filter(category=thesisCat).order_by('slug')
+    posts = Post.objects.filter(category=thesisCat).filter(published=True).order_by('slug')
 
     page = request.GET.get('page')
     if page is None or page == "":

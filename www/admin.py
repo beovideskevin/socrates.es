@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Tag, Category, Post, Comment, Subscriber, Video, ArtWork
+from ckeditor.widgets import CKEditorWidget 
 
 # Register your models here.
 admin.site.register(Tag)
