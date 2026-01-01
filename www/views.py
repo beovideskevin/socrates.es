@@ -14,7 +14,12 @@ import logging
 logger = logging.getLogger(__name__)
 
 def art(request):
-    arteCat = Category.objects.get(name="arte")
+    try:
+        arteCat = Category.objects.get(name="arte")
+    except Category.DoesNotExist:
+        logger.error(f"Art: category arte does not exist.")
+        return render(request, "404.html", {"active": "404"})
+    
     posts = Post.objects.filter(category=arteCat).filter(published=True).order_by('-created_at')
 
     page = request.GET.get('page')
@@ -36,7 +41,7 @@ def art(request):
 
     return render(request, "art.html", {
         "posts": posts,
-        "active": "art",
+        "active": "arte",
         "prevPage": page - 1 if page > 1 else None,
         "nextPage": page + 1 if page < paginator.num_pages else None,
         "activePage": page if page else 1,
@@ -45,9 +50,14 @@ def art(request):
 
 # Create your views here.
 def blog(request):
-    diarioCat = Category.objects.get(name="diario")
-    artCat = Category.objects.get(name="arte")
-    posts = Post.objects.filter(Q(category=diarioCat) | Q(category=artCat)).filter(published=True).order_by('-created_at')
+    try:
+        arteCat = Category.objects.get(name="arte")
+        diarioCat = Category.objects.get(name="diario")
+    except Category.DoesNotExist:
+        logger.error(f"Blog: categories arte or diario do not exist.")
+        return render(request, "404.html", {"active": "404"})
+    
+    posts = Post.objects.filter(Q(category=diarioCat) | Q(category=arteCat)).filter(published=True).order_by('-created_at')
 
     page = request.GET.get('page')
     if page is None or page == "":
@@ -80,7 +90,7 @@ def search(request):
     if q is None or q == "":
         return render(request, "blog.html", {
             "posts": [],
-            "active": "",
+            "active": "buscar",
             "search": True,
             "words": "",
             "prevPage": 1,
@@ -92,7 +102,7 @@ def search(request):
     if not words:
         return render(request, "blog.html", {
             "posts": [],
-            "active": "",
+            "active": "buscar",
             "search": True,
             "words": "",
             "prevPage": 1,
@@ -125,7 +135,7 @@ def search(request):
 
     return render(request, "blog.html", {
         "posts": posts,
-        "active": "search",
+        "active": "buscar",
         "search": True,
         "words": '+'.join(words),
         "prevPage": page - 1 if page > 1 else None,
@@ -134,8 +144,48 @@ def search(request):
         "pageRange": range(1, paginator.num_pages + 1)
     })
 
+def master(request):
+    try:
+        masterCat = Category.objects.get(name="master")
+    except Category.DoesNotExist:
+        logger.error(f"Master: category master does not exist.")
+        return render(request, "404.html", {"active": "404"})
+    
+    posts = Post.objects.filter(category=masterCat).filter(published=True).order_by('slug')
+
+    page = request.GET.get('page')
+    if page is None or page == "":
+        page = 1
+    else:
+        try:
+            page = int(page)
+        except ValueError:
+            page = 1
+
+    paginator = Paginator(posts, 5)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, "master.html", {
+        "posts": posts,
+        "active": "master",
+        "prevPage": page - 1 if page > 1 else None,
+        "nextPage": page + 1 if page < paginator.num_pages else None,
+        "activePage": page if page else 1,
+        "pageRange": range(1, paginator.num_pages + 1)
+    })
+
 def thesis(request):
-    thesisCat = Category.objects.get(name="tesis")
+    try:
+        thesisCat = Category.objects.get(name="tesis")
+    except Category.DoesNotExist:
+        logger.error(f"Thesis: category master do not exist.")
+        return render(request, "404.html", {"active": "404"})
+    
     posts = Post.objects.filter(category=thesisCat).filter(published=True).order_by('slug')
 
     page = request.GET.get('page')
@@ -157,7 +207,7 @@ def thesis(request):
 
     return render(request, "thesis.html", {
         "posts": posts,
-        "active": "thesis",
+        "active": "tesis",
         "prevPage": page - 1 if page > 1 else None,
         "nextPage": page + 1 if page < paginator.num_pages else None,
         "activePage": page if page else 1,
@@ -169,7 +219,7 @@ def post(request, slug):
         post = Post.objects.get(slug=slug)
     except Post.DoesNotExist:
         logger.error(f"Post: post with slug {slug} does not exist.")
-        return render(request, "404.html")
+        return render(request, "404.html", {"active": "404"})
 
     comments = Comment.objects.filter(post_id=post.id, approved=True)
     
@@ -210,7 +260,7 @@ def post(request, slug):
     
     return render(request, "post.html", {
         "post": post,
-        "active": None,
+        "active": "post",
         "error": error,
         "name": name,
         "message": message,
@@ -277,7 +327,7 @@ def twitter(request, slug):
 
 def about(request):
     return render(request, "about.html", {
-        "active": "about"
+        "active": "acerca"
     })
 
 def contact(request):
@@ -317,7 +367,7 @@ def contact(request):
     error = request.GET.get('error', False)
     
     return render(request, "contact.html", {
-        "active": "contact",
+        "active": "contacto",
         "error": error,
         "name": name,
         "email": email,

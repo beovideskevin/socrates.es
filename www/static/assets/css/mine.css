@@ -107,6 +107,16 @@ article p {
     }
 }
 
+@media screen and (max-width: 1000px) {
+    article p {
+        font-size: x-large;
+    }
+
+    article p a {
+        font-size: x-large;
+    }
+}
+
 @media screen and (min-width: 737px) {
     .error {
         font-size: 1.6em;
@@ -189,4 +199,8 @@ article p {
     border-radius: 50%;
     color: #fff;
     width: auto!important;
+}
+
+#logo {
+    display: none!important;
 }
