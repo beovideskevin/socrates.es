@@ -78,7 +78,7 @@ def blog(request):
 
     return render(request, "blog.html", {
         "posts": posts,
-        "active": "blog",
+        "active": "diario",
         "prevPage": page - 1 if page > 1 else None,
         "nextPage": page + 1 if page < paginator.num_pages else None,
         "activePage": page if page else 1,
@@ -90,7 +90,7 @@ def search(request):
     if q is None or q == "":
         return render(request, "blog.html", {
             "posts": [],
-            "active": "buscar",
+            "active": "busqueda",
             "search": True,
             "words": "",
             "prevPage": 1,
@@ -102,7 +102,7 @@ def search(request):
     if not words:
         return render(request, "blog.html", {
             "posts": [],
-            "active": "buscar",
+            "active": "resultados",
             "search": True,
             "words": "",
             "prevPage": 1,
@@ -135,7 +135,7 @@ def search(request):
 
     return render(request, "blog.html", {
         "posts": posts,
-        "active": "buscar",
+        "active": "busqueda",
         "search": True,
         "words": '+'.join(words),
         "prevPage": page - 1 if page > 1 else None,
@@ -172,7 +172,7 @@ def master(request):
 
     return render(request, "master.html", {
         "posts": posts,
-        "active": "master",
+        "active": "maestría",
         "prevPage": page - 1 if page > 1 else None,
         "nextPage": page + 1 if page < paginator.num_pages else None,
         "activePage": page if page else 1,
@@ -260,7 +260,7 @@ def post(request, slug):
     
     return render(request, "post.html", {
         "post": post,
-        "active": "post",
+        "active": "artículo",
         "error": error,
         "name": name,
         "message": message,

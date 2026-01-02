@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY", default=None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #ALLOWED_HOSTS = ['.socrates.es', '127.0.0.1']
 ALLOWED_HOSTS = ['*']
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -116,10 +117,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "www/static")
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "www/media/")
 
 # If using ckeditor_uploader, also define where files are uploaded
@@ -129,8 +130,10 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 # Optional: Add custom configurations for the editor
 CKEDITOR_CONFIGS = {
     'default': {
-#        'toolbar': 'full',
-        'height': 300,
+        # 'toolbar': 'full',
+        'allowedContent': True,  # Disables the filter completely
+        'extraAllowedContent': '*(*)', # Allows all classes and attributes
+        'height': 500,
         'width': 1200,
     },
 }
