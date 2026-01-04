@@ -108,8 +108,9 @@ article p {
 }
 
 @media screen and (max-width: 1000px) {
-    article p {
-        font-size: x-large;
+    header h2, header p, article p {
+        font-size: x-large !important;
+        line-height: 1.4 !important; 
     }
 
     article p a {
