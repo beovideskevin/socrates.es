@@ -113,7 +113,7 @@ article p {
         line-height: 1.4em !important;
     }
     
-    header p, article p {
+    header p, article p, article a {
         font-size: x-large !important;
         line-height: 1.4em !important; 
     }
