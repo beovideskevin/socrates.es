@@ -110,12 +110,12 @@ article p {
 @media screen and (max-width: 1000px) {
     header h2 {
         font-size: xx-large !important;
-        line-height: 1.2 !important; 
+        line-height: 1.4em !important;
     }
     
     header p, article p {
         font-size: x-large !important;
-        line-height: 1.4 !important; 
+        line-height: 1.4em !important; 
     }
 }
 
