@@ -102,7 +102,7 @@ def search(request):
     if not words:
         return render(request, "blog.html", {
             "posts": [],
-            "active": "resultados",
+            "active": "busqueda",
             "search": True,
             "words": "",
             "prevPage": 1,
