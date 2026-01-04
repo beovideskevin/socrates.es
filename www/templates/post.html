@@ -84,7 +84,7 @@
             <div class="video">
                 <p class='subtitle'>{{ post.video_quote|safe }}</p>
                 <video controls>
-                    <source src="{{ post.video_url.url }}#t=0.1" type="video/mp4" poster="{% static post.video_poster %}">
+                    <source src="{{ post.video_url.url }}#t=0.1" type="video/mp4" poster="{{ post.video_poster.url }}">
                 </video>
             </div>
             {% endif %}
