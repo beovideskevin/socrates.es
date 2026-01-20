@@ -46,8 +46,13 @@
     max-width: 480px;
 }
 
-article p {
+article p, article p a {
     font-size: larger;
+}
+
+header h2, header h2 a, header p, header p a {
+    font-size: xx-large !important;
+    line-height: 1.4em !important;
 }
 
 .recent-comments li {
@@ -108,12 +113,7 @@ article p {
 }
 
 @media screen and (max-width: 1000px) {
-    header h2, header h2 a {
-        font-size: xx-large !important;
-        line-height: 1.4em !important;
-    }
-    
-    header p, article p, article a {
+    article p, article a {
         font-size: x-large !important;
         line-height: 1.4em !important; 
     }
