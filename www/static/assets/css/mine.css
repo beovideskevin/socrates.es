@@ -107,9 +107,9 @@ header h2, header h2 a, header p {
 }
 
 @media screen and (max-width: 736px) {
-    .box.post .info {
+    /* .box.post .info {
         padding-top: 0em;
-    }
+    } */
 
     body {
 		background-color: #ffffff;
