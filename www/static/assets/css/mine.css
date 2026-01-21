@@ -50,7 +50,7 @@ article p, article p a, article li a {
     font-size: larger;
 }
 
-header h2, header h2 a, header p, header p a {
+header h2, header h2 a, header p {
     font-size: xx-large !important;
     line-height: 1.4em !important;
 }
