@@ -107,10 +107,6 @@ header h2, header h2 a, header p {
 }
 
 @media screen and (max-width: 736px) {
-    /* .box.post .info {
-        padding-top: 0em;
-    } */
-
     body {
 		background-color: #ffffff;
     }
@@ -142,7 +138,7 @@ header h2, header h2 a, header p {
 }
 
 @media screen and (max-width: 1000px) {
-    article p, article a:not(.icon) {
+    article p, article a:not(.icon):not(header a) {
         font-size: x-large !important;
         line-height: 1.4em !important; 
     }
