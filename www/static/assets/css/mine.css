@@ -106,16 +106,13 @@ header h2, header h2 a, header p {
     font-weight: 300;
 }
 
-@media screen and (max-width: 737px) {
+@media screen and (max-width: 736px) {
+    .box.post .info {
+        padding-top: 0em;
+    }
+
     body {
 		background-color: #ffffff;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    article p, article a {
-        font-size: x-large !important;
-        line-height: 1.4em !important; 
     }
 }
 
@@ -141,6 +138,13 @@ header h2, header h2 a, header p {
     .ego img {
         padding: 0 0 0 1.5em ;
         padding: 1.5em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    article p, article a {
+        font-size: x-large !important;
+        line-height: 1.4em !important; 
     }
 }
 
