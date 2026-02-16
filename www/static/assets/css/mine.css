@@ -26,10 +26,17 @@
     display: none;
 }
 
-.error {
-    color: #b93653;
-    font-weight: bold;
+.comments p {
     font-size: larger;
+}
+
+.comments .message {
+    margin-top: 1em;
+}
+
+.error {
+    font-weight: bold;
+    color: #b93653;
 }
 
 .video {
@@ -55,9 +62,22 @@ header h2, header h2 a, header p {
     line-height: 1.4em !important;
 }
 
-.recent-comments li {
+.recent-comments li p {
     font-size: larger;
     margin: 1em 0;
+}
+
+.comment-author {
+    font-weight: bold;
+}
+
+.form-header {
+    margin-top: 4em;
+}
+
+.form-header h2 {
+    font-size: xx-large !important;
+    line-height: 1.4em !important;
 }
 
 .underlined {
@@ -113,8 +133,11 @@ header h2, header h2 a, header p {
 }
 
 @media screen and (min-width: 737px) {
-    .error {
+    .comments p {
         font-size: 1.6em;
+    }
+    
+    .error {
         font-weight: normal;
     }
 

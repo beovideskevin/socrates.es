@@ -91,7 +91,7 @@
         </article>
 
         <!-- Post -->
-        <div class="box other" id="comments">
+        <div class="box other comments">
             {% if comments %}
             <header>
                 <h2>Comentarios:</h2>
@@ -101,26 +101,26 @@
                 <ul class="recent-comments">
                     {% for comment in comments %}
                     <li>
-                        <h4>{{ comment.content }}</h4>
-                        {{ comment.name }} ({{ comment.created_at }})
+                        <p>{{ comment.content }}</p>
+                        <p class="comment-author">{{ comment.name }} ({{ comment.created_at }})</p>
                     </li>
                     {% endfor %}
                 </ul>
             </div>
             {% endif %}
 
-            <header>
+            <div class="form-header">
                 <h2>Si quiere dejar su opinión...</h2>
                 {% if error %}
-                    <p class="error ">No se guardó el comentario. Por favor, inténtelo de nuevo.</p>
+                    <p class="message error">No se guardó el comentario. Por favor, inténtelo de nuevo.</p>
                 {% else %}
                     {% if sent %}
-                        <p class="error">Muchas gracias. Su comentario será revisado antes de publicarlo.</p>
+                        <p class="message error">Muchas gracias. Su comentario será revisado antes de publicarlo.</p>
                     {% else %}
-                        <p>Deje su nombre y su mensaje en el formulario de abajo.</p>
+                        <p class="message">Deje su nombre y su mensaje en el formulario de abajo.</p>
                     {% endif %}
                 {% endif %}
-            </header>
+            </div>
 
             <form method="POST" action="/post/{{post.slug}}#comments" id="commentForm">
                 {% csrf_token %}
