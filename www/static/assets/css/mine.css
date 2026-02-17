@@ -127,6 +127,10 @@ header h2, header h2 a, header p {
 }
 
 @media screen and (max-width: 736px) {
+    #content {
+        padding: 3em 20px 3em 20px;
+    }
+
     body {
 		background-color: #ffffff;
     }
