@@ -26,15 +26,26 @@
     display: none;
 }
 
+.related:before {
+    content: '';
+    border-top: solid 1px;
+    border-color: rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.075);
+    display: block;
+    height: 0.5em;
+    margin: 0 0 2em 0;
+}
+
 .comments {
-    margin-bottom: 1em !important;
+    margin-bottom: 6em;
+    margin-top: 6em;
 }
 
 .comments p {
     font-size: larger;
 }
 
-.comments .message {
+.message {
     margin-top: 1em;
 }
 
