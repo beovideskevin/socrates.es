@@ -1,15 +1,15 @@
 <!-- Pagination -->
 <div class="pagination">
     {% if prevPage  %}
-        <a href="/{% if active == 'diario' %}?page={{ prevPage }}{% endif %}{% if active == 'busqueda' %}buscar?search={{ words }}&page={{ prevPage }}{% endif %}{% if active == 'etiqueta' %}etiqueta?tag={{ tag }}&page={{ prevPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ prevPage }}{% endif %}" class="button previous">Anterior</a>
+        <a href="/{% if active == 'diario' %}?page={{ prevPage }}{% endif %}{% if search == True %}buscar?search={{ words }}&page={{ prevPage }}{% endif %}{% if tags == True %}etiqueta?tag={{ words }}&page={{ prevPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ prevPage }}{% endif %}" class="button previous">Anterior</a>
     {% endif %}
     <div class="pages">
     {% for n in pageRange %}
-        <a href="/{% if active == 'diario' %}?page={{ n }}{% endif %}{% if active == 'busqueda' %}buscar?search={{ words }}&page={{ n }}{% endif %}{% if active == 'etiqueta' %}etiqueta?tag={{ tag }}&page={{ n }}{% endif %}{% if active == 'tesis' %}tesis?page={{ n }}{% endif %}" {% if n == activePage %} class="active" {% endif %}>{{n}}</a>
+        <a href="/{% if active == 'diario' %}?page={{ n }}{% endif %}{% if search == True %}buscar?search={{ words }}&page={{ n }}{% endif %}{% if tags == True %}etiqueta?tag={{ words }}&page={{ n }}{% endif %}{% if active == 'tesis' %}tesis?page={{ n }}{% endif %}" {% if n == activePage %} class="active" {% endif %}>{{n}}</a>
         <!-- <span>&hellip;</span> -->
     {% endfor %}
     </div>
     {% if nextPage %}
-        <a href="/{% if active == 'diario' %}?page={{ nextPage }}{% endif %}{% if active == 'busqueda' %}buscar?search={{ words }}&page={{ nextPage }}{% endif %}{% if active == 'etiqueta' %}etiqueta?tag={{ tag }}&page={{ nextPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ nextPage }}{% endif %}" class="button next">Próxima</a>
+        <a href="/{% if active == 'diario' %}?page={{ nextPage }}{% endif %}{% if search == True %}buscar?search={{ words }}&page={{ nextPage }}{% endif %}{% if tags == True %}etiqueta?tag={{ words }}&page={{ nextPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ nextPage }}{% endif %}" class="button next">Próxima</a>
     {% endif %}
 </div>
