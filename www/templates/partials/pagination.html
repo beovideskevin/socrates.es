@@ -1,7 +1,7 @@
 <!-- Pagination -->
 <div class="pagination">
     {% if prevPage  %}
-        <a href="/{% if active == 'diario' %}?page={{ prevPage }}{% endif %}{% if active == 'busqueda' %}buscar?search={{ words }}&page={{ prevPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ prevPage }}{% endif %}" class="button previous">Previous Page</a>
+        <a href="/{% if active == 'diario' %}?page={{ prevPage }}{% endif %}{% if active == 'busqueda' %}buscar?search={{ words }}&page={{ prevPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ prevPage }}{% endif %}" class="button previous">Anterior</a>
     {% endif %}
     <div class="pages">
     {% for n in pageRange %}
@@ -10,6 +10,6 @@
     {% endfor %}
     </div>
     {% if nextPage %}
-        <a href="/{% if active == 'diario' %}?page={{ nextPage }}{% endif %}{% if active == 'busqueda' %}buscar?search={{ words }}&page={{ nextPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ nextPage }}{% endif %}" class="button next">Next Page</a>
+        <a href="/{% if active == 'diario' %}?page={{ nextPage }}{% endif %}{% if active == 'busqueda' %}buscar?search={{ words }}&page={{ nextPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ nextPage }}{% endif %}" class="button next">Próxima</a>
     {% endif %}
 </div>
