@@ -15,6 +15,7 @@ urlpatterns = [
     path("post/<str:slug>/twitter", views.twitter, name="twitter"),
     path("acerca", views.about, name="acerca"),
     path("contacto", views.contact, name="contacto"),
+    # path("subscribirse", views.subscribe, name="subscribirse"),
     path("ar", views.ar, name="ar"),
     path("ar/<str:slug>", views.ar, name="ar"),
     path("aart", views.aart, name="aart"),

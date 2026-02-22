@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block meta %}
+{% include 'partials/meta.html' %}
+{% endblock %}
+
+{% block header %}
+<link rel="canonical" content="https://www.socrates.es" />
+{% endblock %}
+
+{% block content %}
+<!-- Content -->
+<div id="content">
+    <div class="inner">
+        <article class="box post post-excerpt">
+            <header>
+                <!--
+                    Note: Titles and subtitles will wrap automatically when necessary, so don't worry
+                    if they get too long. You can also remove the <p> entirely if you don't
+                    need a subtitle.
+                -->
+                <h2><a href="/" class="underlined">Gracias por subscribirse!</a></h2>
+                <p><a class="nodecoration" href="/">Ir a la página de inicio.</a></p>
+            </header>
+
+            <a href="#" class="image featured"><img class="postImg" src="{% static 'assets/images/social-large.jpg' %}" alt="Todos los hombres son mortales, Sócrates es un hombre, Sócrates es mortal." /></a>
+        </article>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="modal" class="modal">
+<!-- The Close Button -->
+  <span class="close">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="imgModal">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
+{% endblock %}
+
+{% block script %}
+<!-- Cloudflare -->
+<script src="{% static 'assets/js/img.js' %}"></script>
+{% endblock %}

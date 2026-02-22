@@ -426,6 +426,9 @@ def contact(request):
         "sent": sent
     })
 
+def subscribe(request):
+    pass
+
 def ar(request, slug=None):
     url = ("/" + slug) if slug is not None else ""
     return render(request, "ar.html", {
