@@ -26,6 +26,21 @@
     display: none;
 }
 
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1em;
+}
+
+.tags a {
+    border-radius: 0.4em;
+    padding: 0 .4em;
+    border: #fff solid 0.025em;
+    text-decoration: none;
+    margin: 0.2em;
+    line-height: 1.6em;
+}
+
 .related:before {
     content: '';
     border-top: solid 1px;

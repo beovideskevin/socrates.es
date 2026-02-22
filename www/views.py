@@ -85,6 +85,54 @@ def blog(request):
         "pageRange": range(1, paginator.num_pages + 1)
     })
 
+def tag(request):
+    q = request.GET.get('tag')
+    if q is None or q == "":
+        return render(request, "blog.html", {
+            "posts": [],
+            "active": "etiqueta",
+            "tag": "",
+            "prevPage": 1,
+            "nextPage": 1,
+            "activePage": 1,
+            "pageRange": range(1, 1)
+        })
+    
+    try:
+        blogTag = Tag.objects.get(name=q)
+    except Tag.DoesNotExist:
+        logger.error(f"Tag: tag {q} do not exist.")
+        return render(request, "404.html", {"active": "404"})
+    
+    posts = Post.objects.filter(tags=blogTag).filter(published=True).order_by('-created_at')
+
+    page = request.GET.get('page')
+    if page is None or page == "":
+        page = 1
+    else:
+        try:
+            page = int(page)
+        except ValueError:
+            page = 1
+
+    paginator = Paginator(posts, 5)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, "blog.html", {
+        "posts": posts,
+        "active": "etiqueta",
+        "tag": q,
+        "prevPage": page - 1 if page > 1 else None,
+        "nextPage": page + 1 if page < paginator.num_pages else None,
+        "activePage": page if page else 1,
+        "pageRange": range(1, paginator.num_pages + 1)
+    })
+
 def search(request):
     q = request.GET.get('search')
     if q is None or q == "":
@@ -148,7 +196,7 @@ def master(request):
     try:
         masterCat = Category.objects.get(name="master")
     except Category.DoesNotExist:
-        logger.error(f"Master: category master does not exist.")
+        logger.error("Master: category master does not exist.")
         return render(request, "404.html", {"active": "404"})
     
     posts = Post.objects.filter(category=masterCat).filter(published=True).order_by('slug')
@@ -183,7 +231,7 @@ def thesis(request):
     try:
         thesisCat = Category.objects.get(name="tesis")
     except Category.DoesNotExist:
-        logger.error(f"Thesis: category master do not exist.")
+        logger.error("Thesis: category master do not exist.")
         return render(request, "404.html", {"active": "404"})
     
     posts = Post.objects.filter(category=thesisCat).filter(published=True).order_by('slug')
