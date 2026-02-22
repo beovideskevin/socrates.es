@@ -41,6 +41,12 @@ class Post(models.Model):
         blank=False,
         related_name="post"
     )
+    related = models.ManyToManyField(
+        'self',
+        symmetrical=False, # Set to False for one-way following
+        related_name='relatedTo', # Access users who follow this user
+        blank=True
+    )
     # content = models.TextField()
     content = RichTextUploadingField() # if using uploader
     # content = RichTextField(blank=True, null=True)

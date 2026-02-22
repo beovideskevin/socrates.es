@@ -257,9 +257,10 @@ def post(request, slug):
     message = request.GET.get('message', "")
     sent = request.GET.get('sent', False)
     error = request.GET.get('error', False)
-    
+
     return render(request, "post.html", {
         "post": post,
+        "related": post.related.all(),
         "active": "artículo",
         "error": error,
         "name": name,
