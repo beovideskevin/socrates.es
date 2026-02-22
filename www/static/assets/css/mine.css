@@ -26,13 +26,16 @@
     display: none;
 }
 
+.comments {
+    margin-bottom: 1em!;
+}
+
 .comments p {
     font-size: larger;
 }
 
 .comments .message {
     margin-top: 1em;
-    margin-bottom: 1em;
 }
 
 .error {
