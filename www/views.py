@@ -161,10 +161,10 @@ def search(request):
             "pageRange": range(1, 1)
         })
 
-    posts = Post.objects.filter(content__icontains=words[0]).filter(published=True).order_by('-created_at')
+    posts = Post.objects.filter(content__iregex=r'\b' + re.escape(words[0]) + r'\b').filter(published=True).order_by('-created_at')
 
     for word in words[1:]:
-        posts = posts.filter(content__icontains=word)
+        posts = posts.filter(content__iregex=r'\b' + re.escape(word) + r'\b')
 
     page = request.GET.get('page')
     if page is None or page == "":
