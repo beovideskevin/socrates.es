@@ -396,7 +396,7 @@ def contact(request):
         if (name == "" or email == "" or is_valid_email(email) is False or message == "" or nothing != ""
                 or turnstile_response == '' or validate_turnstile(secret, turnstile_response, remote_ip) is False):
             error = True
-            url = reverse('contact') + f"?name={name}&email={email}&message={message}&error={error}&sent={sent}"
+            url = reverse('contacto') + f"?name={name}&email={email}&message={message}&error={error}&sent={sent}"
             return redirect(url)
 
         send_mail(
@@ -408,7 +408,7 @@ def contact(request):
         )
         
         sent = True
-        url = reverse('contact') + f"?sent={sent}"
+        url = reverse('contacto') + f"?sent={sent}"
         return redirect(url)
 
     name = request.GET.get('name', "") 
