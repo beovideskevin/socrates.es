@@ -8,8 +8,6 @@ from django.utils.html import escape, strip_tags
 from django.db.models import Q
 from www.models import Tag, Category, Post, Comment, Subscriber, Video, ArtWork
 from www.helpers import *
-import random
-import json
 import logging
 logger = logging.getLogger(__name__)
 
@@ -148,7 +146,10 @@ def search(request):
             "activePage": 1,
             "pageRange": range(1, 1)
         })
-    words = [word.strip() for word in q.split("+") if word.strip()]
+    words = [escape_accents(word.strip()) for word in q.split("+") if word.strip()]
+    
+    logger.error(words)
+
     if not words:
         return render(request, "blog.html", {
             "posts": [],
@@ -161,10 +162,10 @@ def search(request):
             "pageRange": range(1, 1)
         })
 
-    posts = Post.objects.filter(content__iregex=rf'\b{re.escape(words[0])}\b').filter(published=True).order_by('-created_at')
+    posts = Post.objects.filter(content__iregex=rf'\b{re.escape(words[0])}').filter(published=True).order_by('-created_at')
 
     for word in words[1:]:
-        posts = posts.filter(content__iregex=rf'\b{re.escape(word)}\b')
+        posts = posts.filter(content__iregex=rf'\b{re.escape(word)}')
 
     page = request.GET.get('page')
     if page is None or page == "":

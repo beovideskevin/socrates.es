@@ -1,6 +1,7 @@
 import requests
 import logging
 import re
+import html.entities
 
 def validate_turnstile(secret, turnstile_response, remote_ip=None):
     data = {
@@ -24,3 +25,8 @@ def validate_turnstile(secret, turnstile_response, remote_ip=None):
 def is_valid_email(email):
     pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
     return re.match(pattern, email) is not None
+
+def escape_accents(text):
+    # Create a mapping of codepoint to '&name;'
+    table = {cp: f"&{name};" for cp, name in html.entities.codepoint2name.items()}
+    return text.translate(table)
