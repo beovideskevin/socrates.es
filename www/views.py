@@ -146,9 +146,7 @@ def search(request):
             "activePage": 1,
             "pageRange": range(1, 1)
         })
-    words = [escape_accents(word.strip()) for word in q.split("+") if word.strip()]
-    
-    logger.error(words)
+    words = [word.strip() for word in q.split("+") if word.strip()]
 
     if not words:
         return render(request, "blog.html", {
@@ -162,10 +160,10 @@ def search(request):
             "pageRange": range(1, 1)
         })
 
-    posts = Post.objects.filter(content__iregex=rf'\b{re.escape(words[0])}').filter(published=True).order_by('-created_at')
+    posts = Post.objects.filter(content__iregex=rf'\b{escape_accents(re.escape(words[0]))}').filter(published=True).order_by('-created_at')
 
     for word in words[1:]:
-        posts = posts.filter(content__iregex=rf'\b{re.escape(word)}')
+        posts = posts.filter(content__iregex=rf'\b{escape_accents(re.escape(word))}')
 
     page = request.GET.get('page')
     if page is None or page == "":
