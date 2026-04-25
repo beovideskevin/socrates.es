@@ -90,7 +90,6 @@ def tag(request):
             "posts": [],
             "active": "etiqueta",
             "words": "",
-            "tag": True,
             "prevPage": 1,
             "nextPage": 1,
             "activePage": 1,
@@ -126,7 +125,6 @@ def tag(request):
         "posts": posts,
         "active": q,
         "words": q,
-        "tag": True,
         "prevPage": page - 1 if page > 1 else None,
         "nextPage": page + 1 if page < paginator.num_pages else None,
         "activePage": page if page else 1,
@@ -139,7 +137,6 @@ def search(request):
         return render(request, "blog.html", {
             "posts": [],
             "active": "busqueda",
-            "search": True,
             "words": "",
             "prevPage": 1,
             "nextPage": 1,
@@ -152,7 +149,6 @@ def search(request):
         return render(request, "blog.html", {
             "posts": [],
             "active": "busqueda",
-            "search": True,
             "words": "",
             "prevPage": 1,
             "nextPage": 1,
@@ -185,8 +181,7 @@ def search(request):
     return render(request, "blog.html", {
         "posts": posts,
         "active": q[:10] + '...',
-        "search": True,
-        "words": '+'.join(words),
+        "words": q,
         "prevPage": page - 1 if page > 1 else None,
         "nextPage": page + 1 if page < paginator.num_pages else None,
         "activePage": page if page else 1,
