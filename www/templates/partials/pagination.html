@@ -1,15 +1,15 @@
 <!-- Pagination -->
 <div class="pagination">
     {% if prevPage  %}
-        <a href="/{% if active == 'diario' %}?page={{ prevPage }}{% endif %}{% if active == 'search' %}buscar?search={{ words }}&page={{ prevPage }}{% endif %}{% if active == 'tags' %}etiqueta?tag={{ words }}&page={{ prevPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ prevPage }}{% endif %}" class="button previous">Anterior</a>
+        <a href="{{ request.path }}?page={{ prevPage }}{% if words %}&search={{ words }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="button previous">Anterior</a>
     {% endif %}
     <div class="pages">
     {% for n in pageRange %}
-        <a href="/{% if active == 'diario' %}?page={{ n }}{% endif %}{% if active == 'search' %}buscar?search={{ words }}&page={{ n }}{% endif %}{% if active == 'tags' %}etiqueta?tag={{ words }}&page={{ n }}{% endif %}{% if active == 'tesis' %}tesis?page={{ n }}{% endif %}" {% if n == activePage %} class="active" {% endif %}>{{n}}</a>
+        <a href="{{ request.path }}?page={{ n }}{% if words %}&search={{ words }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" {% if n == activePage %} class="active" {% endif %}>{{n}}</a>
         <!-- <span>&hellip;</span> -->
     {% endfor %}
     </div>
     {% if nextPage %}
-        <a href="/{% if active == 'diario' %}?page={{ nextPage }}{% endif %}{% if active == 'search' %}buscar?search={{ words }}&page={{ nextPage }}{% endif %}{% if active == 'tags' %}etiqueta?tag={{ words }}&page={{ nextPage }}{% endif %}{% if active == 'tesis' %}tesis?page={{ nextPage }}{% endif %}" class="button next">Próxima</a>
+        <a href="{{ request.path }}?page={{ nextPage }}{% if words %}&search={{ words }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="button next">Próxima</a>
     {% endif %}
 </div>
