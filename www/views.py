@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import JsonResponse
 from django.utils.html import escape, strip_tags
 from django.db.models import Q
-from www.models import Tag, Category, Post, Comment, Subscriber, Video, ArtWork
+from www.models import Tag, Category, Post, Comment, ArtWork
 from www.helpers import *
 import logging
 logger = logging.getLogger(__name__)
@@ -123,7 +123,7 @@ def tag(request):
 
     return render(request, "blog.html", {
         "posts": posts,
-        "active": q,
+        "active": q[:10] + '...',
         "tag": q,
         "prevPage": page - 1 if page > 1 else None,
         "nextPage": page + 1 if page < paginator.num_pages else None,
@@ -182,41 +182,6 @@ def search(request):
         "posts": posts,
         "active": q[:10] + '...',
         "words": q,
-        "prevPage": page - 1 if page > 1 else None,
-        "nextPage": page + 1 if page < paginator.num_pages else None,
-        "activePage": page if page else 1,
-        "pageRange": range(1, paginator.num_pages + 1)
-    })
-
-def master(request):
-    try:
-        masterCat = Category.objects.get(name="master")
-    except Category.DoesNotExist:
-        logger.error("Master: category master does not exist.")
-        return render(request, "404.html", {"active": "404"})
-    
-    posts = Post.objects.filter(category=masterCat).filter(published=True).order_by('slug')
-
-    page = request.GET.get('page')
-    if page is None or page == "":
-        page = 1
-    else:
-        try:
-            page = int(page)
-        except ValueError:
-            page = 1
-
-    paginator = Paginator(posts, 5)
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
-
-    return render(request, "master.html", {
-        "posts": posts,
-        "active": "maestría",
         "prevPage": page - 1 if page > 1 else None,
         "nextPage": page + 1 if page < paginator.num_pages else None,
         "activePage": page if page else 1,

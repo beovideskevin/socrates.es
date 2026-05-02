@@ -28,7 +28,6 @@ class Post(models.Model):
     keywords = models.CharField(max_length=200, blank=True, null=True, default="")
     description = models.CharField(max_length=200, blank=True, null=True, default="")
     subtitle = models.CharField(max_length=200)
-    # abstract = models.TextField(blank=True, null=True)
     abstract =  RichTextField(blank=True, null=True)
     slug = models.CharField(max_length=200)
     tags = models.ManyToManyField(
@@ -47,16 +46,11 @@ class Post(models.Model):
         related_name='relatedTo', # Access users who follow this user
         blank=True
     )
-    # content = models.TextField()
     content = RichTextUploadingField() # if using uploader
-    # content = RichTextField(blank=True, null=True)
-    # poster = models.CharField(max_length=200, blank=True, null=True)
     poster = models.ImageField(upload_to='images/', blank=True, null=True)
     alt = models.CharField(max_length=200, blank=True, null=True, default="")
     vertical = published = models.BooleanField(default=False)
-    # video_url = models.CharField(max_length=200, blank=True, null=True, default="")
     video_url = models.FileField(upload_to='videos/', blank=True, null=True)
-    # video_poster = models.CharField(max_length=200, blank=True, null=True, default="")
     video_poster = models.ImageField(upload_to='videos/', blank=True, null=True)
     video_quote = models.TextField(blank=True, null=True, default="")
     like = models.IntegerField(default=0)
