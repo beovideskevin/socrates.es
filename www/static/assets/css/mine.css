@@ -263,3 +263,7 @@ header h2, header h2 a, header p {
 #logo {
     display: none!important;
 }
+
+.recent {
+    padding: 0.4em 1em 0.4em 1em !important;
+}
