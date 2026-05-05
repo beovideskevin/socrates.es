@@ -264,6 +264,12 @@ header h2, header h2 a, header p {
     display: none!important;
 }
 
-.recent {
+.box.recent-posts li {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.box.recent-posts li a {
     padding: 0.4em 1em 0.4em 1em !important;
+    display: inline-block !important;
 }
