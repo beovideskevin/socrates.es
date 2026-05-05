@@ -132,6 +132,10 @@ header h2, header h2 a, header p {
    width: 100px; /* 36px; */
 }
 
+#logo {
+    display: none!important;
+}
+
 .coffee {
     margin: 0.5em;
 }
@@ -156,6 +160,19 @@ header h2, header h2 a, header p {
     font-weight: 300;
 }
 
+.box.recent-posts header h2 {
+    font-size: 1.2em !important;
+}
+
+.box.recent-posts li {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.box.recent-posts li a {
+    display: inline-block !important;
+}
+
 @media screen and (max-width: 736px) {
     #content {
         padding: 3em 20px 3em 20px;
@@ -163,6 +180,10 @@ header h2, header h2 a, header p {
 
     body {
 		background-color: #ffffff;
+    }
+
+    .box.recent-posts header h2 {
+        font-size: 1.5em !important;
     }
 }
 
@@ -258,22 +279,4 @@ header h2, header h2 a, header p {
     border-radius: 50%;
     color: #fff;
     width: auto!important;
-}
-
-#logo {
-    display: none!important;
-}
-
-.box.recent-posts header h2 {
-    font-size: 1.2em !important;
-}
-
-.box.recent-posts li {
-    border: none !important;
-    box-shadow: none !important;
-}
-
-.box.recent-posts li a {
-    /* padding: 0.4em 1em 0.4em 1em !important; */
-    display: inline-block !important;
 }
