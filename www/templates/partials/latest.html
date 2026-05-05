@@ -1,5 +1,8 @@
 <!-- Recent Posts -->
 <section class="box recent-posts">
+    <header>
+        <h2>Recientes:</h2>
+    </header>
     <ul>
         {% for post in latest_posts %}
             <li><a href="/post/{{post.slug}}">{{ post.title }}</a></li>

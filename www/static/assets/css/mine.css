@@ -264,12 +264,16 @@ header h2, header h2 a, header p {
     display: none!important;
 }
 
+.box.recent-posts header h2 {
+    font-size: 1.2em !important;
+}
+
 .box.recent-posts li {
     border: none !important;
     box-shadow: none !important;
 }
 
 .box.recent-posts li a {
-    padding: 0.4em 1em 0.4em 1em !important;
+    /* padding: 0.4em 1em 0.4em 1em !important; */
     display: inline-block !important;
 }
