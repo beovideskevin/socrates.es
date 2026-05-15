@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .social li {
@@ -14,8 +14,8 @@
 }
 
 #copyDiv {
-    text-align: center;
-    padding: 1em;
+    text-align: left;
+    padding: 1em 0;
 }
 
 .form-group {
