@@ -34,7 +34,7 @@
 
 .tags a {
     border-radius: 0.4em;
-    padding: 0 .4em;
+    padding: 0 0.4em;
     border: #fff solid 0.025em;
     text-decoration: none;
     margin: 0.2em;
@@ -83,11 +83,14 @@
     max-width: 480px;
 }
 
-article p, article li a {
+article p,
+article li a {
     font-size: larger;
 }
 
-header h2, header h2 a, header p {
+header h2,
+header h2 a,
+header p {
     font-size: xx-large !important;
     line-height: 1.4em !important;
 }
@@ -129,11 +132,11 @@ header h2, header h2 a, header p {
 }
 
 .logo_img img {
-   width: 100px; /* 36px; */
+    width: 100px; /* 36px; */
 }
 
 #logo {
-    display: none!important;
+    display: none !important;
 }
 
 .coffee {
@@ -179,7 +182,7 @@ header h2, header h2 a, header p {
     }
 
     body {
-		background-color: #ffffff;
+        background-color: #ffffff;
     }
 
     .box.recent-posts header h2 {
@@ -191,7 +194,7 @@ header h2, header h2 a, header p {
     .comments p {
         font-size: 1.6em;
     }
-    
+
     .error {
         font-weight: normal;
     }
@@ -210,37 +213,38 @@ header h2, header h2 a, header p {
     }
 
     .ego img {
-        padding: 0 0 0 1.5em ;
+        padding: 0 0 0 1.5em;
         padding: 1.5em;
     }
 }
 
 @media screen and (max-width: 1000px) {
-    article p, article a:not(.icon):not(header a) {
+    article p,
+    article a:not(.icon):not(header a) {
         font-size: x-large !important;
-        line-height: 1.4em !important; 
+        line-height: 1.4em !important;
     }
 }
 
 /* Carousel styles */
 .carousel-container {
-  margin: 2em 0 0 0;
-  overflow: hidden; /* Hides extra slides */
-  width: 100%;
-  position: relative;
+    margin: 2em 0 0 0;
+    overflow: hidden; /* Hides extra slides */
+    width: 100%;
+    position: relative;
 }
 
 .carousel-wrapper {
-  display: flex;
-  flex-direction: row;
-  transition: transform 0.5s ease; /* Smooth slide animation */
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.5s ease; /* Smooth slide animation */
 }
 
 .carousel-slide {
-  flex: 0 0 100%; /* Makes each slide take full width */
-  text-align: center;
-  font-size: 2em;
-  box-sizing: border-box;
+    flex: 0 0 100%; /* Makes each slide take full width */
+    text-align: center;
+    font-size: 2em;
+    box-sizing: border-box;
 }
 
 .carousel-slide img {
@@ -248,23 +252,23 @@ header h2, header h2 a, header p {
 }
 
 .carousel-container button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  border-radius: 50%;
-  padding: 1em;
-  border: 0;
-  color: #fff;
-  width: auto!important;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    border-radius: 50%;
+    padding: 1em;
+    border: 0;
+    color: #fff;
+    width: auto !important;
 }
 
 #carousel-prev-btn {
-  left: 10px;
+    left: 10px;
 }
 
 #carousel-next-btn {
-  right: 10px;
+    right: 10px;
 }
 
 .note-wrapper {
@@ -278,5 +282,5 @@ header h2, header h2 a, header p {
     border: 0;
     border-radius: 50%;
     color: #fff;
-    width: auto!important;
+    width: auto !important;
 }
