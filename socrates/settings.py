@@ -27,7 +27,7 @@ SECRET_KEY = config("SECRET_KEY", default=None)
 DEBUG = False
 
 #ALLOWED_HOSTS = ['.socrates.es', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['socrates.es', 'www.socrates.es']
 
 # Application definition
 

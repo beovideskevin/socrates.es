@@ -161,7 +161,7 @@ function assignConfig(revert) {
             gray: parseInt(form.gray.value, 10),
             text: form.text.value
                 .replace(
-                    /[@\.,#!¿¡\$%\^&;:\{\}=\+\-_`~\(\)/\\\?\*\|"<>\[\]]/g,
+                    /[@\.,#!¿¡\$%\^&;:\{\}=\+\-_`’“...” ~\(\)/\\\?\*\|"<>\[\]]/g,
                     '',
                 )
                 .replace(/\s+/g, ''),
