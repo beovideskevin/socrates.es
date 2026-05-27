@@ -151,12 +151,32 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=True)  # Use EMAIL_PO
 EMAIL_USE_SSL = config("EMAIL_USE_SSL", cast=bool, default=False)  # EUse MAIL_PORT 465 for SSL
 TURNSTILE_SECRET = config("TURNSTILE_SECRET", cast=str, default=None)
 
-ADMIN_USER_NAME=config("ADMIN_USER_NAME", default="Admin user")
-ADMIN_USER_EMAIL=config("ADMIN_USER_EMAIL", default=None)
+ADMIN_USER_NAME = config("ADMIN_USER_NAME", default="Admin user")
+ADMIN_USER_EMAIL = config("ADMIN_USER_EMAIL", default=None)
+SEND_ERROR_EMAILS = config("SEND_ERROR_EMAILS", cast=bool, default=False)
 MANAGERS=[]
 ADMINS=[]
-if all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
+if SEND_ERROR_EMAILS and all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
     ADMINS +=[
         (f'{ADMIN_USER_NAME}', f'{ADMIN_USER_EMAIL}')
     ]
     MANAGERS=ADMINS
+
+# Ignore invalid host header probes (unknown domains/direct IP requests)
+# so they do not trigger admin error emails.
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "null": {
+            "class": "logging.NullHandler",
+        },
+    },
+    "loggers": {
+        "django.security.DisallowedHost": {
+            "handlers": ["null"],
+            "level": "CRITICAL",
+            "propagate": False,
+        },
+    },
+}
