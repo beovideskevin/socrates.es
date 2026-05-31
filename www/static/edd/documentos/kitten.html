@@ -1,0 +1,806 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">    
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <meta id="description" content="el diletante digital (eldiletante.com) es el sitio Web del proyecto cubano homónimo dedicado al net.art, net-art, arte digital, hipertextos, literatura hipertextual, ciberliteratura, literatura digital, poesia electronica, literatura, hacker, hacker art, hacker-art, arte de los nuevos medios y artes plasticas. Además proponemos un espacio para el diálogo teórico, subimos documentos sobre el movimiento de nuevos medios, concursos, becas, tenemos revistas digitales, en especial la revista Esfera.">
+    <meta id="keywords" content="diletante digital, esquina13, hipertexto, literatura hipertextual, literatura digital, ciberliteratura, poesía electrónica, literatura colaborativa, net.art, net-art, hacker, hacker art, hacker-art, arte de los nuevos medios, new media, visual arts, plástica, cuba nuevos medios, teoria, estetica, filosofia, critica, ficcion, narrativa digital, revistas digitales cubanas, arte digital, artes plasticas, esfera, qubit, rockstalgias, disparo en red, minatura, arte cubano, cuentos eroticos, narraciones eroticas, historias eroticas, debate teórico, korad">
+  	<title>Kitten GNU/Linux (versión 1.2) - El Diletante Digital (eldiletante.com) es el sitio Web del proyecto cubano homónimo dedicado a la literatura hipertextual, la ciberliteratura, la literatura digital, la poesía electrónica, al net.art, net art, el hacker-art, hacker art, el arte de los nuevos medios, new media art y el arte digital en general. Además proponemos un espacio para el diálogo teórico, subimos documentos sobre el movimiento de nuevos medios en Cuba, artículos, críticas, concursos, becas, y tenemos una colección de revistas digitales.</title>
+    <link rel="stylesheet" href="scripts/style.css" type="text/css" media="screen,projection">
+    <script src="../scripts/tools.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="wrapper1"> 
+  <div id="wrapper2"> 
+    <div id="header"> 
+      <h1>E.D.D. - Documentos.</h1>
+	  <ul id="nav">
+		<li><a href="../index.html">INICIO</a></li>
+		<li><a href="../gestion/login.php">USUARIOS</a></li>
+		<li><a href="../gestion/buscar.php">BUSCAR</a></li>
+		<li><a href="../gestion/contactar.php">CONTÁCTENOS</a></li>
+	  </ul> 
+    </div> 
+    <div id="container">
+      <p class="description"> Las obras de este proyecto se han creado usando varios sistemas operativos, de acuerdo a las preferencias de los diferentes autores, pero el proyecto mismo se ha inclinado siempre hacia el GNU/Linux. Actualmente estamos desarrollado nuestra propia distribución: Kitten GNU/Linux.</p>
+      <div id="sidebar"> 
+        <h2>Documentos</h2>
+          <ul>
+           <li><a href="proyecto.html">Proyecto</a></li>
+            <li><a href="teoria.html">Fundamentación</a></li>
+            <li><a href="manifiesto.html">Manifiesto</a></li>
+            <li><a href="perfiles.html">Autores</a></li>
+			<li> <a href="coda.html">CODA</a></li>
+            <li><a href="agradecimientos.html">Agradecimientos</a></li>
+          </ul>
+             <h2>Otras Acciones</h2>
+			 <ul>
+				<li><a href="vukcosic.html">Cómo ser Vuk Cosic...</a></li>
+				<li><a href="hackinglily.html">Hacking Lily</a></li>
+				<li><a href="pe.html">CD de Poesía Electrónica</a></li>
+                <li><a href="kitten.html">Kitten GNU/Linux</a></li>
+			</ul>
+			<h2>Acerca del Fundador</h2>
+			  <ul>
+                <li><a href="dossier/dossier.html">Dossier</a></li>
+                <li><a href="dossier/statement.html">Statement General</a></li>
+                <li><a href="dossier/cv.html">Currículum Vitae</a></li>
+              </ul>
+            
+      </div>
+      <div id="content">
+        <h1 style="padding:20px 0 0 0;">Kitten GNU/Linux (versión 1.2)</h1>
+        <h2>Pequeño, flexible, elegante... y con garra.</h2>
+        <p> </p>
+          
+          <p>
+          <ul>
+            <li><a href="#presentacion">Presentación</a></li>
+  		    <li><a href="#download">Descargar</a></li>
+			<li><a href="#faq">F.A.Q</a></li>
+            <li><a href="#lista">Lista de Aplicaciones que Constituyen el Estudio Artístico</a></li>
+            <li><a href="#todos">Lista de Todos los Paquetes</a></li>
+          </ul>
+          </p>
+          <a id="presentacion"></a>
+          <h1>Presentación</h1>
+          <p>La idea de hacer una distribución de GNU/Linux surgió ante la necesidad de mostrar el sitio Web del proyecto El Diletante Digital en cualquier computadora, independientemente del sistema operativo, el software y el hardware instalado en la misma, y de la existencia o no de una conexión a Internet. Entonces nos proposimos crear un Live CD que reuniera las aplicaciones y dependencias imprescindibles para visualizar todas las obras del mencionado proyecto. Con el tiempo, una versión primitiva de este CD, sirvió como base a otras obras de arte, lo que amplió la perspectiva inicial. Además, a medida que se desarrollaba el Kitten GNU/Linux, se fue moldeando alrededor del proyecto El Diletante Digital, al incluirse los paquetes y dependencias que se usaban para crear las propias obras. De esta forma evolucionó, paulatinamente, hacia un estudio artístico, austero si dudas, pero flexible.</p>
+          <p>El Kitten GNU/Linux es una distribución (basada en Slackware 12.0 y Slax) que sirve de substrato (o sea, provee con un kernel, las librerías y programas necesarios) sobre el cual poder montar las obras de software art, hacker art, etc., que se necesite (o en las que sea preferible que) sean autosuficientes, de forma que toda la obra está contenida en un live-CD. Esto permite a la obra contar con todo lo necesario, independientemente del hardware y el sistema operativo instalado en la PC particular donde se va a exhibir. Además, se usa para desarrollar el proyecto "El Diletante Digital" y permite probar las obras del sitio Web del proyecto en un ambiente diferente del de Window$, así como exhibirlas en un Live CD.</p>
+          <p>Por tanto, los objetivos de esta distribución son los siguientes:<br>
+          <br>
+          <b>1. Servir de plataforma para obras de arte que requieran la autonomía que brinda un Live CD. O sea, brindar un sistema operativo ligero y flexible, que permita la creación de un Live CD, donde las obras se ejecuten de manera autónoma (independientemente del hardware y software instalados en la PC).<br></b>
+          <br>
+          <b>2. Brindar el software necesario para la conformación de un pequeño estudio artístico. Pero suficientemente flexible como para satisfacer las necesidades del proyecto El Diletante Digital.<br></b></p>
+          <p>En el CD de instalación se incluyen dos grupos de paquetes: los que son instalados siempre y constituyen la instalación mínima (que se produce casi automáticamente, baste seleccionar la opción "Full" en el instalador), y los que se instalan de manera opcional, que constituyen el estudio artístico. Entre los primeros se tienen (de las series A, AP, D, L, N y X, lo demás se descartó) algunos programas como el midnight commander y el joe, todo lo necesario para compilar programas en C/C++, los intérpretes de perl y python, el servidor apache, mysql y php, un grupo amplio de librerías (que permite resolver las dependencias de muchos programas), y el servidor de ventanas Xorg.</p>
+          <p>El segundo grupo de paquetes permite, en conjunto, la construcción de un ambiente de escritorio amigable (abiword, audacious, foobillard, galculator, gqview, mplayer, seamonkey suite, xarchiver, y xfce), con posibilidades de edición de imagen, sonido y video (gimp, audacity y avidemux) y algunos I.D.E. para diferentes lenguajes de programación (geany, bluefish, processing y codeblocks). Las aplicaciones para trabajar con imágenes, sonido y video conforman un estudio artístico, que comparte el espíritu austero que guía a toda la distribución. Esto se debe a que están orientadas al trabajo particular del proyecto "El Diletante Digital", y no pretenden ser una solución universal para todo tipo de empeño artístico.</p>
+          <p>Hay un tercer tipo de paquetes: los que han sido excluidos y, por tanto, no se encuentran en el CD de instalación. No se supone que todo cuanto sea necesario de forma casual (ya sea librería o ejecutable) está incluido dentro del CD (que sólo tiene 700Mb). Este tercer grupo es sin dudas es el más amplio y cubre, estadísticamente, casi todas las herramientas, librerías y programas licenciados con la GPL. En el futuro, y en la medida en que sean necesarios, se incluirán nuevos paquetes en este instalador (como el arduino) y nuevas versiones de los actuales (seamonkey versión 2).</p>
+		  <a id="download"></a>
+          <h1>Descargar</h1>
+          <p>Para descargar el disco de instalación haga <a href="kitten/kitten_install_1.2.iso">click aquí</a>. Para descargar el live CD, siga <a href="kitten/kitten_live_cd_1.1.iso">este vínculo</a></p>
+          <a id="faq"></a>
+          <h1>F.A.Q.</h1>
+          <p>¿Por qué Slackware?</p>
+          <p>Hay un dicho que va más o menos así: cuando aprendes Debian o Red Hat, aprendes Debian o Red Hat, pero cuando aprendes Slackware aprendes Linux. Quizás esto sea cierto, pero de una forma u otra, a nosotros nos gusta mucho Slackware. Fundamentalmente porque ofrece total control sobre el sistema: editando simples archivos de texto se puede configurar absolutamente todo.</p>
+          <p>¿Por qué todo está en inglés (salvo esta página :-)?</p>
+          <p>Nos sentimos bastante cómodos usando ese idioma. Cuando por primera vez nos acercamos a una computadora, por allá por los 80s, todo estaba escrito en inglés  y para aprender era necesario dominar ese idioma. Así que, para nosotros, ese es el único lenguaje universal de la programación, la configuración, etc., de una PC. Recuerde que esta distribución no pretende ser un entorno amigable en español. Y no es, definitivamente, una distribución para newbies.</p>
+          <p>¿Cómo lograron meter tantos programas en un solo CD?</p>
+          <p>Pues quitando los archivos de mensajes innecesarios bajo la carpeta locale. Dejamos sólo los de los idiomas español e inglés. Como no aspiramos a que en los cuatro rincones del mundo usen el Kitten GNU/Linux, podemos quitar los idiomas que no creemos que se usen nunca. Además quitamos los documentos, los README, y lo cientos de copias de la GPL.</p>
+          <p>¿Quitaron todos los archivos de ayuda?</p>
+          <p>No, sólo la mayoría (que en definitivas casi nunca se consultan). Para ahorrar espacio hemos eliminado la documentación de las aplicaciones de ventanas casi por completo. Las aplicaciones de consola (que son menos intuitivas) conservan sus páginas de man y de info. Dejamos además los documentos necesarios para programar: la ayuda que viene con el Bluefish, y el Processing. Además, incluímos en el CD una carpeta con variada documentación.</p>
+          <p>¿Por qué no incluyeron en el estudio artístico el Inkscape, o el Rosegarden, o...?</p>
+          <p>Incluímos sólo los programas que usamos para desarrollar el proyecto El Diletante Digital. Cuando se empiece a usar el K3D, o el Rosegarden, los incluiremos.</p>
+          <a id="lista"></a>
+          <h1>Lista de Aplicaciones que Constituyen el Estudio Artístico</h1>
+          <h3>GENERAL</h3>
+          <p>terminal: mc, ntfs-3g, rarlinux<br>
+             X: apps finder, bulk rename, easyatg, file-roller, filelight, foobillard, galculator, ghex, gparted, gucharmap, k3b, lxtask, pcmanfm, wine, x264, xarchiver, xchm y xfce
+          </p>
+          <h3>WEB</h3>
+          <p>apache - php - perl - python - mysql<br>
+             terminal: lynx y wget<br>
+             X: gftp, knoda y seamonkey (browser con  flash player y mplayer-plugin, mail, chat, composer, adrees book)<br>
+             webapps: drupal, worpress<br>
+          </p>
+          <h3>OFFICE</h3>
+          <p>terminal: wv<br>
+             X: abiword, epdfview, kdissert y orage<br>
+          </p>
+          <h3>IMAGEN</h3>
+          <p>gqview y kpdf<br></p>
+          <h3>MUSICA</h3>
+          <p>audacious<br></p>
+          <h3>VIDEO</h3>
+          <p>ffplay, mplayer, kmplayer y xine</p>
+          <h3>EDICION DE IMAGEN</h3>
+          <p>terminal: exiftool e imagemagick<br>
+             X: Blender, Gimp, Jave y  XaraXL<br>
+          </p>
+          <h3>EDICION DE MUSICA Y SONIDO</h3>
+          <p>terminal: sox<br>
+             X: audacity y lmms<br>
+          </p>
+          <h3>EDICION DE VIDEO</h3>
+          <p>terminal: dvdauthor, ffmpeg, mencoder y mjpegtools<br>
+             X: avidemux, kino y qdvdauthor<br>
+          </p>
+          <h3>PROGRAMACIÓN</h3>
+          <p>terminal: joe y elvis <br>
+             X: bluefish, codelocks, geany y processing<br>
+          </p>
+          <a id="todos"></a>
+          <h1>Lista de Todos los Paquetes</h1>
+          <p>El código fuente de estos paquetes puede ser hallado en:<br> 
+          <a href="http://www.kernel.org" target="_blank">http://www.kernel.org</a> <br> <a href="http://www.slackware.com" target="_blank">http://www.slackware.com</a> <br> <a href="http://repository.slacky.eu/slackware-12.0/" target="_blank">http://repository.slacky.eu/slackware-12.0/</a></p>
+
+			<h1>A</h1>
+			<p style="text-align: left">
+			aaa_base-12.0.0-noarch-1.tgz
+			aaa_elflibs-12.0.0-i486-3.tgz
+			aaa_terminfo-5.6-noarch-1.tgz
+			acl-2.2.39_1-i486-2.tgz
+			acpid-1.0.4-i486-2.tgz
+			apmd-3.2.2-i486-1.tgz
+			attr-2.4.32_1-i486-2.tgz
+			bash-3.1.017-i486-2.tgz
+			bin-11.1-i486-1.tgz
+			bzip2-1.0.4-i486-1.tgz
+			coreutils-6.9-i486-1.tgz
+			cpio-2.5-i486-3.tgz
+			cups-1.2.11-i486-1.tgz
+			cxxlibs-6.0.8-i486-4.tgz
+			dcron-2.3.3-i486-6.tgz
+			device-mapper-1.02.19-i486-2.tgz
+			devs-2.3.1-noarch-25.tgz
+			dialog-1.1_20070528-i486-1.tgz
+			dosfstools-2.11-i486-1.tgz
+			e2fsprogs-1.39-i486-1.tgz
+			ed-0.5-i486-1.tgz
+			eject-2.1.5-i486-1.tgz
+			elvis-2.2_0-i486-2.tgz
+			etc-11.1-noarch-6.tgz
+			file-4.21-i486-1.tgz
+			findutils-4.2.31-i486-1.tgz
+			floppy-5.4-i386-3.tgz
+			gawk-3.1.5-i486-3.tgz
+			gettext-0.16.1-i486-3.tgz
+			glibc-solibs-2.5-i486-4.tgz
+			glibc-zoneinfo-2.5-noarch-4.tgz
+			gpm-1.20.1-i486-4.tgz
+			grep-2.5-i486-3.tgz
+			gzip-1.3.12-i486-1.tgz
+			hdparm-7.6-i486-1.tgz
+			infozip-5.52-i486-2.tgz
+			isapnptools-1.26-i486-2.tgz
+			jfsutils-1.1.11-i486-1.tgz
+			kbd-1.12-i486-2.tgz
+			kernel-generic-2.6.21.5-i486-2.tgz
+			kernel-generic-smp-2.6.21.5_smp-i686-2.tgz
+			kernel-huge-2.6.21.5-i486-2.tgz
+			kernel-huge-smp-2.6.21.5_smp-i686-2.tgz
+			kernel-modules-2.6.21.5-i486-2.tgz
+			kernel-modules-smp-2.6.21.5_smp-i686-2.tgz
+			less-394-i486-1.tgz
+			lha-114i-i486-1.tgz
+			lilo-22.8-i486-4.tgz
+			logrotate-3.7.4-i486-1.tgz
+			lvm2-2.02.09-i486-1.tgz
+			minicom-2.1-i486-2.tgz
+			mkinitrd-1.1.2-i486-3.tgz
+			module-init-tools-3.2.2-i486-3.tgz
+			ncompress-4.2.4-i486-1.tgz
+			openssl-solibs-0.9.8e-i486-3.tgz
+			patch-2.5.4-i486-1.tgz
+			pciutils-2.2.5-i486-1.tgz
+			pcmciautils-014-i486-3.tgz
+			pkgtools-12.0.0-noarch-4.tgz
+			procps-3.2.7-i486-2.tgz
+			quota-3.13-i486-1.tgz
+			reiserfsprogs-3.6.19-i486-2.tgz
+			rpm2tgz-1.0-i486-1.tgz
+			sdparm-1.01-i486-2.tgz
+			sed-4.1.5-i486-1.tgz
+			shadow-4.0.3-i486-14.tgz
+			sharutils-4.6.3-i486-1.tgz
+			slocate-3.1-i486-1.tgz
+			smartmontools-5.36-i486-1.tgz
+			sysfsutils-2.1.0-i486-1.tgz
+			sysklogd-1.4.1-i486-10.tgz
+			syslinux-3.36-i486-1.tgz
+			sysvinit-2.86-i486-5.tgz
+			sysvinit-functions-8.53-i486-2.tgz
+			sysvinit-scripts-1.2-noarch-13.tgz
+			tar-1.16.1-i486-1.tgz
+			time-1.7-i486-1.tgz
+			tree-1.5.0-i486-1.tgz
+			udev-111-i486-5.tgz
+			usbutils-0.72-i486-2.tgz
+			utempter-1.1.4-i486-1.tgz
+			util-linux-2.12r-i486-6.tgz
+			which-2.16-i486-1.tgz
+			xfsprogs-2.8.16_1-i486-1.tgz
+			</p>
+
+			<h1>AP</h1>
+			<p style="text-align: left">
+			a2ps-4.13b-i386-2.tgz
+			alsa-utils-1.0.14-i486-1.tgz
+			bpe-2.01.00-i486-1.tgz
+			cdparanoia-IIIalpha9.8-i486-2.tgz
+			cdrdao-1.2.1-i486-1.tgz
+			cdrtools-2.01.01a23-i486-1.tgz
+			diffstat-1.43-i486-1.tgz
+			diffutils-2.8.1-i486-3.tgz
+			dvd+rw-tools-7.0-i486-2.tgz
+			enscript-1.6.3-i386-1.tgz
+			espgs-8.15.4-i486-2.tgz
+			flac-1.1.2-i486-3.tgz
+			ghostscript-fonts-std-8.11-noarch-1.tgz
+			gimp-print-4.2.7-i486-2.tgz
+			groff-1.19.2-i486-1.tgz
+			ispell-3.2.06-i386-1.tgz
+			joe-3.5-i486-1.tgz
+			lm_sensors-2.10.3-i486-1.tgz
+			man-1.6c-i486-2.tgz
+			man-pages-2.55-noarch-1.tgz
+			mc-4.6.1_20070309-i486-2.tgz
+			mysql-5.0.37-i486-1.tgz
+			sox-12.18.1-i486-1.tgz
+			sudo-1.6.8p12-i486-1.tgz
+			sysstat-7.0.0-i486-1.tgz
+			texinfo-4.8-i486-1.tgz
+			vorbis-tools-1.1.1-i486-4.tgz
+			</p>
+
+			<h1>D</h1>
+			<p style="text-align: left">
+			autoconf-2.61-noarch-1.tgz
+			automake-1.9.6-noarch-1.tgz
+			binutils-2.17.50.0.17-i486-1.tgz
+			bison-2.3-i486-1.tgz
+			flex-2.5.33-i486-3.tgz
+			gcc-4.1.2-i486-1.tgz
+			gcc-g++-4.1.2-i486-1.tgz
+			gdb-6.6-i486-2.tgz
+			gettext-tools-0.16.1-i486-3.tgz
+			kernel-headers-2.6.21.5_smp-i386-2.tgz
+			m4-1.4.9-i486-1.tgz
+			make-3.81-i486-1.tgz
+			nasm-0.98.39-i486-1.tgz
+			perl-5.8.8-i486-4.tgz
+			pkg-config-0.21-i486-6.tgz
+			python-2.5.1-i486-1.tgz
+			</p>
+			
+			<h1>L</h1>
+			<p style="text-align: left">
+			aalib-1.4rc5-i486-2.tgz
+			alsa-lib-1.0.14a-i486-1.tgz
+			alsa-oss-1.0.14-i486-1.tgz
+			apr-1.2.8-i486-1.tgz
+			apr-util-1.2.8-i486-1.tgz
+			arts-1.5.7-i486-1.tgz
+			aspell-0.60.5-i486-2.tgz
+			aspell-en-6.0_0-noarch-4.tgz
+			aspell-es-0.50_2-noarch-4.tgz
+			atk-1.18.0-i486-1.tgz
+			audiofile-0.2.6-i486-2.tgz
+			cairo-1.4.10-i486-1.tgz
+			dbus-1.0.2-i486-3.tgz
+			dbus-glib-0.73-i486-1.tgz
+			dbus-qt3-0.70-i486-1.tgz
+			desktop-file-utils-0.12-i486-2.tgz
+			esound-0.2.38-i486-1.tgz
+			expat-2.0.1-i486-1.tgz
+			freetype-2.3.4-i486-3.tgz
+			fribidi-0.10.7-i486-2.tgz
+			gamin-0.1.8-i486-2.tgz
+			gd-2.0.35-i486-2.tgz
+			gdbm-1.8.3-i486-4.tgz
+			glib-1.2.10-i486-3.tgz
+			glib2-2.12.12-i486-1.tgz
+			glibc-2.5-i486-4.tgz
+			gmime-2.2.9-i486-1.tgz
+			gmp-4.2.1-i486-2.tgz
+			gnome-icon-theme-2.14.2-noarch-2.tgz
+			gtk+-1.2.10-i486-4.tgz
+			gtk+2-2.10.13-i486-1.tgz
+			hal-0.5.9.1-i486-1.tgz
+			hal-info-20070618-noarch-1.tgz
+			hicolor-icon-theme-0.9-noarch-2.tgz
+			imlib-1.9.15-i486-2.tgz
+			lcms-1.16-i486-1.tgz
+			libao-0.8.6-i486-2.tgz
+			libart_lgpl-2.3.19-i486-1.tgz
+			libcaca-0.99.beta11-i486-1.tgz
+			libexif-0.6.16-i486-1.tgz
+			libglade-2.6.1-i486-1.tgz
+			libgsf-1.14.3-i486-1.tgz
+			libgtkhtml-2.11.0-i486-1.tgz
+			libid3tag-0.15.1b-i486-2.tgz
+			libidn-0.6.10-i486-1.tgz
+			libjpeg-6b-i486-5.tgz
+			libmad-0.15.1b-i486-2.tgz
+			libmng-1.0.9-i486-1.tgz
+			libmusicbrainz-2.1.4-i486-2.tgz
+			libogg-1.1.3-i486-2.tgz
+			libpng-1.2.18-i486-1.tgz
+			librsvg-2.16.1-i486-1.tgz
+			libtermcap-1.2.3-i486-7.tgz
+			libtheora-1.0alpha7-i486-2.tgz
+			libtiff-3.8.2-i486-3.tgz
+			libtunepimp-0.4.2-i486-3.tgz
+			libungif-4.1.4-i486-4.tgz
+			libusb-0.1.12-i486-2.tgz
+			libvorbis-1.1.2-i486-2.tgz
+			libwmf-0.2.8.4-i486-3.tgz
+			libwpd-0.8.9-i486-1.tgz
+			libxml2-2.6.28-i486-1.tgz
+			libxslt-1.1.20-i486-2.tgz
+			lzo-2.02-i486-1.tgz
+			mcs-0.4.1-i486-2.tgz
+			ncurses-5.6-i486-2.tgz
+			pango-1.16.4-i486-1.tgz
+			pcre-7.0-i486-1.tgz
+			poppler-0.5.4-i486-1.tgz
+			poppler-data-0.1-noarch-1.tgz
+			popt-1.7-i486-2.tgz
+			qt-3.3.8-i486-4.tgz
+			readline-5.2-i486-2.tgz
+			sdl-1.2.11-i486-3.tgz
+			shared-mime-info-0.21-i486-2.tgz
+			slang-2.0.7-i486-1.tgz
+			startup-notification-0.8-i486-2.tgz
+			svgalib-1.9.25-i486-1.tgz
+			taglib-1.4-i486-3.tgz
+			vte-0.16.5-i486-1.tgz
+			zlib-1.2.3-i486-2.tgz
+			</p>
+			
+			<h1>N</h1>
+			<p style="text-align: left">
+			curl-7.16.2-i486-1.tgz
+			cyrus-sasl-2.1.22-i486-1.tgz
+			dhcp-3.0.5-i486-2.tgz
+			dhcpcd-2.0.4-i486-2.tgz
+			gnutls-1.6.2-i486-1.tgz
+			httpd-2.2.4-i486-6.tgz
+			inetd-1.79s-i486-8.tgz
+			iptables-1.3.8-i486-1.tgz
+			iputils-s20070202-i486-2.tgz
+			libgcrypt-1.2.4-i486-1.tgz
+			libgpg-error-1.5-i486-1.tgz
+			lynx-2.8.6rel.5-i486-1.tgz
+			net-tools-1.60-i486-1.tgz
+			network-scripts-12.0-noarch-4.tgz
+			openldap-client-2.3.32-i486-1.tgz
+			openssh-4.6p1-i486-1.tgz
+			openssl-0.9.8e-i486-3.tgz
+			php-5.2.3-i486-2.tgz
+			samba-3.0.25b-i486-1.tgz
+			wget-1.10.2-i486-2.tgz
+			wireless-tools-28-i486-5.tgz
+			</p>
+			
+			<h1>X</h2>
+			<p style="text-align: left">
+			appres-1.0.1-i486-1.tgz
+			bdftopcf-1.0.1-i486-1.tgz
+			beforelight-1.0.2-i486-1.tgz
+			bigreqsproto-1.0.2-noarch-1.tgz
+			bitmap-1.0.3-i486-1.tgz
+			compiz-0.5.0-i486-1.tgz
+			compositeproto-0.3.1-noarch-1.tgz
+			damageproto-1.1.0-noarch-1.tgz
+			dejavu-ttf-2.17-noarch-1.tgz
+			dmxproto-2.2.2-noarch-1.tgz
+			editres-1.0.3-i486-1.tgz
+			encodings-1.0.2-noarch-1.tgz
+			evieext-1.0.2-noarch-1.tgz
+			fixesproto-4.0-noarch-1.tgz
+			font-adobe-100dpi-1.0.0-noarch-2.tgz
+			font-adobe-75dpi-1.0.0-noarch-2.tgz
+			font-adobe-utopia-100dpi-1.0.1-noarch-2.tgz
+			font-adobe-utopia-75dpi-1.0.1-noarch-2.tgz
+			font-adobe-utopia-type1-1.0.1-noarch-2.tgz
+			font-alias-1.0.1-noarch-1.tgz
+			font-arabic-misc-1.0.0-noarch-2.tgz
+			font-bh-100dpi-1.0.0-noarch-2.tgz
+			font-bh-75dpi-1.0.0-noarch-2.tgz
+			font-bh-lucidatypewriter-100dpi-1.0.0-noarch-2.tgz
+			font-bh-lucidatypewriter-75dpi-1.0.0-noarch-2.tgz
+			font-bh-ttf-1.0.0-noarch-2.tgz
+			font-bh-type1-1.0.0-noarch-2.tgz
+			font-bitstream-100dpi-1.0.0-noarch-2.tgz
+			font-bitstream-75dpi-1.0.0-noarch-2.tgz
+			font-bitstream-speedo-1.0.0-noarch-2.tgz
+			font-bitstream-type1-1.0.0-noarch-2.tgz
+			font-cronyx-cyrillic-1.0.0-noarch-2.tgz
+			font-cursor-misc-1.0.0-noarch-2.tgz
+			font-daewoo-misc-1.0.0-noarch-2.tgz
+			font-dec-misc-1.0.0-noarch-2.tgz
+			font-ibm-type1-1.0.0-noarch-2.tgz
+			font-isas-misc-1.0.0-noarch-2.tgz
+			font-jis-misc-1.0.0-noarch-2.tgz
+			font-micro-misc-1.0.0-noarch-2.tgz
+			font-misc-cyrillic-1.0.0-noarch-2.tgz
+			font-misc-ethiopic-1.0.0-noarch-2.tgz
+			font-misc-meltho-1.0.0-noarch-2.tgz
+			font-misc-misc-1.0.0-noarch-2.tgz
+			font-mutt-misc-1.0.0-noarch-2.tgz
+			font-schumacher-misc-1.0.0-noarch-2.tgz
+			font-screen-cyrillic-1.0.1-noarch-2.tgz
+			font-sony-misc-1.0.0-noarch-2.tgz
+			font-sun-misc-1.0.0-noarch-2.tgz
+			font-util-1.0.1-i486-1.tgz
+			font-winitzki-cyrillic-1.0.0-noarch-2.tgz
+			font-xfree86-type1-1.0.0-noarch-2.tgz
+			fontcacheproto-0.1.2-noarch-1.tgz
+			fontconfig-2.4.2-i486-2.tgz
+			fontsproto-2.0.2-noarch-1.tgz
+			fonttosfnt-1.0.3-i486-1.tgz
+			fslsfonts-1.0.1-i486-1.tgz
+			fstobdf-1.0.2-i486-1.tgz
+			gccmakedep-1.0.2-noarch-1.tgz
+			glproto-1.4.8-noarch-1.tgz
+			iceauth-1.0.1-i486-1.tgz
+			ico-1.0.1-i486-1.tgz
+			imake-1.0.2-i486-1.tgz
+			inputproto-1.4.2-noarch-1.tgz
+			kbproto-1.0.3-noarch-1.tgz
+			lbxproxy-1.0.1-i486-1.tgz
+			libFS-1.0.0-i486-1.tgz
+			libICE-1.0.3-i486-1.tgz
+			libSM-1.0.3-i486-1.tgz
+			libX11-1.1.1-i486-4.tgz
+			libXScrnSaver-1.1.2-i486-1.tgz
+			libXTrap-1.0.0-i486-1.tgz
+			libXau-1.0.3-i486-1.tgz
+			libXaw-1.0.3-i486-1.tgz
+			libXcomposite-0.3.2-i486-1.tgz
+			libXcursor-1.1.8-i486-1.tgz
+			libXdamage-1.1.1-i486-1.tgz
+			libXdmcp-1.0.2-i486-1.tgz
+			libXevie-1.0.2-i486-1.tgz
+			libXext-1.0.3-i486-1.tgz
+			libXfixes-4.0.3-i486-1.tgz
+			libXfont-1.2.8-i486-1.tgz
+			libXfontcache-1.0.4-i486-1.tgz
+			libXft-2.1.12-i486-1.tgz
+			libXi-1.0.4-i486-1.tgz
+			libXinerama-1.0.2-i486-1.tgz
+			libXmu-1.0.3-i486-1.tgz
+			libXp-1.0.0-i486-1.tgz
+			libXpm-3.5.6-i486-1.tgz
+			libXprintAppUtil-1.0.1-i486-1.tgz
+			libXprintUtil-1.0.1-i486-1.tgz
+			libXrandr-1.2.1-i486-1.tgz
+			libXrender-0.9.2-i486-1.tgz
+			libXres-1.0.3-i486-1.tgz
+			libXt-1.0.5-i486-1.tgz
+			libXtst-1.0.1-i486-1.tgz
+			libXv-1.0.3-i486-1.tgz
+			libXvMC-1.0.4-i486-1.tgz
+			libXxf86dga-1.0.1-i486-1.tgz
+			libXxf86misc-1.0.1-i486-1.tgz
+			libXxf86vm-1.0.1-i486-1.tgz
+			libdmx-1.0.2-i486-1.tgz
+			libdrm-2.3.0-i486-1.tgz
+			libfontenc-1.0.4-i486-1.tgz
+			liblbxutil-1.0.1-i486-1.tgz
+			liboldX-1.0.1-i486-1.tgz
+			libpthread-stubs-0.1-noarch-1.tgz
+			libxcb-1.0-i486-2.tgz
+			libxkbfile-1.0.4-i486-1.tgz
+			libxkbui-1.0.2-i486-1.tgz
+			listres-1.0.1-i486-1.tgz
+			lndir-1.0.1-i486-1.tgz
+			luit-1.0.2-i486-1.tgz
+			makedepend-1.0.1-i486-1.tgz
+			mesa-6.5.2-i486-1.tgz
+			mkcomposecache-1.2-i486-1.tgz
+			mkfontdir-1.0.3-noarch-1.tgz
+			mkfontscale-1.0.3-i486-1.tgz
+			oclock-1.0.1-i486-1.tgz
+			printproto-1.0.3-noarch-1.tgz
+			proxymngr-1.0.1-i486-1.tgz
+			randrproto-1.2.1-noarch-1.tgz
+			recordproto-1.13.2-noarch-1.tgz
+			rendercheck-1.2-i486-1.tgz
+			renderproto-0.9.2-noarch-1.tgz
+			resourceproto-1.0.2-noarch-1.tgz
+			rgb-1.0.1-i486-1.tgz
+			rstart-1.0.2-i486-1.tgz
+			scripts-1.0.1-noarch-1.tgz
+			scrnsaverproto-1.1.0-noarch-1.tgz
+			sessreg-1.0.2-i486-1.tgz
+			setxkbmap-1.0.3-i486-1.tgz
+			showfont-1.0.1-i486-1.tgz
+			smproxy-1.0.2-i486-1.tgz
+			trapproto-3.4.3-noarch-1.tgz
+			ttf-indic-fonts-0.4.7.4-noarch-1.tgz
+			twm-1.0.3-i486-2.tgz
+			util-macros-1.1.5-noarch-1.tgz
+			videoproto-2.2.2-noarch-1.tgz
+			viewres-1.0.1-i486-1.tgz
+			x11-skel-7.1-noarch-6.tgz
+			x11perf-1.4.1-i486-1.tgz
+			xauth-1.0.2-i486-1.tgz
+			xaw3d-1.5-i486-4.tgz
+			xbiff-1.0.1-i486-1.tgz
+			xbitmaps-1.0.1-noarch-1.tgz
+			xcalc-1.0.1-i486-1.tgz
+			xcb-proto-1.0-noarch-1.tgz
+			xclipboard-1.0.1-i486-1.tgz
+			xclock-1.0.2-i486-1.tgz
+			xcmiscproto-1.1.2-noarch-1.tgz
+			xcmsdb-1.0.1-i486-1.tgz
+			xconsole-1.0.2-i486-1.tgz
+			xcursor-themes-1.0.1-noarch-1.tgz
+			xcursorgen-1.0.1-i486-1.tgz
+			xdbedizzy-1.0.2-i486-1.tgz
+			xditview-1.0.1-i486-1.tgz
+			xdm-1.1.4-i486-1.tgz
+			xdpyinfo-1.0.2-i486-1.tgz
+			xdriinfo-1.0.1-i486-1.tgz
+			xedit-1.0.2-i486-1.tgz
+			xev-1.0.2-i486-1.tgz
+			xextproto-7.0.2-noarch-1.tgz
+			xeyes-1.0.1-i486-1.tgz
+			xf86-input-acecad-1.2.0-i486-1.tgz
+			xf86-input-aiptek-1.0.1-i486-1.tgz
+			xf86-input-calcomp-1.1.0-i486-1.tgz
+			xf86-input-digitaledge-1.1.0-i486-1.tgz
+			xf86-input-elographics-1.1.0-i486-1.tgz
+			xf86-input-evdev-1.1.5-i486-1.tgz
+			xf86-input-fpit-1.1.0-i486-1.tgz
+			xf86-input-hyperpen-1.1.0-i486-1.tgz
+			xf86-input-jamstudio-1.1.0-i486-1.tgz
+			xf86-input-joystick-1.2.1-i486-1.tgz
+			xf86-input-keyboard-1.2.0-i486-1.tgz
+			xf86-input-magellan-1.1.0-i486-1.tgz
+			xf86-input-magictouch-1.0.0.5-i486-1.tgz
+			xf86-input-mouse-1.2.1-i486-1.tgz
+			xf86-input-mutouch-1.1.0-i486-1.tgz
+			xf86-input-palmax-1.1.0-i486-1.tgz
+			xf86-input-spaceorb-1.1.0-i486-1.tgz
+			xf86-input-summa-1.1.0-i486-1.tgz
+			xf86-input-tek4957-1.1.0-i486-1.tgz
+			xf86-input-ur98-1.1.0-i486-1.tgz
+			xf86-input-vmmouse-12.4.1-i486-1.tgz
+			xf86-input-void-1.1.0-i486-1.tgz
+			xf86-video-apm-1.1.1-i486-1.tgz
+			xf86-video-ark-0.6.0-i486-1.tgz
+			xf86-video-ast-0.81.0-i486-1.tgz
+			xf86-video-ati-6.6.192-i486-1.tgz
+			xf86-video-chips-1.1.1-i486-1.tgz
+			xf86-video-cirrus-1.1.0-i486-1.tgz
+			xf86-video-cyrix-1.1.0-i486-1.tgz
+			xf86-video-dummy-0.2.0-i486-1.tgz
+			xf86-video-fbdev-0.3.1-i486-1.tgz
+			xf86-video-glint-1.1.1-i486-1.tgz
+			xf86-video-i128-1.2.1-i486-1.tgz
+			xf86-video-i740-1.1.0-i486-1.tgz
+			xf86-video-i810-1.7.4-i486-1.tgz
+			xf86-video-imstt-1.1.0-i486-1.tgz
+			xf86-video-intel-2.0.0-i486-1.tgz
+			xf86-video-mga-1.4.6.1-i486-1.tgz
+			xf86-video-neomagic-1.1.1-i486-1.tgz
+			xf86-video-newport-0.2.1-i486-1.tgz
+			xf86-video-nsc-2.8.2-i486-1.tgz
+			xf86-video-nv-2.0.96-i486-1.tgz
+			xf86-video-rendition-4.1.3-i486-1.tgz
+			xf86-video-s3-0.5.0-i486-1.tgz
+			xf86-video-s3virge-1.9.1-i486-1.tgz
+			xf86-video-savage-2.1.2-i486-2.tgz
+			xf86-video-siliconmotion-1.5.1-i486-1.tgz
+			xf86-video-sis-0.9.3-i486-1.tgz
+			xf86-video-sisusb-0.8.1-i486-1.tgz
+			xf86-video-tdfx-1.3.0-i486-1.tgz
+			xf86-video-tga-1.1.0-i486-1.tgz
+			xf86-video-trident-1.2.3-i486-1.tgz
+			xf86-video-tseng-1.1.1-i486-1.tgz
+			xf86-video-v4l-0.1.1-i486-1.tgz
+			xf86-video-vesa-1.3.0-i486-1.tgz
+			xf86-video-vga-4.1.0-i486-1.tgz
+			xf86-video-via-0.2.2-i486-1.tgz
+			xf86-video-vmware-10.15.0-i486-1.tgz
+			xf86-video-voodoo-1.1.1-i486-1.tgz
+			xf86bigfontproto-1.1.2-noarch-1.tgz
+			xf86dga-1.0.2-i486-1.tgz
+			xf86dgaproto-2.0.2-noarch-1.tgz
+			xf86driproto-2.0.3-noarch-1.tgz
+			xf86miscproto-0.9.2-noarch-1.tgz
+			xf86rushproto-1.1.2-noarch-1.tgz
+			xf86vidmodeproto-2.2.2-noarch-1.tgz
+			xfd-1.0.1-i486-1.tgz
+			xfindproxy-1.0.1-i486-1.tgz
+			xfontsel-1.0.2-i486-1.tgz
+			xfs-1.0.4-i486-1.tgz
+			xfsinfo-1.0.1-i486-1.tgz
+			xfwp-1.0.1-i486-1.tgz
+			xgamma-1.0.1-i486-1.tgz
+			xgc-1.0.1-i486-1.tgz
+			xhost-1.0.1-i486-1.tgz
+			xineramaproto-1.1.2-noarch-1.tgz
+			xinit-1.0.4-i486-2.tgz
+			xkbcomp-1.0.3-i486-1.tgz
+			xkbevd-1.0.2-i486-1.tgz
+			xkbprint-1.0.1-i486-1.tgz
+			xkbutils-1.0.1-i486-1.tgz
+			xkeyboard-config-0.9-noarch-2.tgz
+			xkill-1.0.1-i486-1.tgz
+			xload-1.0.2-i486-1.tgz
+			xlogo-1.0.1-i486-1.tgz
+			xlsatoms-1.0.1-i486-1.tgz
+			xlsclients-1.0.1-i486-1.tgz
+			xlsfonts-1.0.2-i486-1.tgz
+			xmag-1.0.1-i486-1.tgz
+			xman-1.0.2-i486-1.tgz
+			xmessage-1.0.1-i486-1.tgz
+			xmh-1.0.1-i486-1.tgz
+			xmodmap-1.0.2-i486-1.tgz
+			xmore-1.0.1-i486-1.tgz
+			xorg-cf-files-1.0.2-noarch-1.tgz
+			xorg-server-1.3.0.0-i486-2.tgz
+			xorg-server-xdmx-1.3.0.0-i486-2.tgz
+			xorg-server-xnest-1.3.0.0-i486-2.tgz
+			xorg-server-xvfb-1.3.0.0-i486-2.tgz
+			xorg-sgml-doctools-1.2-noarch-1.tgz
+			xphelloworld-1.0.1-i486-1.tgz
+			xplsprinters-1.0.1-i486-1.tgz
+			xpr-1.0.2-i486-1.tgz
+			xprehashprinterlist-1.0.1-i486-1.tgz
+			xprop-1.0.2-i486-1.tgz
+			xproto-7.0.10-noarch-1.tgz
+			xproxymanagementprotocol-1.0.2-noarch-1.tgz
+			xrandr-1.2.0-i486-1.tgz
+			xrdb-1.0.3-i486-1.tgz
+			xrefresh-1.0.2-i486-1.tgz
+			xrx-1.0.1-i486-1.tgz
+			xset-1.0.2-i486-1.tgz
+			xsetmode-1.0.0-i486-1.tgz
+			xsetpointer-1.0.1-i486-1.tgz
+			xsetroot-1.0.1-i486-1.tgz
+			xsm-1.0.1-i486-1.tgz
+			xstdcmap-1.0.1-i486-1.tgz
+			xterm-224-i486-1.tgz
+			xtrans-1.0.3-noarch-1.tgz
+			xtrap-1.0.2-i486-1.tgz
+			xvidtune-1.0.1-i486-1.tgz
+			xvinfo-1.0.1-i486-1.tgz
+			xwd-1.0.1-i486-1.tgz
+			xwininfo-1.0.2-i486-1.tgz
+			xwud-1.0.1-i486-1.tgz
+			</p>
+			
+			<h2>XOP</h2>
+			<p style="text-align: left">
+			a52dec-0.7.4-i486-2sl.tgz
+			abiword-2.5.2-i486-1sl.tgz
+			all-20071007-noarch-1sal.tgz
+			amrnb-7.0.0.0-i686-1as.tgz
+			amrwb-7.0.0.2-i686-1as.tgz
+			audacious-1.3.2-i486-1.tgz
+			audacious-plugins-1.3.5-i486-1.tgz
+			audacity-1.3.4-i486-1sl.tgz
+			avidemux-2.4-i486-1sl.tgz
+			bluefish-1.0.7-i486-1sl.tgz
+			cairomm-1.4.6-i686-1as.tgz
+			chmlib-0.39-i486-1bj.tgz
+			codeblocks-20070905-i486-1as.tgz
+			djbfft-0.76-i686-1as.tgz
+			dvdauthor-0.6.14-i486-1sl.tgz
+			easytag-2.1-i486-1af.tgz
+			enchant-1.3.0-i486-1ms.tgz
+			epdfview-0.1.7.tgz
+			exiftool-7.08-i486-1lu.tgz
+			faac-1.26-i486-1sl.tgz
+			faad2-2.6.1-i486-1sl.tgz
+			ffmpeg-20070925-i686-1sl.tgz
+			file-roller-2.6.1-i486-1.tgz
+			filelight-1.0-i486-1sl.tgz
+			flash-player-plugin-9.0.48.0-i386-1sl.tgz
+			foobillard-3.0a-i486-1sl.tgz
+			fuse-2.7.2-i486-1as.tgz
+			gail-1.6.6-i486-1.tgz
+			galculator-1.3.1-i486-1gal.tgz
+			gconf-2.6.2-i486-1.tgz
+			gdk-pixbuf-0.22.0-i486-1.tgz
+			geany-0.13-i486-1as.tgz
+			gftp-2.0.18-i486-3.tgz
+			ghex-2.6.1-i486-1.tgz
+			gimp-2.4.3-i486-1sl.tgz
+			glibmm-2.12.10-i686-4as.tgz
+			gnome-keyring-0.2.1-i486-1.tgz
+			gnome-vfs-2.6.1.1-i486-2.tgz
+			gpac-0.4.4-i686-1as.tgz
+			gparted-0.3.3-i486-1as.tgz
+			gqview-2.1.5-i486-2.tgz
+			gtkmm-2.10.11-i686-1as.tgz
+			gucharmap-1.10.0-i486-1.tgz
+			hk_classes-0.8.3-i486-1ms.tgz
+			id3lib-3.8.3-i486-2sl.tgz
+			imagemagick-6.3.3_9-i486-1.tgz
+			imlib2-1.4.0-i486-1sl.tgz
+			jack-audio-connection-kit-0.103.0-i486-1sl.tgz
+			jave-5.0.tgz
+			k3b-1.0.2-i486-1.tgz
+			kdelibs-3.5.7-i486-2.tgz
+			kdissert-1.0.7-i486-1bj.tgz
+			kino-1.2.0-i486-1sl.tgz
+			knoda-0.8.3-i486-1ms.tgz
+			kpdf-3.5.7-i486-1.tgz
+			kplayer-0.6.3-i486-1gtx.tgz
+			lame-3.97-i486-1sl.tgz
+			libavc1394-0.5.3-i486-1sl.tgz
+			libbonobo-2.6.2-i486-1.tgz
+			libbonoboui-2.6.1-i486-1.tgz
+			libdc1394-1.2.2-i486-1sl.tgz
+			libdv-1.0.0-i486-1sl.tgz
+			libdvdcss-20070703-i486-1sl.tgz
+			libdvdread-0.9.7-i486-1sl.tgz
+			libgnome-2.6.1.1-i486-2.tgz
+			libgnomecanvas-2.14.0-i486-1sl.tgz
+			libgnomecups-0.2.2-i486-1sl.tgz
+			libgnomeprint-2.18.2-i486-1sl.tgz
+			libgnomeprintui-2.18.1-i486-1sl.tgz
+			libgnomeui-2.6.1.1-i486-1.tgz
+			libgsm-1.0.10_13-i686-1as.tgz
+			libiec61883-1.1.0-i486-1sl.tgz
+			libmodplug-0.8.4-i486-1sl.tgz
+			libmpcdec-1.2.6-i486-1sl.tgz
+			libmspack-0.0.20060920alpha-i486-1as.tgz
+			libquicktime-1.0.2-i486-1sl.tgz
+			libraw1394-1.3.0-i486-1sl.tgz
+			libsamplerate-0.1.2-i486-1sl.tgz
+			libsigc++-2.0.18-i686-1as.tgz
+			libsndfile-1.0.17-i486-1sl.tgz
+			lmms-0.3.1-i486-1as.tgz
+			lxtask-0.1-i486-1.tgz
+			mjpegtools-1.9.0rc3-i486-1sl.tgz
+			mpeg4ip-1.6.1-i486-1lag.tgz
+			mplayer-1.0rc2try1-i686-1sl.tgz
+			mplayerplug-in-3.50-i486-1sl.tgz
+			ntfs-3g-1.1120-i486-1as.tgz
+			orbit2-2.10.2-i486-1.tgz
+			parted-1.8.8-i486-1ms.tgz
+			pcmanfm-0.5-i486-1.tgz
+			physfs-1.1.1-i686-1gal.tgz
+			processing-1.0.6.tgz
+			rarlinux-3.7.1-i386-1sl.tgz
+			sdl_sound-1.0.1-i486-1as.tgz
+			seamonkey-1.1.2-i486-1.tgz
+			smpeg-20070710-i486-1as.tgz
+			speex-1.0.5-i486-1dav.tgz
+			sqlite-3.5.4-i486-1sl.tgz
+			tango-icon-theme-0.8.0-noarch-4as.tgz
+			tango-icon-theme-extras-0.1.0-noarch-4as.tgz
+			thunar-volman-0.2.0-i486-1dx.tgz
+			twolame-0.3.12-i486-1as.tgz
+			wavpack-4.41.0-i486-1bj.tgz
+			webapps.tgz
+			wine-0.9.53-i486-1ms.tgz
+			wv-1.2.4-i486-1sl.tgz
+			wxwidgets-2.8.7.unicode-i486-1sl.tgz
+			x264-20070706-i686-1as.tgz
+			xaralx-0.7r1785-i486-1as.tgz
+			xarchiver-0.4.6-i486-1sl.tgz
+			xchm-1.13-i486-1mch.tgz
+			xdm-theme-xfce.tgz
+			xfce-4.4.1-i486-5.tgz
+			xfce4-clipman-plugin-0.8.0.tgz
+			xfce4-notes-plugin-1.6.1.tgz
+			xscreensaver-5.02-i486-1.tgz
+			xvidcore-1.1.3-i486-1sl.tgz 
+			</p>
+        </div>
+      </div>
+    </div>
+</div>
+<div id="footer"> 
+  <p><br>
+  </p>
+</div>
+</body>
+</html>
