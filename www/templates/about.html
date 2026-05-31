@@ -1,36 +1,104 @@
-{% extends "layouts/base.html" %}
-{% load static %}
-
-{% block meta %}
-{% include 'partials/meta.html' %}
-{% endblock %}
-
-{% block header %}
+{% extends "layouts/base.html" %} {% load static %} {% block meta %} {% include
+'partials/meta.html' %} {% endblock %} {% block header %}
 <link rel="canonical" content="https://www.socrates.es/about" />
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div id="content">
     <div class="inner">
         <article class="box other">
             <header>
                 <h2>Acerca de mí</h2>
-                <p>Hola, soy Kevin B. Casas, el peor discípulo de Sócrates...</p>
+                <p>
+                    Hola, soy Kevin B. Casas, el peor discípulo de Sócrates...
+                </p>
             </header>
 
-            <a href="javascript:;" class="ego"><img src="{% static '/assets/images/about/ego.jpg' %}" alt="Image for {{ post.title }}" /></a>
+            <a href="javascript:;" class="ego"
+                ><img
+                    src="{% static '/assets/images/about/ego.jpg' %}"
+                    alt="Image for {{ post.title }}"
+            /></a>
 
-            <p>Licenciado de Filosofía, en la Universidad de la Habana (2004). Máster en Historia del Arte, en la Universidad de la Habana (2011). Asociado en Ciencia: Programación de Computadoras y Análisis, Miami Dade College (2019).</p>
-
-            <p>Profesor de la Universidad de las Artes de Cuba, la Universidad de la Habana y el Miami Dade College. Ha participado como ponente en múltiples eventos, entre los que se encuentran <a href="https://beyondthehyphen.blogspot.com/p/about.html" target="_blank" rel="noopener noreferrer">“Beyond the Hyphen. Approaching a Post Geographic Cuba”</a> (Princeton University, 2014) y en el Seminario Permanente del IGCAAV (Universidad de Guadalajara, 2017).</p>
-
-            <p>Ha incursionado, desde una perspectiva interdisciplinar, en las artes visuales y la literatura. Sus intereses estéticos se nutren de las nuevas tecnologías, especialmente para des-ocultar sus lógicas comunicativas. Su obra artística ha sido incluida en múltiples exposiciones como las siguientes, “Ojalá!” (Zeitgenössische kubanische Kunst, Berlin, 2015), <a href="https://esmoa.org/experience/hope/" target="_blank" rel="noopener noreferrer">"Hope"</a> (ESMoA, Los Angeles, 2017) y "Athens Open Art" (Art.Number23, Athens, Greece, 2022).
-               Ganador del segundo lugar en el <a href="https://www.samsung.com/es/lifestyle-tvs/the-frame/premios-arte-digital" target="_blank" rel="noopener noreferrer">"Primer Concurso de Arte Digital Samsung"</a> (BLESS Hotel Madrid, Madrid, España). 
+            <p>
+                Licenciado de Filosofía, en la Universidad de la Habana (2004).
+                Máster en Historia del Arte, en la Universidad de la Habana
+                (2011). Asociado en Ciencia: Programación de Computadoras y
+                Análisis, Miami Dade College (2019).
             </p>
 
-            <p>Creador del proyecto El Diletante Digital (2006-2011). La Investigación asociada a este proyecto fue publicada en el libro <a href="https://www.amazon.com/Perspectiva-del-arte-digital-Spanish/dp/B08LNL5BW8" target="_blank" rel="noopener noreferrer">Perspectivas del Arte Digital.</a> (Casa Editorial Ex Libris. Mexico, 2020). Otras publicaciones: <a href="https://www.hypermediamagazine.com/arte/artes-visuales/perspectivas-del-arte-digital/?fbclid=IwAR1tyjQq1ZjdkkNzK0_mUEPlR1WznbOONi0lT5tAmNy6_-TKC19T7xU_VnU" target="_blank" rel="noopener noreferrer">Perspectivas del Arte Digital (OUTLOOKS ON DIGITAL ART)</a>; <a href="https://artepoli.com/el-diletante-digital/"  target="_blank" rel="noopener noreferrer">El Diletante Digital, de la Literatura Digital a los Nuevos Medios</a>;</p>
+            <p>
+                Profesor de la Universidad de las Artes de Cuba, la Universidad
+                de la Habana y el Miami Dade College. Ha participado como
+                ponente en múltiples eventos, entre los que se encuentran
+                <a
+                    href="https://beyondthehyphen.blogspot.com/p/about.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >“Beyond the Hyphen. Approaching a Post Geographic Cuba”</a
+                >
+                (Princeton University, 2014) y en el Seminario Permanente del
+                IGCAAV (Universidad de Guadalajara, 2017).
+            </p>
 
-            <p>Todas los textos, fotos y videos de este sitio son de mi autoría (salvo las images de los cuadros, obviamente). Los textos en el link de <a href="/tesis">Tesis</a> son parte de mi tesis de licenciatura en Filosofía. Las fotos fueron tomadas durante mis viajes a Grecia. Los videos son basados en los bustos de los filósofos, re-imaginados y animados con inteligencia artificial.</p>           
+            <p>
+                Ha incursionado, desde una perspectiva interdisciplinar, en las
+                artes visuales y la literatura. Sus intereses estéticos se
+                nutren de las nuevas tecnologías, especialmente para des-ocultar
+                sus lógicas comunicativas. Su obra artística ha sido incluida en
+                múltiples exposiciones como las siguientes, “Ojalá!”
+                (Zeitgenössische kubanische Kunst, Berlin, 2015),
+                <a
+                    href="https://esmoa.org/experience/hope/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >"Hope"</a
+                >
+                (ESMoA, Los Angeles, 2017) y "Athens Open Art" (Art.Number23,
+                Athens, Greece, 2022). Ganador del segundo lugar en el
+                <a
+                    href="https://www.samsung.com/es/lifestyle-tvs/the-frame/premios-arte-digital"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >"Primer Concurso de Arte Digital Samsung"</a
+                >
+                (BLESS Hotel Madrid, Madrid, España).
+            </p>
+
+            <p>
+                Creador del proyecto
+                <a href="/edd/index.html" target="" _blank
+                    >El Diletante Digital (2006-2011)</a
+                >. La Investigación asociada a este proyecto fue publicada en el
+                libro
+                <a
+                    href="https://www.amazon.com/Perspectiva-del-arte-digital-Spanish/dp/B08LNL5BW8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Perspectivas del Arte Digital.</a
+                >
+                (Casa Editorial Ex Libris. Mexico, 2020). Otras publicaciones:
+                <a
+                    href="https://www.hypermediamagazine.com/arte/artes-visuales/perspectivas-del-arte-digital/?fbclid=IwAR1tyjQq1ZjdkkNzK0_mUEPlR1WznbOONi0lT5tAmNy6_-TKC19T7xU_VnU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Perspectivas del Arte Digital (OUTLOOKS ON DIGITAL ART)</a
+                >;
+                <a
+                    href="https://artepoli.com/el-diletante-digital/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >El Diletante Digital, de la Literatura Digital a los Nuevos
+                    Medios</a
+                >;
+            </p>
+
+            <p>
+                Todas los textos, fotos y videos de este sitio son de mi autoría
+                (salvo las images de los cuadros, obviamente). Los textos en el
+                link de <a href="/tesis">Tesis</a> son parte de mi tesis de
+                licenciatura en Filosofía. Las fotos fueron tomadas durante mis
+                viajes a Grecia. Los videos son basados en los bustos de los
+                filósofos, re-imaginados y animados con inteligencia artificial.
+            </p>
         </article>
     </div>
 </div>
