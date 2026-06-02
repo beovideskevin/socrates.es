@@ -14,7 +14,7 @@
 <!-- Schema.org markup for Google+ -->
 <meta itemprop="name" content="{{ post.title }}">
 <meta itemprop="description" content="{{ post.description }}">
-<meta itemprop="image" content="{% static post.poster %}">
+<meta itemprop="image" content="http://www.socrates.es/media/{{ post.poster.url }}">
 
 <!-- Twitter Card data -->
 <meta name="twitter:card" content="summary_large_image">
@@ -29,8 +29,8 @@
 <!-- Open Graph data -->
 <meta property="og:title" content="{{ post.title }}" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.socrates.es/post/{{post.slug}}" />
-<meta property="og:image" content="{% static post.poster %}" />
+<meta property="og:url" content="http://www.socrates.es/post/{{ post.slug }}" />
+<meta property="og:image" content="http://www.socrates.es/media/{{ post.poster.url }}" />
 <meta property="og:description" content="{{ post.description }}" />
 <meta property="og:site_name" content="Socrates" />
 <meta property="article:publisher" content="https://www.facebook.com/kevinbcasas/" />
@@ -38,7 +38,7 @@
 {% endblock %}
 
 {% block header %}
-<link rel="canonical" content="https://www.socrates.es/post/{{post.slug}}" />
+<link rel="canonical" content="https://www.socrates.es/post/{{ post.slug }}" />
 {% endblock %}
 
 {% block content %}

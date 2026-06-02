@@ -27,7 +27,7 @@
         <ul class="stats">
             <li><a href="/post/{{post.slug}}#comments" class="icon fa-comment">{{post.comments.count}}</a></li>
             <li><a href="javascript:;" class="icon fa-heart" id="like-{{post.slug}}" onclick="callSocialEndpoint('{{post.slug}}', 'like')">{{post.like}}</a></li>
-            <li><a href="http://twitter.com/share?text={{post.title}} {{post.subtitle}}&url=https://www.socrates.es/post/{{post.slug}}&hashtags={{post.allTags}}" target="_blank" class="icon brands fa-twitter" id="twitter-{{post.slug}}" onclick="callSocialEndpoint('{{post.slug}}', 'twitter')">{{post.twitter}}</a></li>
+            <li><a href="http://twitter.com/share?text={{post.title}}-{{post.subtitle}}&url=https://www.socrates.es/post/{{post.slug}}&hashtags={{post.allTags}}" target="_blank" class="icon brands fa-twitter" id="twitter-{{post.slug}}" onclick="callSocialEndpoint('{{post.slug}}', 'twitter')">{{post.twitter}}</a></li>
             <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.socrates.es/post/{{post.slug}}" target="_blank" class="icon brands fa-facebook-f" id="facebook-{{post.slug}}" onclick="callSocialEndpoint('{{post.slug}}', 'facebook')">{{post.facebook}}</a></li>
         </ul>
     </div>
