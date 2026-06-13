@@ -129,10 +129,14 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
         # 'toolbar': 'full',
-        'allowedContent': True,  # Disables the filter completely
-        'extraAllowedContent': '*(*)', # Allows all classes and attributes
+        'removeButtons': 'Styles,Format,Font,FontSize,TextColor,BGColor,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock',
+        # 'allowedContent': True,  # Disables the filter completely
+        # 'extraAllowedContent': '*(*)', # Allows all classes and attributes
         'height': 500,
         'width': 1200,
+        'enterMode': 1,
+        'shiftEnterMode': 3,
+        # 'forcePasteAsPlainText': False,
     },
 }
 

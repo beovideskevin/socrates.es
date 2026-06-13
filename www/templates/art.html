@@ -15,7 +15,9 @@
     <div class="inner">
         {% include 'partials/list.html' %}
 
-        {% include 'partials/pagination.html' %}
+        {% if posts %}
+            {% include 'partials/pagination.html' %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}
