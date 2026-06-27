@@ -116,21 +116,21 @@ class NoonCommander(App):
 
     # Keybindings
     BINDINGS = [
-        ("f1", "show_help", "Show help panel"),
-        ("f2", "new_file", "Create a new file in current folder"),
-        ("f3", "view_file", "Open the selected file in vim"),
-        ("f4", "edit_file", "Open the selected file in edit mode in vim"),
+        ("f1", "show_help", "Help"),
+        ("f2", "new_file", "New"),
+        ("f3", "view_file", "View"),
+        ("f4", "edit_file", "Edit"),
 
-        ("f5", "copy_file", "Copy the selected file to another folder"),
-        ("f6", "move_file", "Move or rename the selected file"),
-        ("f7", "run", "Run the selected file"),
-        ("f8", "delete_file", "Delete the selected file"),
+        ("f5", "copy_file", "Copy"),
+        ("f6", "move_file", "Move"),
+        ("f7", "run", "Run"),
+        ("f8", "delete_file", "Delete"),
 
-        Binding("ctrl+o", "open_terminal", "Open the system terminal", show=False),
-        ("f9", "open_terminal", "Open the system terminal"),
+        Binding("ctrl+o", "open_terminal", "Terminal", show=False),
+        ("f9", "open_terminal", "Terminal"),
         ("f10", "quit", "Quit"),
 
-        Binding("ctrl+b", "toggle_files", "Toggle the files panel", show=False),
+        Binding("ctrl+b", "toggle_files", "Toggle Panel", show=False),
     ]
 
     # Properties

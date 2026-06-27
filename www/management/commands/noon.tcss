@@ -1,3 +1,25 @@
+Header {
+    /* Increases the font size to the next available size or sets specific scaling */
+    font-size: large; 
+    
+    /* Adds padding (Top/Bottom, Left/Right) in terminal cell counts */
+    padding: 1 2;
+    
+    /* Optional: Ensure you have enough height if using multiple padding lines */
+    height: 3; 
+}
+
+Footer {
+    /* Increases the font size to the next available size or sets specific scaling */
+    font-size: large; 
+    
+    /* Adds padding (Top/Bottom, Left/Right) in terminal cell counts */
+    padding: 1 2;
+    
+    /* Optional: Ensure you have enough height if using multiple padding lines */
+    height: 3; 
+}
+
 Screen {
     &:inline {
         height: 50vh;
@@ -108,3 +130,4 @@ Toast {
 ToastRack {
     align: right top;
 }
+
