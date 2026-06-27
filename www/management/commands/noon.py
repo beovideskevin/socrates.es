@@ -42,7 +42,7 @@ Confirm Modal
 class ConfirmModal(ModalScreen[str]):
     """ A confirm modal for the delete operation. """
 
-    file_path:str = ""
+    file_path: str = ""
     callback: Callable[[str], None] = None
 
     def __init__(self, file_path: str, callback: Callable[[str], None]) -> None:
@@ -52,25 +52,16 @@ class ConfirmModal(ModalScreen[str]):
 
     def compose(self) -> ComposeResult:
         with Container():
-            yield Label(f"Enter the path and filename to confirm: {self.file_path}")
-            yield Input()
+            yield Label(f"Are you sure you want to delete file {self.file_path}?")
             with Horizontal():
                 yield Button("Cancel", id="cancel", variant="error")
                 yield Button("Ok", id="ok", variant="success")
 
     @on(Button.Pressed, "#ok")
     def do_it(self) -> None:
-        value = self.query_one(Input).value
-        if value:
-            self.callback()
-            self.app.pop_screen()
-
-    def on_input_submitted(self) -> None:
-        value = self.query_one(Input).value
-        if value:
-            self.callback()
-            self.app.pop_screen()
-
+        self.app.pop_screen()
+        self.callback()
+        
     @on(Button.Pressed, "#cancel")
     def cancel(self) -> None:
         self.app.pop_screen()
@@ -249,14 +240,7 @@ class NoonCommander(App):
     # F2 New File
     def action_new_file(self) -> None:
         """ Create a new file """
-        with self.suspend():
-            if self.editor == "nano":
-                subprocess.run(["nano", self.path])
-            else:
-                subprocess.run(["vim", "-c", "startinsert"], cwd=self.folder)
-
-        # refresh UI
-        self.reload_tree()
+        self.push_screen(PromptModal("Enter new file name:"), self.new_file)
 
     # F3 View File
     def action_view_file(self) -> None:
@@ -286,13 +270,11 @@ class NoonCommander(App):
 
     # F5 Copy File
     def action_copy_file(self) -> None:
-        self.push_screen(PromptModal("Copy to"), self.copy_file)
-        pass
+        self.push_screen(PromptModal("Copy file to folder:"), self.copy_file)
 
     # F6 Move File
     def action_move_file(self) -> None:
-        self.push_screen(PromptModal("Move to"), self.move_file)
-        pass
+        self.push_screen(PromptModal("Move file to folder:"), self.move_file)
 
     # F7 Run File
     def action_run(self) -> None:
@@ -361,6 +343,16 @@ class NoonCommander(App):
         tree = self.query_one(DirectoryTree)
         if tree.path:
             tree.reload()
+
+    def new_file(self, result: str) -> None:
+        with self.suspend():
+            if self.editor == "nano":
+                subprocess.run(["nano", result], cwd=self.folder)
+            else:
+                subprocess.run(["vim", result, "-c", "startinsert"], cwd=self.folder)
+
+        # refresh UI
+        self.reload_tree()
 
     def copy_file(self, result: str) -> None:
         try: 
