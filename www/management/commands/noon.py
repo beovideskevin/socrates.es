@@ -53,6 +53,7 @@ class ConfirmModal(ModalScreen[str]):
     def compose(self) -> ComposeResult:
         with Container():
             yield Label(f"Enter the path and filename to confirm: {self.file_path}")
+            yield Input()
             with Horizontal():
                 yield Button("Cancel", id="cancel", variant="error")
                 yield Button("Ok", id="ok", variant="success")
