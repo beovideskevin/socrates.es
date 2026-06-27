@@ -58,10 +58,6 @@ class ConfirmModal(ModalScreen[str]):
                 yield Button("Cancel", id="cancel", variant="error")
                 yield Button("Ok", id="ok", variant="success")
 
-    # This watch method triggers automatically whenever file_name updates
-    def watch_file_path(self, file_path: str) -> None:
-        self.query_one("#sidebar-label", Label).update(f"Enter the path and filename to confirm: {file_path}")
-
     @on(Button.Pressed, "#ok")
     def do_it(self) -> None:
         value = self.query_one(Input).value
@@ -179,7 +175,7 @@ class NoonCommander(App):
         self.query_one(DirectoryTree).focus()
 
         # Set the default theme here
-        # self.theme = "nord"
+        self.theme = "ansi-dark"
 
         # Theme change handler
         def theme_change(_signal) -> None:
@@ -215,7 +211,6 @@ class NoonCommander(App):
         code_view = self.query_one("#code", Static)
         if path is None:
             code_view.update("")
-            # self.show_sidebar = False
             return
         try:
             code = Path(path).read_text(encoding="utf-8")
@@ -224,7 +219,6 @@ class NoonCommander(App):
             # code_view.update(Traceback(theme="github-dark", width=None))
             self.sub_title = "Can not read this file type"
             code_view.update("")
-            # self.show_sidebar = False
         else:
             code_view.update(syntax)
             self.query_one("#code-view").scroll_home(animate=False)
