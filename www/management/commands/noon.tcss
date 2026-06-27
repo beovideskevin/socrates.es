@@ -3,6 +3,10 @@ Header {
     height: 3; 
 }
 
+Footer {
+    padding: 1 0;
+    height: 3; 
+}
 
 Screen {
     &:inline {
