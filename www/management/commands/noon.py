@@ -64,12 +64,16 @@ class ConfirmModal(ModalScreen[str]):
         if value == self.file_path:
             self.callback()
             self.app.pop_screen()
+        else:
+            self.notify("Path and file do not match", severity="error")
 
     def on_input_submitted(self) -> None:
         value = self.query_one(Input).value
         if value == self.file_path:
             self.callback()
             self.app.pop_screen()
+        else:
+            self.notify("Path and file do not match", severity="error")
 
     @on(Button.Pressed, "#cancel")
     def cancel(self) -> None:
@@ -106,11 +110,15 @@ class PromptModal(ModalScreen[str]):
         value = self.query_one(Input).value
         if value:
             self.dismiss(value)
+        else:
+            self.notify("Folder path can not be empty", severity="error")
 
     def on_input_submitted(self) -> None:
         value = self.query_one(Input).value
         if value:
             self.dismiss(value)
+        else:
+            self.notify("Folder path can not be empty", severity="error")
 
 """
 
@@ -378,6 +386,11 @@ class NoonCommander(App):
 
         except Exception as e:
             self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
+        
+        else:
+            self.notify("File copied successfully", severity="success")
+            # refresh UI
+            self.reload_tree()
 
     def move_file(self, result: str) -> None:
         try: 
@@ -394,15 +407,24 @@ class NoonCommander(App):
 
         except Exception as e:
             self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
+
+        else:
+            self.notify("File moved successfully", severity="success")
+            # refresh UI
+            self.reload_tree()
+            
     
     def del_file(self) -> None:
         try:
             Path(self.path).unlink()
+
         except PermissionError as e:
             self.push_screen(ErrorModal(f"Error deleting file {e.strerror}"))
-        
-        # refresh UI
-        self.reload_tree()
+
+        else:
+            self.notify("File deleted successfully", severity="success")
+            # refresh UI
+            self.reload_tree()
 
     def exec_file(self, result: str) -> None:
         args = result.split() 
