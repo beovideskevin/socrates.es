@@ -98,7 +98,7 @@ class PromptModal(ModalScreen[str]):
     def compose(self) -> ComposeResult:
         with Container():
             yield Label(self.prompt_text)
-            yield Input(value=self.file_name, type="text")
+            yield Input(placeholder=self.file_name, type="text")
             with Horizontal():
                 yield Button("Cancel", id="cancel", variant="error")
                 yield Button("Ok", id="ok", variant="success")
