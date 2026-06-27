@@ -63,17 +63,17 @@ class ConfirmModal(ModalScreen[str]):
         value = self.query_one(Input).value
         if value == self.file_path:
             self.callback()
-            self.app.pop_screen()
         else:
             self.notify("Path and file do not match", severity="error")
+        self.app.pop_screen()
 
     def on_input_submitted(self) -> None:
         value = self.query_one(Input).value
         if value == self.file_path:
             self.callback()
-            self.app.pop_screen()
         else:
             self.notify("Path and file do not match", severity="error")
+        self.app.pop_screen()
 
     @on(Button.Pressed, "#cancel")
     def cancel(self) -> None:
@@ -110,17 +110,19 @@ class PromptModal(ModalScreen[str]):
     @on(Button.Pressed, "#ok")
     def do_it(self) -> None:
         value = self.query_one(Input).value
-        if value:
-            self.dismiss(value)
+        if self.file_name != "" and (value == self.file_name or value == ""):
+            self.notify(f"Folder path can not be empty or equal to {self.file_name}", severity="error")
+            self.app.pop_screen()
         else:
-            self.notify("Folder path can not be empty", severity="error")
+            self.dismiss(value)
 
     def on_input_submitted(self) -> None:
         value = self.query_one(Input).value
-        if value:
-            self.dismiss(value)
+        if self.file_name != "" and (value == self.file_name or value == ""):
+            self.notify(f"Folder path can not be empty or equal to {self.file_name}", severity="error")
+            self.app.pop_screen()
         else:
-            self.notify("Folder path can not be empty", severity="error")
+            self.dismiss(value)
 
 """
 
