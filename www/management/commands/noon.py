@@ -168,7 +168,7 @@ class NoonCommander(App):
         self.query_one(DirectoryTree).focus()
 
         header = self.query_one(Header)
-        header.icon = "☰"
+        header.icon = ""
 
         # Set the default theme here
         self.theme = "ansi-dark"

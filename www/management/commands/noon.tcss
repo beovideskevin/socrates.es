@@ -1,13 +1,8 @@
 Header {
-    text-style: bold; 
     padding: 1 0;
     height: 3; 
 }
 
-Footer {
-    text-style: bold;
-    height: 3; 
-}
 
 Screen {
     &:inline {
