@@ -226,6 +226,8 @@ class NoonCommander(App):
         """Called when path changes."""
         code_view = self.query_one("#code", Static)
         if path is None:
+            self.title = "NoonCommander"
+            self.sub_title = ""
             code_view.update("")
             return
         try:
@@ -233,6 +235,7 @@ class NoonCommander(App):
             syntax = highlight(code, path=path)
         except Exception:
             # code_view.update(Traceback(theme="github-dark", width=None))
+            self.sub_title = path
             self.sub_title = "Can not read this file type"
             code_view.update("")
         else:
@@ -477,7 +480,8 @@ class NoonCommander(App):
         owner_name = pwd.getpwuid(uid).pw_name
         group_name = grp.getgrgid(gid).gr_name
 
-        self.sub_title =  f"{path} {string_perms} {owner_name} {group_name} {size} {readable_time}"
+        self.title = f"{path}"
+        self.sub_title =  f"{string_perms} {owner_name} {group_name} {size} {readable_time}"
 
     def get_readable_size(self, path):
         size_bytes = os.path.getsize(path)
