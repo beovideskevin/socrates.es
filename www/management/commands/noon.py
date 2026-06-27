@@ -42,7 +42,7 @@ Confirm Modal
 class ConfirmModal(ModalScreen[str]):
     """ A confirm modal for the delete operation. """
 
-    file_path: str = ""
+    file_path:str = ""
     callback: Callable[[str], None] = None
 
     def __init__(self, file_path: str, callback: Callable[[str], None]) -> None:
@@ -52,16 +52,24 @@ class ConfirmModal(ModalScreen[str]):
 
     def compose(self) -> ComposeResult:
         with Container():
-            yield Label(f"Are you sure you want to delete file {self.file_path}?")
+            yield Label(f"Enter the path and filename to confirm: {self.file_path}")
             with Horizontal():
                 yield Button("Cancel", id="cancel", variant="error")
                 yield Button("Ok", id="ok", variant="success")
 
     @on(Button.Pressed, "#ok")
     def do_it(self) -> None:
-        self.app.pop_screen()
-        self.callback()
-        
+        value = self.query_one(Input).value
+        if value == self.file_path:
+            self.callback()
+            self.app.pop_screen()
+
+    def on_input_submitted(self) -> None:
+        value = self.query_one(Input).value
+        if value == self.file_path:
+            self.callback()
+            self.app.pop_screen()
+
     @on(Button.Pressed, "#cancel")
     def cancel(self) -> None:
         self.app.pop_screen()
