@@ -25,6 +25,7 @@ import stat
 from datetime import datetime
 from pathlib import Path
 from typing import Callable
+from rich.traceback import Traceback
 from textual import on
 from textual.app import App, ComposeResult, Binding, SystemCommand
 from textual.containers import Container, VerticalScroll, Horizontal
