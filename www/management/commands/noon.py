@@ -53,7 +53,7 @@ class ConfirmModal(ModalScreen[str]):
     def compose(self) -> ComposeResult:
         with Container():
             yield Label(f"Enter the path and filename to confirm: {self.file_path}")
-            yield Input()
+            yield Input(type="text")
             with Horizontal():
                 yield Button("Cancel", id="cancel", variant="error")
                 yield Button("Ok", id="ok", variant="success")
@@ -98,7 +98,7 @@ class PromptModal(ModalScreen[str]):
     def compose(self) -> ComposeResult:
         with Container():
             yield Label(self.prompt_text)
-            yield Input(value=self.file_name)
+            yield Input(value=self.file_name, type="text")
             with Horizontal():
                 yield Button("Cancel", id="cancel", variant="error")
                 yield Button("Ok", id="ok", variant="success")
@@ -424,7 +424,7 @@ class NoonCommander(App):
         target_path = Path(result)
         try:
             target_path.mkdir(parents=True, exist_ok=True)
-            
+
         except PermissionError:
             self.notify(f"Error: Permission denied when trying to create '{target_path}'.", severity="error")
 
