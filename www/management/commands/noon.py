@@ -384,14 +384,20 @@ class NoonCommander(App):
         try: 
             shutil.copy(self.path, result)
 
-        except PermissionError:
-            self.notify("Error: Permission denied.", severity="error")
+        except PermissionError as e:
+            self.notify(f"Permission denied: {e.strerror}", severity="error")
 
-        except IsADirectoryError:
-            self.notify("Error: You provided a directory path where a file path was expected.", severity="error")
+        except IsADirectoryError as e:
+            self.notify(f"You provided a directory path where a file path was expected: {e.strerror}", severity="error")
 
-        except shutil.SameFileError:
-            self.notify("Error: Source and destination represent the exact same file.", severity="error")
+        except shutil.SameFileError as e:
+            self.notify(f"Source and destination represent the exact same file: {e.strerror}", severity="error")
+
+        except FileNotFoundError as e:
+            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
+
+        except OSError as e:
+            self.notify(f"OS Error: {e.strerror}", severity="error")
 
         except Exception as e:
             self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
@@ -405,14 +411,20 @@ class NoonCommander(App):
         try: 
             shutil.move(self.path, result)
 
-        except PermissionError:
-            self.notify("Error: Permission denied.", severity="error")
+        except PermissionError as e:
+            self.notify(f"Permission denied: {e.strerror}", severity="error")
 
-        except IsADirectoryError:
-            self.notify("Error: You provided a directory path where a file path was expected.", severity="error")
+        except IsADirectoryError as e:
+            self.notify(f"You provided a directory path where a file path was expected: {e.strerror}", severity="error")
 
-        except shutil.SameFileError:
-           self.notify("Error: Source and destination represent the exact same file.", severity="error")
+        except shutil.SameFileError as e:
+           self.notify(f"Source and destination represent the exact same file: {e.strerror}", severity="error")
+
+        except FileNotFoundError as e:
+            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
+
+        except OSError as e:
+            self.notify(f"OS Error: {e.strerror}", severity="error")
 
         except Exception as e:
             self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
@@ -427,17 +439,17 @@ class NoonCommander(App):
         try:
             target_path.mkdir(parents=True, exist_ok=True)
 
-        except PermissionError:
-            self.notify(f"Error: Permission denied when trying to create '{target_path}'.", severity="error")
+        except PermissionError as e:
+            self.notify(f"Permission denied when trying to create '{target_path}': {e.strerror}", severity="error")
 
-        except FileExistsError:
-            self.notify(f"Error: '{target_path}' already exists as a file, not a directory.", severity="error")
+        except FileExistsError as e:
+            self.notify(f"'{target_path}' already exists as a file, not a directory: {e.strerror}", severity="error")
         
-        except FileNotFoundError:
-            self.notify(f"Error: A parent directory could not be resolved.", severity="error")
+        except FileNotFoundError as e:
+            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
 
         except OSError as e:
-            self.notify(f"OS Error: {e}", severity="error")
+            self.notify(f"OS Error: {e.strerror}", severity="error")
 
         except Exception as e:
             self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
@@ -452,7 +464,19 @@ class NoonCommander(App):
             Path(self.path).unlink()
 
         except PermissionError as e:
-            self.push_screen(ErrorModal(f"Error deleting file {e.strerror}"))
+            self.notify(f"Error deleting file: {e.strerror}", severity="error")
+
+        except IsADirectoryError as e:
+            self.notify(f"You provided a directory path where a file path was expected: {e.strerror}", severity="error")
+
+        except FileNotFoundError as e:
+            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
+
+        except OSError as e:
+            self.notify(f"OS Error: {e.strerror}", severity="error")
+
+        except Exception as e:
+            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
 
         else:
             self.notify("File deleted successfully", severity="success")
@@ -472,6 +496,12 @@ class NoonCommander(App):
                     cwd=self.folder
                 )
 
+            except PermissionError as e:
+                print(f"You do not have permission to run this file: {e.strerror}. --- args: {command} --- cwd: {self.folder}")
+
+            except FileNotFoundError as e:
+                print(f"File was not found: {e.strerror}. --- args: {command} --- cwd: {self.folder}")
+            
             except OSError as e:
                 print(f"OS error: {e.strerror}. --- args: {command} --- cwd: {self.folder}")
 
