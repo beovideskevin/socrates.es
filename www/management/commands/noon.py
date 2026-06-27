@@ -88,12 +88,12 @@ class PromptModal(ModalScreen[str]):
     """ A prompt modal to input the path for the copy or move operations. """
 
     prompt_text: str = ""
-    file_name: str = ""
+    file_name: reactive[str | None] = reactive(None)
 
     def __init__(self, prompt_text: str, file_name: str) -> None:
         super().__init__()
         self.prompt_text = prompt_text
-        self.file_name = file_name
+        self.file_name = str(file_name)
 
     def compose(self) -> ComposeResult:
         with Container():
@@ -202,7 +202,7 @@ class NoonCommander(App):
     def on_directory_tree_directory_selected(self, event: DirectoryTree.DirectorySelected):
         """ folder selected """
         event.stop()
-        self.folder = event.path
+        self.folder = str(event.path)
 
     def on_directory_tree_file_selected(
         self, event: DirectoryTree.FileSelected
