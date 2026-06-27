@@ -177,7 +177,6 @@ class NoonCommander(App):
         self.editor = "nano" if nano else "vim"
 
     def compose(self) -> ComposeResult:
-        """Compose our UI."""
         yield Header()
         with Container():
             yield DirectoryTree(self.folder, id="tree-view")
@@ -249,7 +248,7 @@ class NoonCommander(App):
 
     # Ctrl+b Toggle Panel
     def action_toggle_files(self) -> None:
-        """Called in response to key binding."""
+        """ Toggle the directory tree """
         self.show_tree = not self.show_tree
 
     # Ctrl+o Open Terminal
@@ -257,17 +256,27 @@ class NoonCommander(App):
         """ Open terminal """
         self.run_command(["bash"])
             
-
-    """ FILES INFO VIEW EDIT """
-
-    # F1 File Info
+    # F1 Help
     def action_show_help(self) -> None:
+        """ Help """
         self.action_show_help_panel()
+
+    """ File Actions """
 
     # F2 New File
     def action_new_file(self) -> None:
         """ Create a new file """
         self.push_screen(PromptModal("Enter new file name:", self.folder), self.new_file)
+    
+    def new_file(self, result: str) -> None:
+        with self.suspend():
+            if self.editor == "nano":
+                subprocess.run(["nano", result], cwd=self.folder)
+            else:
+                subprocess.run(["vim", result, "-c", "startinsert"], cwd=self.folder)
+
+        # refresh UI
+        self.reload_tree()
 
     # F3 View File
     def action_view_file(self) -> None:
@@ -293,32 +302,148 @@ class NoonCommander(App):
         # refresh UI
         self.reload_tree()
 
-    """ FILES COPY MOVE DELETE """
-
     # F5 Copy File
     def action_copy_file(self) -> None:
-        self.push_screen(PromptModal("Copy file to path:", self.path), self.copy_file)
+        """ Copy file """
+        if self.path:
+            self.push_screen(PromptModal("Copy file to path:", self.path), self.copy_file)
+
+    def copy_file(self, result: str) -> None:
+        try: 
+            shutil.copy(self.path, result)
+
+        except PermissionError as e:
+            self.notify(f"Permission denied: {e.strerror}", severity="error")
+
+        except IsADirectoryError as e:
+            self.notify(f"You provided a directory path where a file path was expected: {e.strerror}", severity="error")
+
+        except shutil.SameFileError as e:
+            self.notify(f"Source and destination represent the exact same file: {e.strerror}", severity="error")
+
+        except FileNotFoundError as e:
+            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
+
+        except OSError as e:
+            self.notify(f"OS Error: {e.strerror}", severity="error")
+
+        except Exception as e:
+            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
+        
+        else:
+            self.notify("File copied successfully", severity="success")
+            # refresh UI
+            self.reload_tree()
 
     # F6 Move File
     def action_move_file(self) -> None:
-        self.push_screen(PromptModal("Move file to path:", self.path), self.move_file)
+        """ Move file """
+        if self.path:
+            self.push_screen(PromptModal("Move file to path:", self.path), self.move_file)
+    
+    def move_file(self, result: str) -> None:
+        try: 
+            shutil.move(self.path, result)
+
+        except PermissionError as e:
+            self.notify(f"Permission denied: {e.strerror}", severity="error")
+
+        except IsADirectoryError as e:
+            self.notify(f"You provided a directory path where a file path was expected: {e.strerror}", severity="error")
+
+        except shutil.SameFileError as e:
+           self.notify(f"Source and destination represent the exact same file: {e.strerror}", severity="error")
+
+        except FileNotFoundError as e:
+            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
+
+        except OSError as e:
+            self.notify(f"OS Error: {e.strerror}", severity="error")
+
+        except Exception as e:
+            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
+
+        else:
+            self.notify("File moved successfully", severity="success")
+            # refresh UI
+            self.reload_tree()
 
     # F7 Make Dir
     def action_make_dir(self) -> None:
-        self.push_screen(PromptModal("New folder name:", self.folder), self.make_dir)
+        """ Make dir """
+        if self.folder:
+            self.push_screen(PromptModal("New folder name:", self.folder), self.make_dir)
+
+    def make_dir(self, result: str) -> None:
+        target_path = Path(result)
+        try:
+            target_path.mkdir(parents=True, exist_ok=True)
+
+        except PermissionError as e:
+            self.notify(f"Permission denied when trying to create '{target_path}': {e.strerror}", severity="error")
+
+        except FileExistsError as e:
+            self.notify(f"'{target_path}' already exists as a file, not a directory: {e.strerror}", severity="error")
+        
+        except FileNotFoundError as e:
+            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
+
+        except OSError as e:
+            self.notify(f"OS Error: {e.strerror}", severity="error")
+
+        except Exception as e:
+            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
+
+        else:
+            self.notify("Folder created successfully", severity="success")
+            # refresh UI
+            self.reload_tree()
 
     # F8 Delete File
     def action_delete_file(self) -> None:
-        self.push_screen(ConfirmModal(self.path, self.del_file))
+        """ Delete file """
+        if self.path:
+            self.push_screen(ConfirmModal(self.path, self.del_file))
 
-    """ TERMINAL  """
+    def del_file(self) -> None:
+        try:
+            Path(self.path).unlink()
 
+        except PermissionError as e:
+            self.notify(f"Error deleting file: {e.strerror}", severity="error")
+
+        except IsADirectoryError as e:
+            self.notify(f"You provided a directory path where a file path was expected: {e.strerror}", severity="error")
+
+        except FileNotFoundError as e:
+            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
+
+        except OSError as e:
+            self.notify(f"OS Error: {e.strerror}", severity="error")
+
+        except Exception as e:
+            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
+
+        else:
+            self.notify("File deleted successfully", severity="success")
+            # refresh UI
+            self.reload_tree()
+            
     # F9 Open Terminal
     def action_run_file(self) -> None:
         """ Run a file """
-        self.push_screen(PromptModal("Run with the arguments:", ""), self.exec_file)
+        if self.path:
+            self.push_screen(PromptModal("Run with the arguments:", ""), self.exec_file)
+    
+    def exec_file(self, result: str) -> None:
+        args = result.split() 
+        self.run_command([self.path] + args)
 
-    """ Command """
+    """ 
+    
+    Commands 
+    
+    """
     
     def git_pull(self) -> None: 
         self.run_command(["git", "pull"])
@@ -369,123 +494,6 @@ class NoonCommander(App):
         tree = self.query_one(DirectoryTree)
         if tree.path:
             tree.reload()
-
-    def new_file(self, result: str) -> None:
-        with self.suspend():
-            if self.editor == "nano":
-                subprocess.run(["nano", result], cwd=self.folder)
-            else:
-                subprocess.run(["vim", result, "-c", "startinsert"], cwd=self.folder)
-
-        # refresh UI
-        self.reload_tree()
-
-    def copy_file(self, result: str) -> None:
-        try: 
-            shutil.copy(self.path, result)
-
-        except PermissionError as e:
-            self.notify(f"Permission denied: {e.strerror}", severity="error")
-
-        except IsADirectoryError as e:
-            self.notify(f"You provided a directory path where a file path was expected: {e.strerror}", severity="error")
-
-        except shutil.SameFileError as e:
-            self.notify(f"Source and destination represent the exact same file: {e.strerror}", severity="error")
-
-        except FileNotFoundError as e:
-            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
-
-        except OSError as e:
-            self.notify(f"OS Error: {e.strerror}", severity="error")
-
-        except Exception as e:
-            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
-        
-        else:
-            self.notify("File copied successfully", severity="success")
-            # refresh UI
-            self.reload_tree()
-
-    def move_file(self, result: str) -> None:
-        try: 
-            shutil.move(self.path, result)
-
-        except PermissionError as e:
-            self.notify(f"Permission denied: {e.strerror}", severity="error")
-
-        except IsADirectoryError as e:
-            self.notify(f"You provided a directory path where a file path was expected: {e.strerror}", severity="error")
-
-        except shutil.SameFileError as e:
-           self.notify(f"Source and destination represent the exact same file: {e.strerror}", severity="error")
-
-        except FileNotFoundError as e:
-            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
-
-        except OSError as e:
-            self.notify(f"OS Error: {e.strerror}", severity="error")
-
-        except Exception as e:
-            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
-
-        else:
-            self.notify("File moved successfully", severity="success")
-            # refresh UI
-            self.reload_tree()
-
-    def make_dir(self, result: str) -> None:
-        target_path = Path(result)
-        try:
-            target_path.mkdir(parents=True, exist_ok=True)
-
-        except PermissionError as e:
-            self.notify(f"Permission denied when trying to create '{target_path}': {e.strerror}", severity="error")
-
-        except FileExistsError as e:
-            self.notify(f"'{target_path}' already exists as a file, not a directory: {e.strerror}", severity="error")
-        
-        except FileNotFoundError as e:
-            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
-
-        except OSError as e:
-            self.notify(f"OS Error: {e.strerror}", severity="error")
-
-        except Exception as e:
-            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
-
-        else:
-            self.notify("Folder created successfully", severity="success")
-            # refresh UI
-            self.reload_tree()
-    
-    def del_file(self) -> None:
-        try:
-            Path(self.path).unlink()
-
-        except PermissionError as e:
-            self.notify(f"Error deleting file: {e.strerror}", severity="error")
-
-        except IsADirectoryError as e:
-            self.notify(f"You provided a directory path where a file path was expected: {e.strerror}", severity="error")
-
-        except FileNotFoundError as e:
-            self.notify(f"A parent directory could not be resolved: {e.strerror}", severity="error")
-
-        except OSError as e:
-            self.notify(f"OS Error: {e.strerror}", severity="error")
-
-        except Exception as e:
-            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
-
-        else:
-            self.notify("File deleted successfully", severity="success")
-            # refresh UI
-            self.reload_tree()
-
-    def exec_file(self, result: str) -> None:
-        args = result.split() 
-        self.run_command([self.path] + args)
 
     def run_command(self, command) -> None:
         with self.suspend():
