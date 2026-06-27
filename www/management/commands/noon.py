@@ -125,21 +125,21 @@ class NoonCommander(App):
 
     # Keybindings
     BINDINGS = [
-        # ("f1", "info_file", "File Info"),
-        ("f2", "new_file", "New File"),
-        ("f3", "view_file", "View File"),
-        ("f4", "edit_file", "Edit File"),
+        ("f1", "show_help", "Show help panel"),
+        ("f2", "new_file", "Create a new file in current folder"),
+        ("f3", "view_file", "Open the selected file in vim"),
+        ("f4", "edit_file", "Open the selected file in edit mode in vim"),
 
-        ("f5", "copy_file", "Copy File"),
-        ("f6", "move_file", "Move File"),
-        ("f7", "run", "Run File"),
-        ("f8", "delete_file", "Delete File"),
+        ("f5", "copy_file", "Copy the selected file to another folder"),
+        ("f6", "move_file", "Move or rename the selected file"),
+        ("f7", "run", "Run the selected file"),
+        ("f8", "delete_file", "Delete the selected file"),
 
-        Binding("ctrl+o", "open_terminal", "Open Terminal", show=False),
-        ("f9", "open_terminal", "Open Terminal"),
+        Binding("ctrl+o", "open_terminal", "Open the system terminal", show=False),
+        ("f9", "open_terminal", "Open the system terminal"),
         ("f10", "quit", "Quit"),
 
-        Binding("ctrl+b", "toggle_files", "Toggle Panel", show=False),
+        Binding("ctrl+b", "toggle_files", "Toggle the files panel", show=False),
     ]
 
     # Properties
@@ -156,8 +156,8 @@ class NoonCommander(App):
 
     def get_system_commands(self, screen: Screen) -> Iterable[SystemCommand]:
         yield from super().get_system_commands(screen)  
-        yield SystemCommand("Git Pull", "Git Pull on the Current Folder", self.git_pull)
-        yield SystemCommand("Restart Apache", "Restart the Apache Service", self.restart_apache)
+        yield SystemCommand("1. Git Pull", "Git Pull on the Current Folder", self.git_pull)
+        yield SystemCommand("2. Restart Apache", "Restart the Apache Service", self.restart_apache)
     
     def __init__(self, folder: str, nano: bool) -> None:
         super().__init__()
@@ -175,6 +175,9 @@ class NoonCommander(App):
 
     def on_mount(self) -> None:
         self.query_one(DirectoryTree).focus()
+
+        header = self.query_one(Header)
+        header.icon = "🧿"
 
         # Set the default theme here
         self.theme = "ansi-dark"
@@ -240,8 +243,8 @@ class NoonCommander(App):
     """ FILES INFO VIEW EDIT """
 
     # F1 File Info
-    # def action_info_file(self) -> None:
-    #     pass
+    def action_show_help(self) -> None:
+        self.action_show_help_panel()
 
     # F2 New File
     def action_new_file(self) -> None:
