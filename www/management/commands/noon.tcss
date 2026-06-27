@@ -45,9 +45,10 @@ ConfirmModal > Container {
 }
 
 ConfirmModal > Container > Label {
-    width: 90%;
+    width: 100%;
     content-align-horizontal: center;
     margin-top: 1;
+    padding: 0 1;
 }
 
 ConfirmModal > Container > Horizontal {
@@ -77,9 +78,10 @@ PromptModal > Container {
 }
 
 PromptModal > Container > Label {
-    width: 90%;
+    width: 100%;
     content-align-horizontal: center;
     margin-top: 1;
+    padding: 0 1;
 }
 
 PromptModal > Container > Horizontal {
