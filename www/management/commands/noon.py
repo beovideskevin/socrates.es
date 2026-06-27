@@ -88,15 +88,17 @@ class PromptModal(ModalScreen[str]):
     """ A prompt modal to input the path for the copy or move operations. """
 
     prompt_text: str = ""
+    file_name: str = ""
 
-    def __init__(self, prompt_text: str) -> None:
+    def __init__(self, prompt_text: str, file_name: str) -> None:
         super().__init__()
         self.prompt_text = prompt_text
+        self.file_name = file_name
 
     def compose(self) -> ComposeResult:
         with Container():
             yield Label(self.prompt_text)
-            yield Input()
+            yield Input(value=self.file_name)
             with Horizontal():
                 yield Button("Cancel", id="cancel", variant="error")
                 yield Button("Ok", id="ok", variant="success")
@@ -134,19 +136,19 @@ class NoonCommander(App):
     # Keybindings
     BINDINGS = [
         ("f1", "show_help", "Help"),
-        ("f2", "new_file", "New"),
-        ("f3", "view_file", "View"),
-        ("f4", "edit_file", "Edit"),
+        ("f2", "new_file", "New File"),
+        ("f3", "view_file", "View File"),
+        ("f4", "edit_file", "Edit File"),
 
-        ("f5", "copy_file", "Copy"),
-        ("f6", "move_file", "Move"),
-        ("f7", "run", "Run"),
-        ("f8", "delete_file", "Delete"),
+        ("f5", "copy_file", "Copy File"),
+        ("f6", "move_file", "Move File"),
+        ("f7", "make_dir", "New Dir"),
+        ("f8", "delete_file", "Delete File"),
 
-        Binding("ctrl+o", "open_terminal", "Terminal", show=False),
-        ("f9", "open_terminal", "Terminal"),
+        ("f9", "run_file", "Run File"),
         ("f10", "quit", "Quit"),
 
+        Binding("ctrl+o", "open_terminal", "Open Terminal", show=False),
         Binding("ctrl+b", "toggle_files", "Toggle Panel", show=False),
     ]
 
@@ -248,6 +250,12 @@ class NoonCommander(App):
         """Called in response to key binding."""
         self.show_tree = not self.show_tree
 
+    # Ctrl+o Open Terminal
+    def action_open_terminal(self) -> None:
+        """ Open terminal """
+        self.run_command(["bash"])
+            
+
     """ FILES INFO VIEW EDIT """
 
     # F1 File Info
@@ -257,7 +265,7 @@ class NoonCommander(App):
     # F2 New File
     def action_new_file(self) -> None:
         """ Create a new file """
-        self.push_screen(PromptModal("Enter new file name:"), self.new_file)
+        self.push_screen(PromptModal("Enter new file name:", self.folder), self.new_file)
 
     # F3 View File
     def action_view_file(self) -> None:
@@ -287,16 +295,15 @@ class NoonCommander(App):
 
     # F5 Copy File
     def action_copy_file(self) -> None:
-        self.push_screen(PromptModal("Copy file to folder:"), self.copy_file)
+        self.push_screen(PromptModal("Copy file to path:", self.path), self.copy_file)
 
     # F6 Move File
     def action_move_file(self) -> None:
-        self.push_screen(PromptModal("Move file to folder:"), self.move_file)
+        self.push_screen(PromptModal("Move file to path:", self.path), self.move_file)
 
-    # F7 Run File
-    def action_run(self) -> None:
-        """ Run a file """
-        self.push_screen(PromptModal("Run with the arguments:"), self.exec_file)
+    # F7 Make Dir
+    def action_make_dir(self) -> None:
+        self.push_screen(PromptModal("New folder name:", self.folder), self.make_dir)
 
     # F8 Delete File
     def action_delete_file(self) -> None:
@@ -305,10 +312,10 @@ class NoonCommander(App):
     """ TERMINAL  """
 
     # F9 Open Terminal
-    def action_open_terminal(self) -> None:
-        """ Open terminal """
-        self.run_command(["bash"])
-            
+    def action_run_file(self) -> None:
+        """ Run a file """
+        self.push_screen(PromptModal("Run with the arguments:", ""), self.exec_file)
+
     """ Command """
     
     def git_pull(self) -> None: 
@@ -412,7 +419,31 @@ class NoonCommander(App):
             self.notify("File moved successfully", severity="success")
             # refresh UI
             self.reload_tree()
+
+    def make_dir(self, result: str) -> None:
+        target_path = Path(result)
+        try:
+            target_path.mkdir(parents=True, exist_ok=True)
             
+        except PermissionError:
+            self.notify(f"Error: Permission denied when trying to create '{target_path}'.", severity="error")
+
+        except FileExistsError:
+            self.notify(f"Error: '{target_path}' already exists as a file, not a directory.", severity="error")
+        
+        except FileNotFoundError:
+            self.notify(f"Error: A parent directory could not be resolved.", severity="error")
+
+        except OSError as e:
+            self.notify(f"OS Error: {e}", severity="error")
+
+        except Exception as e:
+            self.notify(f"An unexpected error occurred: {e.strerror}", severity="error")
+
+        else:
+            self.notify("Folder created successfully", severity="success")
+            # refresh UI
+            self.reload_tree()
     
     def del_file(self) -> None:
         try:
