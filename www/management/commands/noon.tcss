@@ -1,0 +1,108 @@
+Screen {
+    &:inline {
+        height: 50vh;
+    }
+    layers: sidebar;
+}
+
+#tree-view {
+    display: none;
+    scrollbar-gutter: stable;
+    overflow: auto;
+    width: auto;
+    height: 100%;
+    dock: left;
+}
+
+NoonCommander.-show-tree #tree-view {
+    display: block;
+    max-width: 50%;
+}
+
+
+#code-view {
+    overflow: auto scroll;
+    min-width: 100%;
+    hatch: right $panel;
+}
+
+#code {
+    width: auto;
+    padding: 0 1;
+    background: $surface; 
+}
+
+/******* Confirm *********/
+ConfirmModal {
+    align: center middle;
+}
+
+ConfirmModal > Container {
+    width: auto;
+    height: auto;
+    border: thick $background 80%;
+    background: $surface;
+}
+
+ConfirmModal > Container > Label {
+    width: 100%;
+    content-align-horizontal: center;
+    margin-top: 1;
+}
+
+ConfirmModal > Container > Horizontal {
+    width: auto;
+    height: auto;
+}
+
+ConfirmModal > Container > Horizontal > Button {
+    margin: 2 4;
+}
+
+PromptModal > Container > Input {
+    margin-top: 1;
+    width: 44;
+}
+
+/******* Prompt *********/
+PromptModal {
+    align: center middle;
+}
+
+PromptModal > Container {
+    width: auto;
+    height: auto;
+    border: thick $background 80%;
+    background: $surface;
+}
+
+PromptModal > Container > Label {
+    width: 100%;
+    content-align-horizontal: center;
+    margin-top: 1;
+}
+
+PromptModal > Container > Horizontal {
+    width: auto;
+    height: auto;
+}
+
+PromptModal > Container > Horizontal > Button {
+    margin: 2 4;
+}
+
+PromptModal > Container > Input {
+    margin-top: 1;
+    width: 44;
+}
+
+/******* Toast *********/
+
+Toast {
+    margin: 1;
+    padding: 1;
+}
+
+ToastRack {
+    align: right top;
+}
