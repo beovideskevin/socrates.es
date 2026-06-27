@@ -145,7 +145,8 @@ class NoonCommander(App):
     # Properties
     show_tree = var(True)
     path: reactive[str | None] = reactive(None)
-    folder: str = ""
+    folder: str = "."
+    editor: str = "vim"
 
     """
     
@@ -158,9 +159,10 @@ class NoonCommander(App):
         yield SystemCommand("Git Pull", "Git Pull on the Current Folder", self.git_pull)
         yield SystemCommand("Restart Apache", "Restart the Apache Service", self.restart_apache)
     
-    def __init__(self, folder: str) -> None:
+    def __init__(self, folder: str, nano: bool) -> None:
         super().__init__()
         self.folder = "./" if folder is None else folder
+        self.editor = "nano" if nano else "vim"
 
     def compose(self) -> ComposeResult:
         """Compose our UI."""
@@ -302,7 +304,7 @@ class NoonCommander(App):
         self.run_command(["git", "pull"])
         
     def restart_apache(self) -> None: 
-        self.run_command(["sudo", "systemctl",  "stop", "apache2"])
+        self.run_command(["sudo", "/opt/bitnami/ctlscript.sh",  "restart", "apache"])
         
     """ 
     
@@ -425,11 +427,11 @@ class Command(BaseCommand):
         parser.add_argument("folder", type=str, help="The working folder")
 
         # 2. Named/Optional argument (Flag)
-        # parser.add_argument(
-        #     "--what",
-        #     action="store_true",
-        #     help="what is this flag for?",
-        # )
+        parser.add_argument(
+            "--nano",
+            action="store_true",
+            help="Use nano instead of vim as the default editor",
+        )
 
     def handle(self, *args, **options):
         # Retrieve values from options dictionary
@@ -437,4 +439,5 @@ class Command(BaseCommand):
         # is_what = options["what"]
 
         folder = options["folder"]
-        NoonCommander(folder).run()
+        nano = options["nano"]
+        NoonCommander(folder, nano).run()
