@@ -247,7 +247,10 @@ class NoonCommander(App):
     def action_new_file(self) -> None:
         """ Create a new file """
         with self.suspend():
-            subprocess.run(["vim", "-c", "startinsert"], cwd=self.folder)
+            if self.editor == "nano":
+                subprocess.run(["nano", self.path])
+            else:
+                subprocess.run(["vim", "-c", "startinsert"], cwd=self.folder)
 
         # refresh UI
         self.reload_tree()
@@ -256,7 +259,10 @@ class NoonCommander(App):
     def action_view_file(self) -> None:
         """ View a file """
         with self.suspend():
-            subprocess.run(["vim", self.path])
+            if self.editor == "nano":
+                subprocess.run(["nano", self.path])
+            else:
+                subprocess.run(["vim", self.path])
 
         # refresh UI
         self.reload_tree()
@@ -265,7 +271,10 @@ class NoonCommander(App):
     def action_edit_file(self) -> None:
         """ Edit a file """
         with self.suspend():
-            subprocess.run(["vim", "-c", "startinsert", self.path])
+            if self.editor == "nano":
+                subprocess.run(["nano", self.path])
+            else:
+                subprocess.run(["vim", "-c", "startinsert", self.path])
 
         # refresh UI
         self.reload_tree()
