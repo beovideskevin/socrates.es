@@ -45,7 +45,7 @@ ConfirmModal > Container {
 }
 
 ConfirmModal > Container > Label {
-    width: 900%;
+    width: 90%;
     content-align-horizontal: center;
     margin-top: 1;
 }
