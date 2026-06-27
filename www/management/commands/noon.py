@@ -5,19 +5,18 @@ Run with:
 
     python manager.py noon PATH
 """
+# this doesn't work on django or windows:
+from __future__ import annotations
+# use this in windows:
+# from collections.abc import Iterable
 
 from django.core.management.base import BaseCommand, CommandError
 
 # You can import your models or utilities here
 # from your_app.models import MyModel
 
-# this doesn't work on django or windows:
-from __future__ import annotations
-# use this in windows:
-# from collections.abc import Iterable
 import shutil
 import subprocess
-import sys
 import os
 # these two dont work on windows:
 import pwd
