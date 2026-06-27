@@ -302,7 +302,7 @@ class NoonCommander(App):
         self.run_command(["git", "pull"])
         
     def restart_apache(self) -> None: 
-        self.run_command(["systemctl",  "stop", "apache2"])
+        self.run_command(["sudo", "systemctl",  "stop", "apache2"])
         
     """ 
     
