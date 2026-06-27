@@ -25,7 +25,7 @@ import stat
 from datetime import datetime
 from pathlib import Path
 from typing import Callable
-from rich.traceback import Traceback
+# from rich.traceback import Traceback
 from textual import on
 from textual.app import App, ComposeResult, Binding, SystemCommand
 from textual.containers import Container, VerticalScroll, Horizontal
@@ -428,7 +428,7 @@ class NoonCommander(App):
             self.notify("File deleted successfully", severity="success")
             # refresh UI
             self.reload_tree()
-            
+
     # F9 Open Terminal
     def action_run_file(self) -> None:
         """ Run a file """
