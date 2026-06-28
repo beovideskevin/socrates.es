@@ -1,11 +1,11 @@
 Header {
-    padding: 0 0 0 1;
-    height: 2; 
+    height: 1; 
+    background: $surface
 }
 
 Footer {
-    padding: 1 0 0 0;
-    height: 2; 
+    height: 1; 
+    background: $surface
 }
 
 Screen {
