@@ -224,24 +224,8 @@ class NoonCommander(App):
 
     def watch_path(self, path: str | None) -> None:
         """Called when path changes."""
-        code_view = self.query_one("#code", Static)
-        if path is None:
-            self.title = "NoonCommander"
-            self.sub_title = ""
-            code_view.update("")
-            return
-        try:
-            code = Path(path).read_text(encoding="utf-8")
-            syntax = highlight(code, path=path)
-        except Exception:
-            # code_view.update(Traceback(theme="github-dark", width=None))
-            self.sub_title = path
-            self.sub_title = "Can not read this file type"
-            code_view.update("")
-        else:
-            code_view.update(syntax)
-            self.query_one("#code-view").scroll_home(animate=False)
-            self.updateSubTitle(path)
+        folder_path = Path(path).parent
+        self.folder = str(folder_path)
 
     """ 
     
@@ -284,6 +268,26 @@ class NoonCommander(App):
     # F3 View File
     def action_view_file(self) -> None:
         """ View a file """
+        code_view = self.query_one("#code", Static)
+        if self.path is None:
+            self.title = "NoonCommander"
+            self.sub_title = ""
+            code_view.update("")
+            return
+        try:
+            code = Path(self.path).read_text(encoding="utf-8")
+            syntax = highlight(code, path=self.path)
+        except Exception:
+            # code_view.update(Traceback(theme="github-dark", width=None))
+            self.sub_title = self.path
+            self.sub_title = "Can not read this file type"
+            code_view.update("")
+        else:
+            code_view.update(syntax)
+            self.query_one("#code-view").scroll_home(animate=False)
+            self.updateSubTitle(self.path)
+
+        """ 
         with self.suspend():
             if self.editor == "nano":
                 subprocess.run(["nano", self.path])
@@ -292,6 +296,7 @@ class NoonCommander(App):
 
         # refresh UI
         self.reload_tree()
+        """
 
     # F4 Edit File
     def action_edit_file(self) -> None:
