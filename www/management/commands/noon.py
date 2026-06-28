@@ -224,8 +224,9 @@ class NoonCommander(App):
 
     def watch_path(self, path: str | None) -> None:
         """Called when path changes."""
-        folder_path = Path(path).parent
-        self.folder = str(folder_path)
+        if path:
+            folder_path = Path(path).parent
+            self.folder = str(folder_path)
 
     """ 
     
