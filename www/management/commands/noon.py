@@ -191,7 +191,7 @@ class NoonCommander(App):
         header.icon = ""
 
         # Set the default theme here
-        self.theme = "ansi-dark"
+        self.theme = "textual-dark"
 
         # Theme change handler
         def theme_change(_signal) -> None:
