@@ -1,11 +1,11 @@
 Header {
     height: 1; 
-    background: $surface
+    background: $panel
 }
 
 Footer {
     height: 1; 
-    background: $surface
+    background: $panel
 }
 
 Screen {
