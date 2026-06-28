@@ -481,7 +481,7 @@ class NoonCommander(App):
         group_name = grp.getgrgid(gid).gr_name
 
         self.title = f"{path}"
-        self.sub_title =  f"Details: {string_perms} {owner_name} {group_name} {size} {readable_time}"
+        self.sub_title =  f"{owner_name} {group_name} {string_perms} {size} {readable_time}"
 
     def get_readable_size(self, path):
         size_bytes = os.path.getsize(path)
