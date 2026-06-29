@@ -42,6 +42,7 @@ NoonCommander.-show-tree #tree-view {
 }
 
 /******* Confirm *********/
+
 ConfirmModal {
     align: center middle;
 }
@@ -75,6 +76,7 @@ ConfirmModal > Container > Input {
 }
 
 /******* Prompt *********/
+
 PromptModal {
     align: center middle;
 }
@@ -118,3 +120,22 @@ ToastRack {
     align: right top;
 }
 
+/******* Sidebar *********/
+
+Sidebar {
+    width: 30;
+    layer: sidebar; 
+    dock: right;
+    offset-x: 100%;
+    background: $background;
+    border-left: vkey $primary;
+    transition: offset 200ms;
+
+    &.-visible {
+        offset-x: 0;
+    }
+
+    & > Vertical {
+        margin: 1 2;
+    }
+}

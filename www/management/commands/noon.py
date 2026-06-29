@@ -28,11 +28,12 @@ from typing import Callable
 # from rich.traceback import Traceback
 from textual import on
 from textual.app import App, ComposeResult, Binding, SystemCommand
-from textual.containers import Container, VerticalScroll, Horizontal
+from textual.containers import Container, VerticalScroll, Horizontal, Vertical
 from textual.highlight import highlight
 from textual.reactive import reactive, var
 from textual.widgets import DirectoryTree, Footer, Header, Static, Label, Input, Button
 from textual.screen import Screen, ModalScreen
+from textual.widget import Widget
 
 """
 
@@ -124,6 +125,25 @@ class PromptModal(ModalScreen[str]):
         else:
             self.dismiss(value)
 
+""" 
+
+Sidebar with the file info
+
+"""
+class Sidebar(Widget):
+    """ Sidebar for the preview """
+
+    # Create a reactive attribute for your sidebar label text
+    file_preview = reactive("")
+
+    def compose(self) -> ComposeResult:
+        with Vertical():
+            yield Label("", id="sidebar-label")
+
+    # This watch method triggers automatically whenever label_text updates
+    def watch_file_preview(self, preview: str) -> None:
+        self.query_one("#sidebar-label", Label).update(preview)
+
 """
 
 Main App
@@ -159,6 +179,7 @@ class NoonCommander(App):
     path: reactive[str | None] = reactive(None)
     folder: str = "."
     editor: str = "vim"
+    show_sidebar = reactive(False)
 
     """
     
@@ -182,6 +203,7 @@ class NoonCommander(App):
             yield DirectoryTree(self.folder, id="tree-view")
             with VerticalScroll(id="code-view"):
                 yield Static(id="code", expand=True)
+        yield Sidebar(id="preview")
         yield Footer()
 
     def on_mount(self) -> None:
@@ -227,6 +249,20 @@ class NoonCommander(App):
         if path:
             folder_path = Path(path).parent
             self.folder = str(folder_path)
+            sidebar = self.query_one("#preview", Sidebar)
+
+            try:
+                code = Path(path).read_text(encoding="utf-8")
+            except Exception:
+                sidebar.file_preview = "";
+                self.show_sidebar = False
+            else:
+                sidebar.file_preview = code;
+                self.show_sidebar = True
+
+    def watch_show_sidebar(self, show_sidebar: bool) -> None:
+        """Set or unset visible class when reactive changes."""
+        self.query_one(Sidebar).set_class(show_sidebar, "-visible")
 
     """ 
     
@@ -287,17 +323,6 @@ class NoonCommander(App):
             code_view.update(syntax)
             self.query_one("#code-view").scroll_home(animate=False)
             self.updateSubTitle(self.path)
-
-        """ 
-        with self.suspend():
-            if self.editor == "nano":
-                subprocess.run(["nano", self.path])
-            else:
-                subprocess.run(["vim", self.path])
-
-        # refresh UI
-        self.reload_tree()
-        """
 
     # F4 Edit File
     def action_edit_file(self) -> None:
@@ -550,10 +575,6 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        # Retrieve values from options dictionary
-        # name = options["name"]
-        # is_what = options["what"]
-
         folder = options["folder"]
         nano = options["nano"]
         NoonCommander(folder, nano).run()
