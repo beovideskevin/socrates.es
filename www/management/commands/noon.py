@@ -139,6 +139,12 @@ class Sidebar(Widget):
     def compose(self) -> ComposeResult:
         with Vertical():
             yield Label("", id="sidebar-label")
+            yield Button("Close", id="close", variant="primary")
+    
+
+    @on(Button.Pressed, "#close")
+    def cancel(self) -> None:
+        self.app.show_sidebar = False
 
     # This watch method triggers automatically whenever label_text updates
     def watch_file_preview(self, preview: str) -> None:
@@ -180,6 +186,7 @@ class NoonCommander(App):
     folder: str = "."
     editor: str = "vim"
     show_sidebar = reactive(False)
+    show_help = reactive(False)
 
     """
     
@@ -264,6 +271,12 @@ class NoonCommander(App):
         """Set or unset visible class when reactive changes."""
         self.query_one(Sidebar).set_class(show_sidebar, "-visible")
 
+    def watch_show_help(self, show_help: bool) -> None:
+        if show_help:
+            self.action_show_help_panel()
+        else:
+            self.action_hide_help_panel()
+
     """ 
     
     Actions 
@@ -283,7 +296,7 @@ class NoonCommander(App):
     # F1 Help
     def action_show_help(self) -> None:
         """ Help """
-        self.action_show_help_panel()
+        self.show_help = not self.show_help
 
     """ File Actions """
 
