@@ -336,7 +336,7 @@ class NoonCommander(App):
         else:
             code_view.update(syntax)
             self.query_one("#code-view").scroll_home(animate=False)
-            self.title = f"{path}"
+            self.title = f"{self.path}"
             self.sub_title = self.updateSubTitle(self.path)
 
     # F4 Edit File
