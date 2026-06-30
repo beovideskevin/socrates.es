@@ -22,6 +22,7 @@ import os
 import pwd
 import grp
 import stat
+import html
 from datetime import datetime
 from pathlib import Path
 from typing import Callable
@@ -252,7 +253,14 @@ class NoonCommander(App):
             self.folder = str(folder_path)
             sidebar = self.query_one("#preview", Sidebar)
             try:
-                code = Path(path).read_text(encoding="utf-8")
+                # raw_text = Path(path).read_text(encoding="utf-8")
+                file_content = Path(path)
+                with file_content.open(encoding="utf-8") as file:
+                    # Read the first 50 lines and join them instantly
+                    raw_text = "".join(islice(file, 50))
+                safe_html_content = html.escape(raw_text)
+                # Wrap inside a preformatted text tag to preserve line breaks and spaces
+                code = f"<pre>{safe_html_content}</pre>"
             except Exception:
                 sidebar.file_preview = "";
                 self.show_sidebar = False
