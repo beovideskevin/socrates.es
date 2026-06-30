@@ -305,10 +305,10 @@ class NoonCommander(App):
     # F3 View File
     def action_view_file(self) -> None:
         """ View a file """
-        self.show_sidebar = False
         self.view_file()
 
     def view_file(self) -> None:
+        self.show_sidebar = False
         code_view = self.query_one("#code", Static)
         if self.path is None:
             self.title = "NoonCommander"
@@ -497,9 +497,12 @@ class NoonCommander(App):
     """
 
     def set_preview(self, path: str) -> None:
+        if path is None:
+            self.show_sidebar = False
+            return
+        
         sidebar = self.query_one("#preview", Sidebar)
         try:
-            # raw_text = Path(path).read_text(encoding="utf-8")
             file_content = Path(path)
             with file_content.open(encoding="utf-8") as file:
                 # Read the first 50 lines and join them instantly

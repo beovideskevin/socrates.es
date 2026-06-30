@@ -129,7 +129,6 @@ Sidebar {
     offset-x: 100%;
     background: $background;
     border-left: vkey $primary;
-    transition: offset 200ms;
 
     &.-visible {
         offset-x: 0;
