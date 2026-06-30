@@ -258,7 +258,7 @@ class NoonCommander(App):
                 file_content = Path(path)
                 with file_content.open(encoding="utf-8") as file:
                     # Read the first 50 lines and join them instantly
-                    code = "".join(islice(file, 40))
+                    code = "".join(islice(file, 60))
             except Exception:
                 sidebar.file_preview = "";
                 self.show_sidebar = False
