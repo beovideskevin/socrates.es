@@ -141,5 +141,6 @@ Sidebar {
 }
 
 Sidebar > Container > Vertical > Button {
-    bottom: 0;
+    dock: bottom;
+    width: 100%;
 }
