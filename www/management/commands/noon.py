@@ -140,11 +140,12 @@ class Sidebar(Widget):
 
     def compose(self) -> ComposeResult:
         with Vertical():
-            yield Label("", id="sidebar-label")
+            yield Static(id="preview", expand=True)
+            # yield Label("", id="sidebar-label")
     
     # This watch method triggers automatically whenever label_text updates
     def watch_file_preview(self, preview: str) -> None:
-        self.query_one("#sidebar-label", Label).update(preview)
+        self.query_one("#preview", Static).update(preview)
 
 """
 
