@@ -138,8 +138,8 @@ class Sidebar(Widget):
 
     def compose(self) -> ComposeResult:
         with Vertical():
+            yield Button("x", id="close", variant="error")
             yield Label("", id="sidebar-label")
-            yield Button("Close", id="close", variant="primary")
     
 
     @on(Button.Pressed, "#close")
