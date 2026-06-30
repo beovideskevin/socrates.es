@@ -252,20 +252,7 @@ class NoonCommander(App):
         if path:
             folder_path = Path(path).parent
             self.folder = str(folder_path)
-            sidebar = self.query_one("#preview", Sidebar)
-            try:
-                # raw_text = Path(path).read_text(encoding="utf-8")
-                file_content = Path(path)
-                with file_content.open(encoding="utf-8") as file:
-                    # Read the first 50 lines and join them instantly
-                    code = "".join(islice(file, 60))
-            except Exception:
-                sidebar.file_preview = "";
-                self.show_sidebar = False
-            else:
-                self.show_sidebar = True
-                details = self.updateSubTitle(self.path)
-                sidebar.file_preview = f"{path}\n{details}\n\n{code}";
+            self.set_preview(path)
 
     def watch_show_sidebar(self, show_sidebar: bool) -> None:
         """Set or unset visible class when reactive changes."""
@@ -319,6 +306,9 @@ class NoonCommander(App):
     def action_view_file(self) -> None:
         """ View a file """
         self.show_sidebar = False
+        self.view_file()
+
+    def view_file(self) -> None:
         code_view = self.query_one("#code", Static)
         if self.path is None:
             self.title = "NoonCommander"
@@ -506,6 +496,22 @@ class NoonCommander(App):
     
     """
 
+    def set_preview(self, path: str) -> None:
+        sidebar = self.query_one("#preview", Sidebar)
+        try:
+            # raw_text = Path(path).read_text(encoding="utf-8")
+            file_content = Path(path)
+            with file_content.open(encoding="utf-8") as file:
+                # Read the first 50 lines and join them instantly
+                code = "".join(islice(file, 60))
+        except Exception:
+            self.show_sidebar = False
+            sidebar.file_preview = "";
+        else:
+            self.show_sidebar = True
+            details = self.updateSubTitle(self.path)
+            sidebar.file_preview = f"{path}\n{details}\n\n{code}";
+
     def updateSubTitle(self, path: str) -> str:
         # Get file size
         size = self.get_readable_size(path)
@@ -536,11 +542,7 @@ class NoonCommander(App):
             size_bytes /= 1024
 
     def reload_tree(self) -> None:
-        # hide sidebar
-        self.show_sidebar = False
-
-        # refresh current file
-        self.watch_path(self.path)
+        self.view_file()
 
         # refresh tree
         tree = self.query_one(DirectoryTree)
