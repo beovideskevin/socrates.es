@@ -259,9 +259,9 @@ class NoonCommander(App):
                 with file_content.open(encoding="utf-8") as file:
                     # Read the first 50 lines and join them instantly
                     raw_text = "".join(islice(file, 50))
-                safe_html_content = html.escape(raw_text)
+                code = html.escape(raw_text)
                 # Wrap inside a preformatted text tag to preserve line breaks and spaces
-                code = f"<pre>{safe_html_content}</pre>"
+                # code = f"<pre>{safe_html_content}</pre>"
             except Exception:
                 sidebar.file_preview = "";
                 self.show_sidebar = False
