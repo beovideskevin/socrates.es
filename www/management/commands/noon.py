@@ -265,7 +265,7 @@ class NoonCommander(App):
             else:
                 self.show_sidebar = True
                 details = self.updateSubTitle(self.path)
-                sidebar.file_preview = f"{path}\n{details}\n{code}";
+                sidebar.file_preview = f"{path}\n{details}\n\n{code}";
 
     def watch_show_sidebar(self, show_sidebar: bool) -> None:
         """Set or unset visible class when reactive changes."""
