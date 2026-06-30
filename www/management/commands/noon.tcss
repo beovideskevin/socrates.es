@@ -141,6 +141,10 @@ Sidebar {
 }
 
 Sidebar > Container > Vertical > Button {
-    dock: bottom;
-    width: 100%;
+    width: 3;
+    height: 1;
+    min-width: 0;
+    dock: top;    
+    align-horizontal: right;
+    margin: 0 1;
 }
