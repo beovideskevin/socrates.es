@@ -305,12 +305,16 @@ class NoonCommander(App):
     # F3 View File
     def action_view_file(self) -> None:
         """ View a file """
-        if self.path:
-            self.view_file()
+        self.view_file()
 
     def view_file(self) -> None:
         self.show_sidebar = False
         code_view = self.query_one("#code", Static)
+        if self.path is None:
+            self.title = "NoonCommander"
+            self.sub_title = ""
+            code_view.update("")
+            return
         try:
             code = Path(self.path).read_text(encoding="utf-8")
             syntax = highlight(code, path=self.path)
