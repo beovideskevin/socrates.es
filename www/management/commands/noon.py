@@ -138,14 +138,8 @@ class Sidebar(Widget):
 
     def compose(self) -> ComposeResult:
         with Vertical():
-            yield Button("x", id="close", variant="error")
             yield Label("", id="sidebar-label")
     
-
-    @on(Button.Pressed, "#close")
-    def cancel(self) -> None:
-        self.app.show_sidebar = False
-
     # This watch method triggers automatically whenever label_text updates
     def watch_file_preview(self, preview: str) -> None:
         self.query_one("#sidebar-label", Label).update(preview)
@@ -257,7 +251,6 @@ class NoonCommander(App):
             folder_path = Path(path).parent
             self.folder = str(folder_path)
             sidebar = self.query_one("#preview", Sidebar)
-
             try:
                 code = Path(path).read_text(encoding="utf-8")
             except Exception:
@@ -318,6 +311,7 @@ class NoonCommander(App):
     # F3 View File
     def action_view_file(self) -> None:
         """ View a file """
+        self.show_sidebar = False
         code_view = self.query_one("#code", Static)
         if self.path is None:
             self.title = "NoonCommander"
@@ -345,7 +339,7 @@ class NoonCommander(App):
                 subprocess.run(["nano", self.path])
             else:
                 subprocess.run(["vim", "-c", "startinsert", self.path])
-
+    
         # refresh UI
         self.reload_tree()
 
@@ -535,6 +529,9 @@ class NoonCommander(App):
             size_bytes /= 1024
 
     def reload_tree(self) -> None:
+        # hide sidebar
+        self.show_sidebar = False
+
         # refresh current file
         self.watch_path(self.path)
 

@@ -139,12 +139,3 @@ Sidebar {
         margin: 1 2;
     }
 }
-
-Sidebar > Vertical > Button {
-    width: 3;
-    height: 1;
-    min-width: 0;
-    dock: top;    
-    align-horizontal: right;
-    margin: 0 1;
-}
