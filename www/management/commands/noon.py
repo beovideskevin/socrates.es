@@ -25,6 +25,7 @@ import stat
 import html
 from datetime import datetime
 from pathlib import Path
+from itertools import islice
 from typing import Callable
 # from rich.traceback import Traceback
 from textual import on
