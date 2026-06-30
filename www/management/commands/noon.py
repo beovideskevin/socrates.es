@@ -263,8 +263,9 @@ class NoonCommander(App):
                 sidebar.file_preview = "";
                 self.show_sidebar = False
             else:
-                sidebar.file_preview = code;
                 self.show_sidebar = True
+                details = self.updateSubTitle(self.path)
+                sidebar.file_preview = f"{path}\n{details}\n{code}";
 
     def watch_show_sidebar(self, show_sidebar: bool) -> None:
         """Set or unset visible class when reactive changes."""
@@ -335,7 +336,8 @@ class NoonCommander(App):
         else:
             code_view.update(syntax)
             self.query_one("#code-view").scroll_home(animate=False)
-            self.updateSubTitle(self.path)
+            self.title = f"{path}"
+            self.sub_title = self.updateSubTitle(self.path)
 
     # F4 Edit File
     def action_edit_file(self) -> None:
@@ -504,7 +506,7 @@ class NoonCommander(App):
     
     """
 
-    def updateSubTitle(self, path: str) -> None:
+    def updateSubTitle(self, path: str) -> str:
         # Get file size
         size = self.get_readable_size(path)
 
@@ -524,8 +526,7 @@ class NoonCommander(App):
         owner_name = pwd.getpwuid(uid).pw_name
         group_name = grp.getgrgid(gid).gr_name
 
-        self.title = f"{path}"
-        self.sub_title =  f"{owner_name} {group_name} {string_perms} {size} {readable_time}"
+        return f"{owner_name} {group_name} {string_perms} {size} {readable_time}"
 
     def get_readable_size(self, path):
         size_bytes = os.path.getsize(path)
