@@ -140,7 +140,7 @@ Sidebar {
     }
 }
 
-Sidebar > Container > Vertical > Button {
+Sidebar > Vertical > Button {
     width: 3;
     height: 1;
     min-width: 0;
