@@ -140,8 +140,7 @@ class Sidebar(Widget):
 
     def compose(self) -> ComposeResult:
         with Vertical():
-            yield Static(id="preview", expand=True)
-            # yield Label("", id="sidebar-label")
+            yield Static(id="preview", expand=True, markup=False)
     
     # This watch method triggers automatically whenever label_text updates
     def watch_file_preview(self, preview: str) -> None:
@@ -206,7 +205,7 @@ class NoonCommander(App):
         with Container():
             yield DirectoryTree(self.folder, id="tree-view")
             with VerticalScroll(id="code-view"):
-                yield Static(id="code", expand=True)
+                yield Static(id="code", expand=True, markup=False)
         yield Sidebar(id="preview")
         yield Footer()
 
@@ -261,8 +260,6 @@ class NoonCommander(App):
                     # Read the first 50 lines and join them instantly
                     raw_text = "".join(islice(file, 50))
                 code = html.escape(raw_text)
-                # Wrap inside a preformatted text tag to preserve line breaks and spaces
-                # code = f"<pre>{safe_html_content}</pre>"
             except Exception:
                 sidebar.file_preview = "";
                 self.show_sidebar = False
