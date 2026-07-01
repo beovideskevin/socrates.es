@@ -21,7 +21,6 @@ import os
 # these two dont work on windows:
 import pwd
 import grp
-import stat
 import html
 from datetime import datetime
 from pathlib import Path
@@ -36,6 +35,7 @@ from textual.reactive import reactive, var
 from textual.widgets import DirectoryTree, Footer, Header, Static, Label, Input, Button
 from textual.screen import Screen, ModalScreen
 from textual.widget import Widget
+from textual.events import Click
 
 """
 
@@ -236,6 +236,9 @@ class NoonCommander(App):
         """Called when the user click a file in the directory tree."""
         event.stop()
         self.path = str(event.path)
+
+    def on_click(self, event: Click) -> None:
+        self.show_sidebar = False
 
     """ 
     
