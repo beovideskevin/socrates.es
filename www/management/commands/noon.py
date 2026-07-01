@@ -325,7 +325,6 @@ class NoonCommander(App):
             code_view.update("")
         else:
             code_view.update(syntax)
-            code_view.focus()
             self.query_one("#code-view").scroll_home(animate=False)
             self.title = f"{self.path}"
             self.sub_title = self.updateSubTitle(self.path)
