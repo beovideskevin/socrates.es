@@ -21,7 +21,7 @@ import os
 # these two dont work on windows:
 import pwd
 import grp
-import html
+import stat
 from datetime import datetime
 from pathlib import Path
 from itertools import islice
@@ -237,8 +237,8 @@ class NoonCommander(App):
         event.stop()
         self.path = str(event.path)
 
-    # def on_click(self, event: Click) -> None:
-    #     self.show_sidebar = False
+    def on_click(self, event: Click) -> None:
+        self.show_sidebar = False
 
     """ 
     
@@ -529,7 +529,7 @@ class NoonCommander(App):
         readable_time = datetime.fromtimestamp(file_stat.st_mtime)
         
         # Permissions
-        string_perms = file_stat.filemode(file_stat.st_mode)
+        string_perms = stat.filemode(file_stat.st_mode)
 
         # Extract numeric UID and GID
         uid = file_stat.st_uid
