@@ -529,7 +529,7 @@ class NoonCommander(App):
         readable_time = datetime.fromtimestamp(file_stat.st_mtime)
         
         # Permissions
-        string_perms = stat.filemode(file_stat.st_mode)
+        string_perms = file_stat.filemode(file_stat.st_mode)
 
         # Extract numeric UID and GID
         uid = file_stat.st_uid
