@@ -237,8 +237,8 @@ class NoonCommander(App):
         event.stop()
         self.path = str(event.path)
 
-    def on_click(self, event: Click) -> None:
-        self.show_sidebar = False
+    # def on_click(self, event: Click) -> None:
+    #     self.show_sidebar = False
 
     """ 
     
