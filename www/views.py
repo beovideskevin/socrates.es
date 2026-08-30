@@ -388,6 +388,11 @@ def contact(request):
 def subscribe(request):
     pass
 
+def quotes(request, slug=None):
+    if slug == None:
+        return redirect('/');
+    return redirect('/static/quotes/' + slug + '/dist/index.html') 
+
 def ar(request, slug=None):
     url = ("/" + slug) if slug is not None else ""
     return render(request, "ar.html", {

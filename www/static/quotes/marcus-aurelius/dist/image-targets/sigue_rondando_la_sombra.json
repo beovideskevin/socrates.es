@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "left": 135,
+    "top": 0,
+    "width": 810,
+    "height": 1080,
+    "isRotated": true,
+    "originalWidth": 1080,
+    "originalHeight": 1080
+  },
+  "imagePath": "image-targets/sigue_rondando_la_sombra_luminance.png",
+  "metadata": null,
+  "name": "sigue_rondando_la_sombra",
+  "resources": {
+    "originalImage": "sigue_rondando_la_sombra_original.png",
+    "croppedImage": "sigue_rondando_la_sombra_cropped.png",
+    "thumbnailImage": "sigue_rondando_la_sombra_thumbnail.png",
+    "luminanceImage": "sigue_rondando_la_sombra_luminance.png"
+  },
+  "created": 1785100590534,
+  "updated": 1785100590534
+}

@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "left": 135,
+    "top": 0,
+    "width": 810,
+    "height": 1080,
+    "isRotated": true,
+    "originalWidth": 1080,
+    "originalHeight": 1080
+  },
+  "imagePath": "image-targets/pimentel-corto-4_luminance.png",
+  "metadata": null,
+  "name": "pimentel-corto-4",
+  "resources": {
+    "originalImage": "pimentel-corto-4_original.png",
+    "croppedImage": "pimentel-corto-4_cropped.png",
+    "thumbnailImage": "pimentel-corto-4_thumbnail.png",
+    "luminanceImage": "pimentel-corto-4_luminance.png"
+  },
+  "created": 1786922412552,
+  "updated": 1786922412552
+}

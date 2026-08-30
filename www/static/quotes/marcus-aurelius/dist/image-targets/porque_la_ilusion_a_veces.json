@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "left": 135,
+    "top": 0,
+    "width": 810,
+    "height": 1080,
+    "isRotated": true,
+    "originalWidth": 1080,
+    "originalHeight": 1080
+  },
+  "imagePath": "image-targets/porque_la_ilusion_a_veces_luminance.png",
+  "metadata": null,
+  "name": "porque_la_ilusion_a_veces",
+  "resources": {
+    "originalImage": "porque_la_ilusion_a_veces_original.png",
+    "croppedImage": "porque_la_ilusion_a_veces_cropped.png",
+    "thumbnailImage": "porque_la_ilusion_a_veces_thumbnail.png",
+    "luminanceImage": "porque_la_ilusion_a_veces_luminance.png"
+  },
+  "created": 1785100567082,
+  "updated": 1785100567082
+}
