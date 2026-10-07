@@ -1,35 +1,23 @@
-{% extends "layouts/base.html" %}
-{% load static %}
-
-{% block meta %}
-{% include 'partials/meta.html' %}
-{% endblock %}
-
-{% block header %}
-<link rel="canonical" content="https://www.socrates.es/thesis" />
-{% endblock %}
-
-{% block content %}
+{% extends "layouts/base.html" %} {% load static %} {% block meta %} {% include
+'partials/meta.html' %} {% endblock %} {% block header %}
+<link rel="canonical" content="https://www.socrates.es/tesis" />
+{% endblock %} {% block content %}
 <!-- Content -->
 <div id="content">
-    <div class="inner">
-        {% include 'partials/list.html' %}
-
-        {% include 'partials/pagination.html' %}
-    </div>
+  <div class="inner">
+    {% include 'partials/list.html' %} {% include 'partials/pagination.html' %}
+  </div>
 </div>
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
 <script src="{% static 'assets/js/img.js' %}"></script>
-    
+
 <script
-    type="module"
-    src="https://agent.d-id.com/v1/index.js"
-    data-name="did-agent"
-    data-mode="fabio"
-    data-client-key="Z29vZ2xlLW9hdXRoMnwxMDg1ODcyOTQ5NjA4ODIzODI2NDE6dlpNRzJBWDJ4VTg1cGN4MGhQWVVF"
-    data-agent-id="agt_rJ5RYz5h"
-    data-monitor="true">
-</script>
+  type="module"
+  src="https://agent.d-id.com/v1/index.js"
+  data-name="did-agent"
+  data-mode="fabio"
+  data-client-key="Z29vZ2xlLW9hdXRoMnwxMDg1ODcyOTQ5NjA4ODIzODI2NDE6dlpNRzJBWDJ4VTg1cGN4MGhQWVVF"
+  data-agent-id="agt_rJ5RYz5h"
+  data-monitor="true"
+></script>
 {% endblock %}

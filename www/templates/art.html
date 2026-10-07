@@ -1,27 +1,14 @@
-                                                          {% extends "layouts/base.html" %}
-{% load static %}
-
-{% block meta %}
-{% include 'partials/meta.html' %}
-{% endblock %}
-
-{% block header %}
-<link rel="canonical" content="https://www.socrates.es/art" />
-{% endblock %}
-
-{% block content %}
+{% extends "layouts/base.html" %} {% load static %} {% block meta %} {% include
+'partials/meta.html' %} {% endblock %} {% block header %}
+<link rel="canonical" content="https://www.socrates.es/arte" />
+{% endblock %} {% block content %}
 <!-- Content -->
 <div id="content">
-    <div class="inner">
-        {% include 'partials/list.html' %}
-
-        {% if posts %}
-            {% include 'partials/pagination.html' %}
-        {% endif %}
-    </div>
+  <div class="inner">
+    {% include 'partials/list.html' %} {% if posts %} {% include
+    'partials/pagination.html' %} {% endif %}
+  </div>
 </div>
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
 <script src="{% static 'assets/js/img.js' %}"></script>
 {% endblock %}
