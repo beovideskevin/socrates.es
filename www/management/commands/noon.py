@@ -18,10 +18,13 @@ from django.core.management.base import BaseCommand, CommandError
 import shutil
 import subprocess
 import os
-# these two dont work on windows:
-import pwd
-import grp
 import stat
+try:
+    import pwd
+    import grp
+except ImportError:
+    pwd = None
+    grp = None
 from datetime import datetime
 from pathlib import Path
 from itertools import islice
@@ -32,10 +35,9 @@ from textual.app import App, ComposeResult, Binding, SystemCommand
 from textual.containers import Container, VerticalScroll, Horizontal, Vertical
 from textual.highlight import highlight
 from textual.reactive import reactive, var
-from textual.widgets import DirectoryTree, Footer, Header, Static, Label, Input, Button
+from textual.widgets import DirectoryTree, Footer, Header, Static, Label, Input, Button, Rule
 from textual.screen import Screen, ModalScreen
 from textual.widget import Widget
-from textual.events import Click
 
 """
 
@@ -135,14 +137,18 @@ Sidebar with the file info
 class Sidebar(Widget):
     """ Sidebar for the preview """
 
-    # Create a reactive attribute for your sidebar label text
+    file_details = reactive("")
     file_preview = reactive("")
 
     def compose(self) -> ComposeResult:
         with Vertical():
+            yield Static(id="details", markup=False)
+            yield Rule()
             yield Static(id="preview", expand=True, markup=False)
     
-    # This watch method triggers automatically whenever label_text updates
+    def watch_file_details(self, details: str) -> None:
+        self.query_one("#details", Static).update(details)
+
     def watch_file_preview(self, preview: str) -> None:
         self.query_one("#preview", Static).update(preview)
 
@@ -213,7 +219,7 @@ class NoonCommander(App):
         self.query_one(DirectoryTree).focus()
 
         header = self.query_one(Header)
-        header.icon = ""
+        header.icon = "☰"
 
         # Set the default theme here
         self.theme = "textual-dark"
@@ -236,9 +242,6 @@ class NoonCommander(App):
         """Called when the user click a file in the directory tree."""
         event.stop()
         self.path = str(event.path)
-
-    def on_click(self, event: Click) -> None:
-        self.show_sidebar = False
 
     """ 
     
@@ -273,19 +276,25 @@ class NoonCommander(App):
     
     """
 
+    def close_sidebar(self) -> None:
+        self.show_sidebar = False
+
     # Ctrl+b Toggle Panel
     def action_toggle_files(self) -> None:
         """ Toggle the directory tree """
+        self.close_sidebar()
         self.show_tree = not self.show_tree
 
     # Ctrl+o Open Terminal
     def action_open_terminal(self) -> None:
         """ Open terminal """
+        self.close_sidebar()
         self.run_command(["bash"])
             
     # F1 Help
     def action_show_help(self) -> None:
         """ Help """
+        self.close_sidebar()
         self.show_help = not self.show_help
 
     """ File Actions """
@@ -293,6 +302,7 @@ class NoonCommander(App):
     # F2 New File
     def action_new_file(self) -> None:
         """ Create a new file """
+        self.close_sidebar()
         self.push_screen(PromptModal("Enter new file name:", self.folder), self.new_file)
     
     def new_file(self, result: str) -> None:
@@ -308,6 +318,7 @@ class NoonCommander(App):
     # F3 View File
     def action_view_file(self) -> None:
         """ View a file """
+        self.close_sidebar()
         self.view_file()
 
     def view_file(self) -> None:
@@ -347,6 +358,7 @@ class NoonCommander(App):
     # F5 Copy File
     def action_copy_file(self) -> None:
         """ Copy file """
+        self.close_sidebar()
         if self.path:
             self.push_screen(PromptModal("Copy file to path:", self.path), self.copy_file)
 
@@ -380,6 +392,7 @@ class NoonCommander(App):
     # F6 Move File
     def action_move_file(self) -> None:
         """ Move file """
+        self.close_sidebar()
         if self.path:
             self.push_screen(PromptModal("Move file to path:", self.path), self.move_file)
     
@@ -413,6 +426,7 @@ class NoonCommander(App):
     # F7 Make Dir
     def action_make_dir(self) -> None:
         """ Make dir """
+        self.close_sidebar()
         if self.folder:
             self.push_screen(PromptModal("New folder name:", self.folder), self.make_dir)
 
@@ -444,6 +458,7 @@ class NoonCommander(App):
     # F8 Delete File
     def action_delete_file(self) -> None:
         """ Delete file """
+        self.close_sidebar()
         if self.path:
             self.push_screen(ConfirmModal(self.path, self.del_file))
 
@@ -474,6 +489,7 @@ class NoonCommander(App):
     # F9 Open Terminal
     def action_run_file(self) -> None:
         """ Run a file """
+        self.close_sidebar()
         if self.path:
             self.push_screen(PromptModal("Run with the arguments:", ""), self.exec_file)
     
@@ -488,9 +504,11 @@ class NoonCommander(App):
     """
     
     def git_pull(self) -> None: 
+        self.close_sidebar()
         self.run_command(["git", "pull"])
         
     def restart_apache(self) -> None: 
+        self.close_sidebar()
         self.run_command(["sudo", "/opt/bitnami/ctlscript.sh",  "restart", "apache"])
         
     """ 
@@ -512,11 +530,13 @@ class NoonCommander(App):
                 code = "".join(islice(file, 60))
         except Exception:
             self.show_sidebar = False
-            sidebar.file_preview = "";
+            sidebar.file_details = ""
+            sidebar.file_preview = ""
         else:
             self.show_sidebar = True
             details = self.updateSubTitle(self.path)
-            sidebar.file_preview = f"{path}\n{details}\n\n{code}";
+            sidebar.file_details = f"{path}\n{details}"
+            sidebar.file_preview = code;
 
     def updateSubTitle(self, path: str) -> str:
         # Get file size
@@ -535,8 +555,12 @@ class NoonCommander(App):
         uid = file_stat.st_uid
         gid = file_stat.st_gid
         # Resolve numeric IDs to actual names
-        owner_name = pwd.getpwuid(uid).pw_name
-        group_name = grp.getgrgid(gid).gr_name
+        if pwd is not None and grp is not None:
+            owner_name = pwd.getpwuid(uid).pw_name
+            group_name = grp.getgrgid(gid).gr_name
+        else:
+            owner_name = "unknown"
+            group_name = "unknown"
 
         return f"{owner_name} {group_name} {string_perms} {size} {readable_time}"
 

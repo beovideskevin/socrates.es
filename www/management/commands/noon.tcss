@@ -3,6 +3,10 @@ Header {
     background: $primary
 }
 
+HeaderIcon {
+    width: 5;
+}
+
 Footer {
     height: 1; 
     background: $primary
@@ -39,6 +43,10 @@ NoonCommander.-show-tree #tree-view {
     width: auto;
     padding: 0 1;
     background: $surface; 
+}
+
+#preview {
+    padding: 1 0;
 }
 
 /******* Confirm *********/
@@ -124,17 +132,25 @@ ToastRack {
 
 Sidebar {
     width: 80;
+    height: 100%;
     layer: sidebar; 
     dock: right;
     offset-x: 100%;
-    background: $background;
-    border-left: vkey $primary;
+    background: $surface;
+    color: $foreground;
+    padding: 1 2;
 
     &.-visible {
         offset-x: 0;
     }
 
     & > Vertical {
-        margin: 1 2;
+        height: 100%;
+        margin: 0;
     }
+}
+
+Sidebar > Vertical > Rule {
+    color: $primary;
+    margin: 1 0;
 }

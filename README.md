@@ -101,6 +101,65 @@ python manage.py runserver
 Open <http://127.0.0.1:8000/> in your browser. The administration area is
 available at <http://127.0.0.1:8000/admin/>.
 
+## Noon Commander
+
+The project includes **Noon Commander**, a Textual terminal file manager
+available as a Django management command. It lets you browse the project,
+preview files, edit or run files, and perform common file operations from the
+terminal.
+
+Run it from the project root after activating the virtual environment:
+
+Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+python manage.py noon .
+```
+
+You can open a specific folder by passing its path:
+
+```powershell
+python manage.py noon "C:\path\to\folder"
+```
+
+On macOS/Linux:
+
+```bash
+source .venv/bin/activate
+python manage.py noon .
+```
+
+Use `--nano` to configure the commander to use Nano instead of Vim when
+editing files:
+
+```bash
+python manage.py noon . --nano
+```
+
+To see all command options:
+
+```bash
+python manage.py help noon
+```
+
+![Noon Commander showing the project README](docs/noon-commander-readme.png)
+
+The main keyboard shortcuts are:
+
+| Key | Action |
+| --- | --- |
+| `F1` | Help |
+| `F2` | New file |
+| `F3` | View file |
+| `F4` | Edit file |
+| `F5` | Copy file |
+| `F6` | Move file |
+| `F7` | New directory |
+| `F8` | Delete file |
+| `F9` | Run file |
+| `F10` | Quit |
+
 ## Main routes
 
 | Route | Description |
