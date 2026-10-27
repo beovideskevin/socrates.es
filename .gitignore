@@ -9,3 +9,4 @@ www/__pycache__/
 www/migrations/__pycache__/
 socrates/__pycache__/
 db.sqlite3
+.vscode/
