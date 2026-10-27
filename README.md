@@ -9,6 +9,44 @@
 Django. It combines a personal journal with essays, a thesis archive, visual
 art experiments, and interactive work inspired by classical philosophers.
 
+## About the author
+
+Kevin is a philosopher, educator, and interdisciplinary artist who describes
+himself as “the worst disciple of Socrates.” He holds a degree in Philosophy
+from the University of Havana (2004), a master's degree in Art History from
+the University of Havana (2011), and an Associate in Science in Computer
+Programming and Analysis from Miami Dade College (2019).
+
+He has taught at the University of the Arts of Cuba, the University of Havana,
+and Miami Dade College. His conference work includes *Beyond the Hyphen:
+Approaching a Post Geographic Cuba* at Princeton University (2014) and the
+IGCAAV Permanent Seminar at the University of Guadalajara (2017).
+
+His artistic and literary work takes an interdisciplinary approach, with a
+particular interest in how new technologies reveal the communication systems
+behind contemporary culture. His work has appeared in exhibitions including
+*Ojalá!* (Zeitgenössische kubanische Kunst, Berlin, 2015), [*Hope* at
+ESMoA](https://esmoa.org/experience/hope/) (Los Angeles, 2017), and *Athens
+Open Art* (Art.Number23, Athens, 2022). He also received second place in the
+[Samsung Digital Art Competition](https://www.samsung.com/es/lifestyle-tvs/the-frame/premios-arte-digital)
+at the BLESS Hotel Madrid.
+
+He created [El Diletante Digital
+(2006–2011)](/static/edd/index.html), a project whose research was published
+in the book [*Perspectivas del Arte
+Digital*](https://www.amazon.com/Perspectiva-del-arte-digital-Spanish/dp/B08LNL5BW8)
+(Casa Editorial Ex Libris, Mexico, 2020). Related publications include
+[*Perspectivas del Arte Digital (Outlooks on Digital
+Art)*](https://www.hypermediamagazine.com/arte/artes-visuales/perspectivas-del-arte-digital/)
+and [*El Diletante Digital, de la Literatura Digital a los Nuevos
+Medios*](https://artepoli.com/el-diletante-digital/).
+
+The site's original writing, photography, and video are created by the author,
+apart from reproduced artwork. The texts in the [thesis
+section](/tesis) come from his Philosophy degree thesis, the photographs were
+taken during trips to Greece, and the videos reimagine philosopher busts with
+the help of artificial intelligence.
+
 ## Features
 
 - Publish and organize posts with categories, tags, related posts, images, and
