@@ -1,4 +1,6 @@
-{% extends "layouts/base.html" %} {% load static %} {% block meta %}
+{% extends "layouts/base.html" %} 
+{% load static %} 
+{% block meta %}
 <!-- Page title -->
 <title>{{ post.title }}</title>
 <!-- /Page title -->
@@ -44,9 +46,11 @@
   property="article:author"
   content="https://www.facebook.com/kevinbcasas/"
 />
-{% endblock %} {% block header %}
+{% endblock %} 
+{% block header %}
 <link rel="canonical" content="https://www.socrates.es/post/{{ post.slug }}" />
-{% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
 <!-- Content -->
 <div id="content">
   <div class="inner">

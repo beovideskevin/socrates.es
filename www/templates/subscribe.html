@@ -1,7 +1,12 @@
-{% extends "layouts/base.html" %} {% load static %} {% block meta %} {% include
-'partials/meta.html' %} {% endblock %} {% block header %}
+{% extends "layouts/base.html" %} 
+{% load static %} 
+{% block meta %} 
+{% include 'partials/meta.html' %} 
+{% endblock %} 
+{% block header %}
 <link rel="canonical" content="https://www.socrates.es/subscribirse" />
-{% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
 <!-- Content -->
 <div id="content">
   <div class="inner">
@@ -37,7 +42,8 @@
   <!-- Modal Caption (Image Text) -->
   <div id="caption"></div>
 </div>
-{% endblock %} {% block script %}
+{% endblock %} 
+{% block script %}
 <!-- Cloudflare -->
 <script src="{% static 'assets/js/img.js' %}"></script>
 {% endblock %}
