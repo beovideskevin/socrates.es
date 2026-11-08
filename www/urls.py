@@ -3,7 +3,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.blog, name="blog"),
+    # path("", views.blog, name="blog"),
+    path("", views.thesis, name="home"),
     path("arte", views.art, name="arte"),
     path("buscar", views.search, name="buscar"),
     path("etiqueta", views.tag, name="etiqueta"),
@@ -14,11 +15,11 @@ urlpatterns = [
     path("post/<str:slug>/twitter", views.twitter, name="twitter"),
     path("acerca", views.about, name="acerca"),
     path("contacto", views.contact, name="contacto"),
-    path("subscribirse", views.subscribe, name="subscribirse"),
-    path("ar", views.ar, name="ar"),
-    path("ar/<str:slug>", views.ar, name="ar"),
-    path("aart", views.aart, name="aart"),
-    path("api", views.api, name="api"),
-    path("api/<str:slug>", views.api, name="api"),
+    # path("subscribirse", views.subscribe, name="subscribirse"),
+    # path("ar", views.ar, name="ar"),
+    # path("ar/<str:slug>", views.ar, name="ar"),
+    # path("aart", views.aart, name="aart"),
+    # path("api", views.api, name="api"),
+    # path("api/<str:slug>", views.api, name="api"),
     path("quotes/<str:slug>", views.quotes, name="quotes")
 ]
