@@ -19,7 +19,7 @@ urlpatterns = [
     path("ar", views.ar, name="ar"),
     path("ar/<str:slug>", views.ar, name="ar"),
     # path("aart", views.aart, name="aart"),
-    # path("api", views.api, name="api"),
-    # path("api/<str:slug>", views.api, name="api"),
+    path("api", views.api, name="api"),
+    path("api/<str:slug>", views.api, name="api"),
     path("quotes/<str:slug>", views.quotes, name="quotes")
 ]

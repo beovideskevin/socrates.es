@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "left": 0,
+    "top": 0,
+    "width": 876,
+    "height": 1168,
+    "isRotated": false,
+    "originalWidth": 876,
+    "originalHeight": 1168
+  },
+  "imagePath": "image-targets/seneca_05_luminance.jpg",
+  "metadata": null,
+  "name": "seneca_05",
+  "resources": {
+    "originalImage": "seneca_05_original.jpg",
+    "croppedImage": "seneca_05_cropped.jpg",
+    "thumbnailImage": "seneca_05_thumbnail.jpg",
+    "luminanceImage": "seneca_05_luminance.jpg"
+  },
+  "created": 1794114715796,
+  "updated": 1794114715796
+}

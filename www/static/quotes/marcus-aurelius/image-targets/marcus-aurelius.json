@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "left": 0,
+    "top": 0,
+    "width": 480,
+    "height": 640,
+    "isRotated": false,
+    "originalWidth": 480,
+    "originalHeight": 640
+  },
+  "imagePath": "image-targets/marcus-aurelius_luminance.png",
+  "metadata": null,
+  "name": "marcus-aurelius",
+  "resources": {
+    "originalImage": "marcus-aurelius_original.png",
+    "croppedImage": "marcus-aurelius_cropped.png",
+    "thumbnailImage": "marcus-aurelius_thumbnail.png",
+    "luminanceImage": "marcus-aurelius_luminance.png"
+  },
+  "created": 1788064671575,
+  "updated": 1788064671575
+}
