@@ -75,7 +75,7 @@
     </head>
     <body>
         <script src="bundle.js"></script>
-        <!-- <script src="shared-target-video.js"></script> -->
+        <script src="stop-video-on-target-lost.js"></script>
         <a-scene
             xrextras-gesture-detector
             landing-page
@@ -113,21 +113,14 @@
 
             <a-light type="ambient" intensity="1"></a-light>
 
-            <!-- <xrextras-named-image-target name="marcus-aurelius">
-                <xrextras-target-video-sound
-                    video="#marcus-aurelius-video"
-                    thumb="#marcus-aurelius-thumb"
-                    height="1"
-                    width="1"
-                ></xrextras-target-video-sound>
-            </xrextras-named-image-target> -->
-
-            <xrextras-named-image-target name="marcus-aurelius">
+            <xrextras-named-image-target name="marcus-aurelius"
+                target-video-stop-on-lost="video: #pimentel-corto-1-video; thumb: #pimentel-corto-1-thumb"
+            >
                 <a-entity 
                     id="target-video-element"
                     xrextras-play-video="video: #marcus-aurelius-video; thumb: #marcus-aurelius-thumb; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #marcus-aurelius-thumb; color: 0 1 0" 
+                    material="shader: chromakey; src: #marcus-aurelius-video; color: 0 1 0" 
                 >
                 </a-entity>
             </xrextras-named-image-target>

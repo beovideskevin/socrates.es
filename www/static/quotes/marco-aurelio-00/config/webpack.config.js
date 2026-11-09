@@ -74,7 +74,7 @@ const makeDefaultHtmlLoader = () => ({
 const config = {
   entry: {
     bundle: path.join(srcPath, 'app.js'),
-    'shared-target-video': path.join(srcPath, 'shared-target-video.js'),
+    'stop-video-on-target-lost': path.join(srcPath, 'stop-video-on-target-lost.js'),
   },
   output: {
     filename: '[name].js',
