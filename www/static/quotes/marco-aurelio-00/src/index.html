@@ -94,8 +94,7 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
-                    src="assets/videos/marcus-aurelius.mp4#t=0.001"
-                    poster="assets/images/thumbs/marcus-aurelius-play.png"
+                    src="assets/videos/marcus-aurelius.mp4"
                 ></video>
             </a-assets>
 
@@ -128,6 +127,7 @@
                     id="target-video-element"
                     xrextras-play-video="video: #marcus-aurelius-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
+                    material="shader: chromakey; src: #marcus-aurelius-thumb; color: 0 1 0" 
                 >
                 </a-entity>
             </xrextras-named-image-target>
