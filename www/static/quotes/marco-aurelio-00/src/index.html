@@ -94,7 +94,6 @@
                     crossorigin="anonymous"
                     src="assets/videos/marcus-aurelius.mp4#t=0.001"
                     loop="true"
-                    poster="assets/images/thumbs/marcus-aurelius-play.png"
                 ></video>
             </a-assets>
 
@@ -142,8 +141,6 @@
                 if (!target || !video || !plane) {
                     return;
                 }
-
-                plane.setAttribute('material', 'src', '#marcus-aurelius-thumb');
 
                 target.addEventListener('xrextraslost', () => {
                     video.pause();
