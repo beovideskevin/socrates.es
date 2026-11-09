@@ -75,7 +75,6 @@
     </head>
     <body>
         <script src="bundle.js"></script>
-        <script src="shared-target-video.js"></script>
         <a-scene
             xrextras-gesture-detector
             landing-page
@@ -153,15 +152,6 @@
 
             <a-light type="ambient" intensity="1"></a-light>
 
-            <!-- <xrextras-named-image-target name="marcus-aurelius">
-                <xrextras-target-video-sound
-                    video="#marcus-aurelius-video"
-                    thumb="#marcus-aurelius-thumb"
-                    height="1"
-                    width="1"
-                ></xrextras-target-video-sound>
-            </xrextras-named-image-target> -->
-
             <xrextras-named-image-target name="seneca_05">
                 <a-entity 
                     id="seneca_05-target-video-element"
@@ -203,53 +193,7 @@
             </xrextras-named-image-target>
         </a-scene>
 
-        <!-- <div id="quoteWrapper">
-            <div id="quote" class="">
-                <div>
-                    <h3 class="" id="quoteH3">Cita del filosofo</h3>
-                    <h1 class="" id="quoteH1">Nombre</h1>
-                </div>
-            </div>
-        </div> -->
-
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                let targetVideoElement = document.getElementById('seneca_05-target-video-element');
-
-                if (targetVideoElement) {
-                    targetVideoElement.setAttribute(
-                        'material',
-                        'shader: chromakey; src: #seneca-thumb; color: 0 1 0'
-                    );
-                }
-
-                targetVideoElement = document.getElementById('epicteto_01-target-video-element');
-
-                if (targetVideoElement) {
-                    targetVideoElement.setAttribute(
-                        'material',
-                        'shader: chromakey; src: #epicteto-thumb; color: 0 1 0'
-                    );
-                }
-
-                targetVideoElement = document.getElementById('marcoaurelio_01-target-video-element');
-
-                if (targetVideoElement) {
-                    targetVideoElement.setAttribute(
-                        'material',
-                        'shader: chromakey; src: #marcus-aurelius-1-thumb; color: 0 1 0'
-                    );
-                }
-
-                targetVideoElement = document.getElementById('marcoaurelio_02-target-video-element');
-
-                if (targetVideoElement) {
-                    targetVideoElement.setAttribute(
-                        'material',
-                        'shader: chromakey; src: #marcus-aurelius-2-thumb; color: 0 1 0'
-                    );
-                }
-            });
         </script>
     </body>
 </html>

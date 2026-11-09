@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+         <meta charset="UTF-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=no"
@@ -75,7 +76,6 @@
     </head>
     <body>
         <script src="bundle.js"></script>
-        <script src="stop-video-on-target-lost.js"></script>
         <a-scene
             xrextras-gesture-detector
             landing-page
@@ -112,12 +112,10 @@
 
             <a-light type="ambient" intensity="1"></a-light>
 
-            <xrextras-named-image-target name="marcus-aurelius"
-                target-video-stop-on-lost="video: #marcus-aurelius-video; thumb: #marcus-aurelius-thumb"
-            >
+            <xrextras-named-image-target name="marcus-aurelius">
                 <a-entity 
                     id="target-video-element"
-                    xrextras-play-video="video: #marcus-aurelius-video; thumb: #marcus-aurelius-thumb; canstop: false"
+                    xrextras-play-video="video: #marcus-aurelius-video; thumb: #marcus-aurelius-thumb; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #marcus-aurelius-video; color: 0 1 0" 
                 >
