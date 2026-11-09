@@ -15,16 +15,6 @@ const stopVideoOnTargetLost = {
         this.onTargetLost = () => {
             video.pause();
             video.currentTime = 0;
-
-            const videoTarget = this.el.querySelector(
-                'xrextras-target-video-sound',
-            );
-            if (!videoTarget) {
-                console.error('Unable to restore the target video thumbnail.');
-                return;
-            }
-
-            // videoTarget.setAttribute('material', 'src', thumb);
         };
 
         this.el.addEventListener('xrextraslost', this.onTargetLost);
