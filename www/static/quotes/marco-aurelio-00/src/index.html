@@ -92,9 +92,8 @@
                 <video
                     id="marcus-aurelius-video"
                     crossorigin="anonymous"
-                    playsinline
-                    webkit-playsinline
-                    src="assets/videos/marcus-aurelius.mp4"
+                    loop="true"
+                    src="assets/videos/marcus-aurelius.mp4#t=0.001"
                 ></video>
             </a-assets>
 
@@ -118,7 +117,7 @@
             >
                 <a-entity 
                     id="target-video-element"
-                    xrextras-play-video="video: #marcus-aurelius-video; thumb: #marcus-aurelius-thumb; canstop: true"
+                    xrextras-play-video="video: #marcus-aurelius-video; thumb: #marcus-aurelius-thumb; canstop: false"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #marcus-aurelius-video; color: 0 1 0" 
                 >
@@ -126,14 +125,14 @@
             </xrextras-named-image-target>
         </a-scene>
 
-        <!-- <div id="quoteWrapper">
+        <div id="quoteWrapper">
             <div id="quote" class="">
                 <div>
-                    <h3 class="" id="quoteH3">Cita del filosofo</h3>
-                    <h1 class="" id="quoteH1">Nombre</h1>
+                    <h3 class="" id="quoteH3">No actúes como si fueras a vivir por diez mil años. La muerte te acecha. Mientras vivas, mientras sea posible, sé bueno.</h3>
+                    <h1 class="" id="quoteH1">Marco Aurelio Antonino</h1>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <script>
         </script>
