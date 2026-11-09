@@ -164,7 +164,7 @@
 
             <xrextras-named-image-target name="seneca_05">
                 <a-entity 
-                    id="target-video-element"
+                    id="seneca_05-target-video-element"
                     xrextras-play-video="video: #seneca-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #seneca-thumb; color: 0 1 0" 
@@ -174,7 +174,7 @@
 
             <xrextras-named-image-target name="epicteto_01">
                 <a-entity 
-                    id="target-video-element"
+                    id="epicteto_01-target-video-element"
                     xrextras-play-video="video: #epicteto-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #epicteto-thumb; color: 0 1 0" 
@@ -184,7 +184,7 @@
 
             <xrextras-named-image-target name="marcoaurelio_01">
                 <a-entity 
-                    id="target-video-element"
+                    id="marcoaurelio_01-target-video-element"
                     xrextras-play-video="video: #marcus-aurelius-1-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #marcus-aurelius-1-thumb; color: 0 1 0" 
@@ -194,7 +194,7 @@
 
             <xrextras-named-image-target name="marcoaurelio_02">
                 <a-entity 
-                    id="target-video-element"
+                    id="marcoaurelio_02-target-video-element"
                     xrextras-play-video="video: #marcus-aurelius-2-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #marcus-aurelius-2-thumb; color: 0 1 0" 
@@ -214,12 +214,39 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const targetVideoElement = document.getElementById('target-video-element');
+                let targetVideoElement = document.getElementById('seneca_05-target-video-element');
 
                 if (targetVideoElement) {
                     targetVideoElement.setAttribute(
                         'material',
-                        'shader: chromakey; src: #marcus-aurelius-thumb; color: 0 1 0'
+                        'shader: chromakey; src: #seneca-thumb; color: 0 1 0'
+                    );
+                }
+
+                targetVideoElement = document.getElementById('epicteto_01-target-video-element');
+
+                if (targetVideoElement) {
+                    targetVideoElement.setAttribute(
+                        'material',
+                        'shader: chromakey; src: #epicteto-thumb; color: 0 1 0'
+                    );
+                }
+
+                targetVideoElement = document.getElementById('marcoaurelio_01-target-video-element');
+
+                if (targetVideoElement) {
+                    targetVideoElement.setAttribute(
+                        'material',
+                        'shader: chromakey; src: #marcus-aurelius-1-thumb; color: 0 1 0'
+                    );
+                }
+
+                targetVideoElement = document.getElementById('marcoaurelio_02-target-video-element');
+
+                if (targetVideoElement) {
+                    targetVideoElement.setAttribute(
+                        'material',
+                        'shader: chromakey; src: #marcus-aurelius-2-thumb; color: 0 1 0'
                     );
                 }
             });

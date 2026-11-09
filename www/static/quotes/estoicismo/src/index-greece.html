@@ -164,7 +164,7 @@
 
             <xrextras-named-image-target name="socrates_01">
                 <a-entity 
-                    id="target-video-element"
+                    id="socrates_01-target-video-element"
                     xrextras-play-video="video: #socrates-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #socrates-thumb; color: 0 1 0" 
@@ -174,7 +174,7 @@
 
             <xrextras-named-image-target name="diogenes_01">
                 <a-entity 
-                    id="target-video-element"
+                    id="diogenes_01-target-video-element"
                     xrextras-play-video="video: #diogenes-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #diogenes-thumb; color: 0 1 0" 
@@ -184,7 +184,7 @@
 
             <xrextras-named-image-target name="cleantes_01">
                 <a-entity 
-                    id="target-video-element"
+                    id="cleantes_01-target-video-element"
                     xrextras-play-video="video: #cleantes-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #cleantes-thumb; color: 0 1 0" 
@@ -194,7 +194,7 @@
 
             <xrextras-named-image-target name="zenon_02">
                 <a-entity 
-                    id="target-video-element"
+                    id="zenon_02-target-video-element"
                     xrextras-play-video="video: #zenon-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #zenon-thumb; color: 0 1 0" 
@@ -214,12 +214,39 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const targetVideoElement = document.getElementById('target-video-element');
+                let targetVideoElement = document.getElementById("socrates_01-target-video-element");
 
                 if (targetVideoElement) {
                     targetVideoElement.setAttribute(
                         'material',
-                        'shader: chromakey; src: #marcus-aurelius-thumb; color: 0 1 0'
+                        'shader: chromakey; src: #socrates-thumb; color: 0 1 0'
+                    );
+                }
+
+                targetVideoElement = document.getElementById('diogenes_01-target-video-element');
+
+                if (targetVideoElement) {
+                    targetVideoElement.setAttribute(
+                        'material',
+                        'shader: chromakey; src: #diogenes-thumb; color: 0 1 0'
+                    );
+                }
+
+                targetVideoElement = document.getElementById('cleantes_01-target-video-element');
+
+                if (targetVideoElement) {
+                    targetVideoElement.setAttribute(
+                        'material',
+                        'shader: chromakey; src: #cleantes-thumb; color: 0 1 0'
+                    );
+                }
+
+                targetVideoElement = document.getElementById('zenon_02-target-video-element');
+
+                if (targetVideoElement) {
+                    targetVideoElement.setAttribute(
+                        'material',
+                        'shader: chromakey; src: #zenon-thumb; color: 0 1 0'
                     );
                 }
             });
