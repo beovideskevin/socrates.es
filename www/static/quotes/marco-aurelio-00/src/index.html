@@ -133,6 +133,15 @@
         </div>
 
         <script>
+            const target = document.querySelector('xrextras-named-image-target');
+            const video = document.querySelector('#marcus-aurelius-video');
+            const plane = document.querySelector('#target-video-element');
+
+            target.addEventListener('xrextraslost', () => {
+                video.pause();
+                video.currentTime = 0;
+                plane.emit('click'); // lets xrextras-play-video reset its internal state
+            });
         </script>
     </body>
 </html>
