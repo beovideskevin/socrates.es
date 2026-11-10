@@ -31,17 +31,17 @@
         <script>
             AFRAME.registerComponent('chromakey-video-trigger', {
                 init: function () {
-                    const video = document.querySelector('#my-video');
-                    const videoPlane = document.querySelector('#video-plane');
+                    const video = document.querySelector('#marcus-aurelius-video');
+                    const videoPlane = document.querySelector('#target-video-element');
                     const thumbPlane = this.el;
 
                     thumbPlane.addEventListener('click', () => {
-                    // Hide thumb, show video plane
-                    thumbPlane.setAttribute('visible', 'false');
-                    videoPlane.setAttribute('visible', 'true');
-                    
-                    // Play the video
-                    video.play();
+                        // Hide thumb, show video plane
+                        thumbPlane.setAttribute('visible', 'false');
+                        videoPlane.setAttribute('visible', 'true');
+                        
+                        // Play the video
+                        video.play();
                     });
                 }
             });
@@ -99,6 +99,10 @@
             xrweb="disableWorldTracking: true"
         >
             <a-assets>
+                <img
+                    id="marcus-aurelius-thumb"
+                    src="assets/images/thumbs/marcus-aurelius-play.png"
+                />
                 <video
                     id="marcus-aurelius-video"
                     crossorigin="anonymous"
@@ -127,9 +131,17 @@
             <xrextras-named-image-target name="marcus-aurelius">
                 <a-entity 
                     id="target-video-element"
-                    xrextras-play-video="video: #marcus-aurelius-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #marcus-aurelius-video; color: 0 1 0" 
+                    visible="false"
+                >
+                </a-entity>
+                <a-entity
+                    id="target-thumb-element"
+                    class="cantap"
+                    chromakey-video-trigger
+                    geometry="primitive: plane; height: 1.07; width: 0.8;"
+                    material="shader: flat; src: #marcus-aurelius-thumb; transparent: true"
                 >
                 </a-entity>
             </xrextras-named-image-target>
@@ -154,16 +166,19 @@
                     return;
                 }
 
+                const hideVideo = () =>{
+                    thumbPlane.setAttribute('visible', 'true');
+                    plane.setAttribute('visible', 'false');
+                }
+
                 target.addEventListener('xrextraslost', () => {
-                    if (!video.paused) {
-                        plane.emit('click'); // lets xrextras-play-video reset its internal state
-                    }
+                    hideVideo();
                     video.pause();
                     video.currentTime = 0;
                 });
 
                 video.addEventListener("ended", (event) => {
-                    plane.emit('click'); // lets xrextras-play-video reset its internal state
+                    hideVideo();
                     video.currentTime = 0;
                 });
             });
