@@ -89,7 +89,7 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
-                    src="assets/videos/seneca_05_bg_sm22.mp4"
+                    src="assets/videos/seneca_05_bg_sm22.mp4#t=0.001"
                 ></video>
 
                 <video
@@ -97,7 +97,7 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
-                    src="assets/videos/epicteto_01_bg_sm22.mp4"
+                    src="assets/videos/epicteto_01_bg_sm22.mp4#t=0.001"
                 ></video>
 
                 <video
@@ -105,7 +105,7 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
-                    src="assets/videos/marcoaurelio_01_bg_sm22.mp4"
+                    src="assets/videos/marcoaurelio_01_bg_sm22.mp4#t=0.001"
                 ></video>
 
                 <video
@@ -113,7 +113,7 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
-                    src="assets/videos/marcoaurelio_02_bg_sm22.mp4"
+                    src="assets/videos/marcoaurelio_02_bg_sm22.mp4#t=0.001"
                 ></video>
             </a-assets>
 
@@ -132,9 +132,9 @@
 
             <a-light type="ambient" intensity="1"></a-light>
 
-            <xrextras-named-image-target name="seneca_05" id="seneca_05">
+            <xrextras-named-image-target name="seneca" id="seneca">
                 <a-entity 
-                    id="seneca_05-target-video-element"
+                    id="seneca-target-video-element"
                     xrextras-play-video="video: #seneca-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #seneca-video; color: 0 1 0" 
@@ -142,9 +142,9 @@
                 </a-entity>
             </xrextras-named-image-target>
 
-            <xrextras-named-image-target name="epicteto_01" id="epicteto_01">
+            <xrextras-named-image-target name="epicteto" id="epicteto">
                 <a-entity 
-                    id="epicteto_01-target-video-element"
+                    id="epicteto-target-video-element"
                     xrextras-play-video="video: #epicteto-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #epicteto-video; color: 0 1 0" 
@@ -176,16 +176,16 @@
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const targets = [
-                    "#marcoaurelio_02", "#marcoaurelio_01", "#epicteto_01", "#seneca_05" 
+                    "#marcoaurelio_02", "#marcoaurelio_01", "#epicteto", "#seneca" 
                 ]
                 const videos = [
                     "#marcus-aurelius-2-video", "#marcus-aurelius-1-video", "#epicteto-video", "#seneca-video"
                 ]
                 const planes = [
                     "#marcoaurelio_02-target-video-element",
-                    "#marcoaurelio_02-target-video-element",
-                    "#epicteto_01-target-video-element",
-                    "#seneca_05-target-video-element"
+                    "#marcoaurelio_01-target-video-element",
+                    "#epicteto-target-video-element",
+                    "#seneca-target-video-element"
                 ]
 
                 for (let index=0; index< targets.length; index++) {

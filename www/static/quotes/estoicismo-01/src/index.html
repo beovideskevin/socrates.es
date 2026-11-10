@@ -89,7 +89,7 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
-                    src="assets/videos/socrates_01_bg_sm22.mp4"
+                    src="assets/videos/socrates_01_bg_sm22.mp4#t=0.001"
                 ></video>
 
                 <video
@@ -97,7 +97,7 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
-                    src="assets/videos/diogenes_01_bg_sm22.mp4"
+                    src="assets/videos/diogenes_01_bg_sm22.mp4#t=0.001"
                 ></video>
 
                 <video
@@ -105,7 +105,7 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
-                    src="assets/videos/cleantes_01_bg_sm22.mp4"
+                    src="assets/videos/cleantes_01_bg_sm22.mp4#t=0.001"
                 ></video>
 
                 <video
@@ -113,7 +113,7 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
-                    src="assets/videos/zenon_02_bg_sm22.mp4"
+                    src="assets/videos/zenon_02_bg_sm22.mp4#t=0.001"
                 ></video>
             </a-assets>
 
@@ -132,9 +132,9 @@
 
             <a-light type="ambient" intensity="1"></a-light>
 
-            <xrextras-named-image-target name="socrates_01" id="socrates_01">
+            <xrextras-named-image-target name="socrates" id="socrates">
                 <a-entity 
-                    id="socrates_01-target-video-element"
+                    id="socrates-target-video-element"
                     xrextras-play-video="video: #socrates-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #socrates-video; color: 0 1 0" 
@@ -142,9 +142,9 @@
                 </a-entity>
             </xrextras-named-image-target>
 
-            <xrextras-named-image-target name="diogenes_01" id="diogenes_01">
+            <xrextras-named-image-target name="diogenes" id="diogenes">
                 <a-entity 
-                    id="diogenes_01-target-video-element"
+                    id="diogenes-target-video-element"
                     xrextras-play-video="video: #diogenes-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #diogenes-video; color: 0 1 0" 
@@ -152,9 +152,9 @@
                 </a-entity>
             </xrextras-named-image-target>
 
-            <xrextras-named-image-target name="cleantes_01" id="cleantes_01">
+            <xrextras-named-image-target name="cleantes" id="cleantes">
                 <a-entity 
-                    id="cleantes_01-target-video-element"
+                    id="cleantes-target-video-element"
                     xrextras-play-video="video: #cleantes-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #cleantes-video; color: 0 1 0" 
@@ -162,9 +162,9 @@
                 </a-entity>
             </xrextras-named-image-target>
 
-            <xrextras-named-image-target name="zenon_02" id="zenon_02">
+            <xrextras-named-image-target name="zenon" id="zenon">
                 <a-entity 
-                    id="zenon_02-target-video-element"
+                    id="zenon-target-video-element"
                     xrextras-play-video="video: #zenon-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #zenon-video; color: 0 1 0" 
@@ -185,16 +185,16 @@
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const targets = [
-                    "#socrates_01", "#diogenes_01", "#cleantes_01", "#zenon_02" 
+                    "#socrates", "#diogenes", "#cleantes", "#zenon" 
                 ]
                 const videos = [
                     "#socrates-video", "#diogenes-video", "#cleantes-video", "#zenon-video"
                 ]
                 const planes = [
-                    "#socrates_01-target-video-element",
-                    "#diogenes_01-target-video-element",
-                    "#cleantes_01-target-video-element",
-                    "#zenon_02-target-video-element"
+                    "#socrates-target-video-element",
+                    "#diogenes-target-video-element",
+                    "#cleantes-target-video-element",
+                    "#zenon-target-video-element"
                 ]
 
                 for (let index=0; index< targets.length; index++) {
