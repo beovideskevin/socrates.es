@@ -148,6 +148,11 @@
                     video.pause();
                     video.currentTime = 0;
                 });
+
+                video.addEventListener("ended", (event) => {
+                    plane.emit('click'); // lets xrextras-play-video reset its internal state
+                });
+
             });
         </script>
     </body>
