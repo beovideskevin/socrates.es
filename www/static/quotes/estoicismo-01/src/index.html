@@ -55,7 +55,7 @@
 
         <style>
             #quoteWrapper {
-                display: flex;
+                display: none;
                 align-items: center;
                 justify-content: center;
                 position: absolute;
@@ -309,18 +309,18 @@
                     };
 
                     target.addEventListener('xrextrasfound', () => {
-                        quote.setAttribute("display", "flex");
-                        quoteH3.innerHTML = qQuote;
-                        quoteH1.innerHTML = qName;
+                        quote.style.display = "flex";
+                        quoteH3.textContent = qQuote;
+                        quoteH1.textContent = qName;
                     });
 
                     target.addEventListener('xrextraslost', () => {
                         showThumb();
                         video.pause();
                         video.currentTime = 0;
-                        quoteH3.innerHTML = "";
-                        quoteH1.innerHTML = "";
-                        quote.setAttribute("display", "none");
+                        quoteH3.textContent = "";
+                        quoteH1.textContent = "";
+                        quote.style.display = "none";
                     });
 
                     video.addEventListener('ended', () => {
