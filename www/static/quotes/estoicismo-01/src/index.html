@@ -180,7 +180,7 @@
                 <a-entity
                     id="socrates-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger
+                    chromakey-video-trigger="video: #socrates-video; videoPlane: #socrates-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #socrates-thumb; transparent: true"
                 >
@@ -198,7 +198,7 @@
                 <a-entity
                     id="diogenes-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger
+                    chromakey-video-trigger="video: #diogenes-video; videoPlane: #diogenes-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #diogenes-thumb; transparent: true"
                 >
@@ -216,7 +216,7 @@
                 <a-entity
                     id="cleantes-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger
+                    chromakey-video-trigger="video: #cleantes-video; videoPlane: #cleantes-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #cleantes-thumb; transparent: true"
                 >
@@ -234,7 +234,7 @@
                 <a-entity
                     id="zenon-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger
+                    chromakey-video-trigger="video: #zenon-video; videoPlane: #zenon-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #zenon-thumb; transparent: true"
                 >
@@ -253,8 +253,8 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                quoteH3 = document.getElementById("quoteH3");
-                quoteH1 = document.getElementById("quoteH1");
+                const quoteH3 = document.getElementById("#quoteH3");
+                const quoteH1 = document.getElementById("#quoteH1");
 
                 const targets = [
                     {
@@ -291,12 +291,11 @@
                     }
                 ];
 
-                targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name, quote }) => {
+                targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name: qName, quote: qQuote }) => {
                     const target = document.getElementById(id);
                     const video = document.getElementById(videoId);
                     const videoPlane = document.getElementById(videoPlaneId);
                     const thumbPlane = document.getElementById(thumbPlaneId);
-                    const 
 
                     if (!target || !video || !videoPlane || !thumbPlane) {
                         console.error(`Missing video target elements for ${id}`);
@@ -309,8 +308,8 @@
                     };
 
                     target.addEventListener('xrextrasfound', () => {
-                        quoteH3.innerHtml = name;
-                        quoteH1.innerHtml = quote;
+                        quoteH3.innerHtml = qName;
+                        quoteH1.innerHtml = qQuote;
                     });
 
                     target.addEventListener('xrextraslost', () => {
