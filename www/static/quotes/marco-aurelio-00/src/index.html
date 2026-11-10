@@ -85,13 +85,11 @@
             xrweb="disableWorldTracking: true"
         >
             <a-assets>
-                <img
-                    id="marcus-aurelius-thumb"
-                    src="assets/images/thumbs/marcus-aurelius-play.png"
-                />
                 <video
                     id="marcus-aurelius-video"
                     crossorigin="anonymous"
+                    playsinline
+                    webkit-playsinline
                     src="assets/videos/marcus-aurelius.mp4#t=0.001"
                 ></video>
             </a-assets>
@@ -114,7 +112,7 @@
             <xrextras-named-image-target name="marcus-aurelius">
                 <a-entity 
                     id="target-video-element"
-                    xrextras-play-video="video: #marcus-aurelius-video; thumb: #marcus-aurelius-thumb; canstop: true"
+                    xrextras-play-video="video: #marcus-aurelius-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #marcus-aurelius-video; color: 0 1 0" 
                 >

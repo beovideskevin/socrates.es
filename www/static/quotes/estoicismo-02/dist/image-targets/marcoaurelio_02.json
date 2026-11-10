@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "left": 0,
+    "top": 0,
+    "width": 876,
+    "height": 1168,
+    "isRotated": false,
+    "originalWidth": 876,
+    "originalHeight": 1168
+  },
+  "imagePath": "image-targets/marcoaurelio_02_luminance.jpg",
+  "metadata": null,
+  "name": "marcoaurelio_02",
+  "resources": {
+    "originalImage": "marcoaurelio_02_original.jpg",
+    "croppedImage": "marcoaurelio_02_cropped.jpg",
+    "thumbnailImage": "marcoaurelio_02_thumbnail.jpg",
+    "luminanceImage": "marcoaurelio_02_luminance.jpg"
+  },
+  "created": 1794114570536,
+  "updated": 1794114570536
+}

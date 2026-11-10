@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "left": 0,
+    "top": 0,
+    "width": 768,
+    "height": 1024,
+    "isRotated": false,
+    "originalWidth": 768,
+    "originalHeight": 1024
+  },
+  "imagePath": "image-targets/diogenes_01_luminance.jpg",
+  "metadata": null,
+  "name": "diogenes_01",
+  "resources": {
+    "originalImage": "diogenes_01_original.jpg",
+    "croppedImage": "diogenes_01_cropped.jpg",
+    "thumbnailImage": "diogenes_01_thumbnail.jpg",
+    "luminanceImage": "diogenes_01_luminance.jpg"
+  },
+  "created": 1794114489943,
+  "updated": 1794114489943
+}

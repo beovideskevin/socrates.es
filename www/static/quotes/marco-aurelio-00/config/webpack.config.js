@@ -74,7 +74,6 @@ const makeDefaultHtmlLoader = () => ({
 const config = {
   entry: {
     bundle: path.join(srcPath, 'app.js'),
-    'stop-video-on-target-lost': path.join(srcPath, 'stop-video-on-target-lost.js'),
   },
   output: {
     filename: '[name].js',

@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "left": 0,
+    "top": 0,
+    "width": 768,
+    "height": 1024,
+    "isRotated": false,
+    "originalWidth": 768,
+    "originalHeight": 1024
+  },
+  "imagePath": "image-targets/cleantes_01_luminance.jpg",
+  "metadata": null,
+  "name": "cleantes_01",
+  "resources": {
+    "originalImage": "cleantes_01_original.jpg",
+    "croppedImage": "cleantes_01_cropped.jpg",
+    "thumbnailImage": "cleantes_01_thumbnail.jpg",
+    "luminanceImage": "cleantes_01_luminance.jpg"
+  },
+  "created": 1794114450471,
+  "updated": 1794114450471
+}
