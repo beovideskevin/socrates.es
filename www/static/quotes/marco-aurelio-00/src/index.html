@@ -1,20 +1,18 @@
 <!doctype html>
 <html>
     <head>
-         <meta charset="UTF-8" />
+        <meta charset="UTF-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=no"
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-
         <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
         <title>Socrates.es - Todos los hombres son mortales, Socrates es un hombre, Socrates es mortal.</title>
         <script
             crossorigin="anonymous"
             src="./external/scripts/8frame-1.5.0.min.js"
         ></script>
-
         <script
             src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js"
             async
@@ -30,7 +28,24 @@
             crossorigin="anonymous"
         ></script>
         <script src="https://unpkg.com/aframe-chromakey-material@1.1.4/dist/aframe-chromakey-material.min.js"></script>
+        <script>
+            AFRAME.registerComponent('chromakey-video-trigger', {
+                init: function () {
+                    const video = document.querySelector('#my-video');
+                    const videoPlane = document.querySelector('#video-plane');
+                    const thumbPlane = this.el;
 
+                    thumbPlane.addEventListener('click', () => {
+                    // Hide thumb, show video plane
+                    thumbPlane.setAttribute('visible', 'false');
+                    videoPlane.setAttribute('visible', 'true');
+                    
+                    // Play the video
+                    video.play();
+                    });
+                }
+            });
+        </script>
         <style>
             #quoteWrapper {
                 display: flex;
@@ -71,7 +86,6 @@
                 font-size: 1.0rem;
                 line-height: 1.4rem;
             }
-
         </style>
     </head>
     <body>

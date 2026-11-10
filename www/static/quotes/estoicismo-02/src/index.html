@@ -177,21 +177,21 @@
             document.addEventListener('DOMContentLoaded', () => {
                 const targets = [
                     "#marcoaurelio_02", "#marcoaurelio_01", "#epicteto", "#seneca" 
-                ]
+                ];
                 const videos = [
                     "#marcus-aurelius-2-video", "#marcus-aurelius-1-video", "#epicteto-video", "#seneca-video"
-                ]
+                ];
                 const planes = [
                     "#marcoaurelio_02-target-video-element",
                     "#marcoaurelio_01-target-video-element",
                     "#epicteto-target-video-element",
                     "#seneca-target-video-element"
-                ]
+                ];
 
-                for (let index=0; index< targets.length; index++) {
+                for (let index=0; index < targets.length; index++) {
                     const t = document.getElementById(targets[index]);
-                    const v = document.querySelector(videos[index]);
-                    const p = document.querySelector(planes[index]);    
+                    const v = document.getElementById(videos[index]);
+                    const p = document.getElementById(planes[index]);
 
                     if (!t || !v || !p) {
                         continue;

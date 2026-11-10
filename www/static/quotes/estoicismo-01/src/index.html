@@ -199,8 +199,8 @@
 
                 for (let index=0; index< targets.length; index++) {
                     const t = document.getElementById(targets[index]);
-                    const v = document.querySelector(videos[index]);
-                    const p = document.querySelector(planes[index]);    
+                    const v = document.getElementById(videos[index]);
+                    const p = document.getElementById(planes[index]);
 
                     if (!t || !v || !p) {
                         continue;
