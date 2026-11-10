@@ -91,10 +91,8 @@
                 <video
                     id="socrates-video"
                     crossorigin="anonymous"
-                    playsinline
-                    webkit-playsinline
+                    loop="true"
                     src="assets/videos/socrates_01_bg_sm22.mp4"
-                    poster="assets/images/thumbs/socrates_01_play.jpg"
                 ></video>
 
                 <img
@@ -104,10 +102,8 @@
                 <video
                     id="diogenes-video"
                     crossorigin="anonymous"
-                    playsinline
-                    webkit-playsinline
+                    loop="true"
                     src="assets/videos/diogenes_01_bg_sm22.mp4"
-                    poster="assets/images/thumbs/diogenes_01_play.jpg"
                 ></video>
 
                 <img
@@ -117,10 +113,8 @@
                 <video
                     id="cleantes-video"
                     crossorigin="anonymous"
-                    playsinline
-                    webkit-playsinline
+                    loop="true"
                     src="assets/videos/cleantes_01_bg_sm22.mp4"
-                    poster="assets/images/thumbs/cleantes_01_play.jpg"
                 ></video>
 
                 <img
@@ -130,10 +124,8 @@
                 <video
                     id="zenon-video"
                     crossorigin="anonymous"
-                    playsinline
-                    webkit-playsinline
+                    loop="true"
                     src="assets/videos/zenon_02_bg_sm22.mp4"
-                    poster="assets/images/thumbs/zenon_02_play.jpg"
                 ></video>
             </a-assets>
 
@@ -155,9 +147,9 @@
             <xrextras-named-image-target name="socrates_01">
                 <a-entity 
                     id="socrates_01-target-video-element"
-                    xrextras-play-video="video: #socrates-video; canstop: true"
+                    xrextras-play-video="video: #socrates-video; thumb: #socrates-thumb; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #socrates-thumb; color: 0 1 0" 
+                    material="shader: chromakey; src: #socrates-video; color: 0 1 0" 
                 >
                 </a-entity>
             </xrextras-named-image-target>
@@ -165,9 +157,9 @@
             <xrextras-named-image-target name="diogenes_01">
                 <a-entity 
                     id="diogenes_01-target-video-element"
-                    xrextras-play-video="video: #diogenes-video; canstop: true"
+                    xrextras-play-video="video: #diogenes-video; thumb: #diogenes-thumb; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #diogenes-thumb; color: 0 1 0" 
+                    material="shader: chromakey; src: #diogenes-video; color: 0 1 0" 
                 >
                 </a-entity>
             </xrextras-named-image-target>
@@ -175,9 +167,9 @@
             <xrextras-named-image-target name="cleantes_01">
                 <a-entity 
                     id="cleantes_01-target-video-element"
-                    xrextras-play-video="video: #cleantes-video; canstop: true"
+                    xrextras-play-video="video: #cleantes-video; thumb: #cleantes-thumb; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #cleantes-thumb; color: 0 1 0" 
+                    material="shader: chromakey; src: #cleantes-video; color: 0 1 0" 
                 >
                 </a-entity>
             </xrextras-named-image-target>
@@ -185,9 +177,9 @@
             <xrextras-named-image-target name="zenon_02">
                 <a-entity 
                     id="zenon_02-target-video-element"
-                    xrextras-play-video="video: #zenon-video; canstop: true"
+                    xrextras-play-video="video: #zenon-video; thumb: #zenon-thumb; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #zenon-thumb; color: 0 1 0" 
+                    material="shader: chromakey; src: #zenon-video; color: 0 1 0" 
                 >
                 </a-entity>
             </xrextras-named-image-target>
@@ -206,38 +198,35 @@
             document.addEventListener('DOMContentLoaded', () => {
                 let targetVideoElement = document.getElementById("socrates_01-target-video-element");
 
-                if (targetVideoElement) {
-                    targetVideoElement.setAttribute(
-                        'material',
-                        'shader: chromakey; src: #socrates-thumb; color: 0 1 0'
-                    );
-                }
+                const targets = [
+                    "#socrates_01", "#diogenes_01", "#cleantes_01", "#zenon_02" 
+                ]
+                const videos = [
+                    "#socrates-video", "#diogenes-video", "#cleantes-video", "#zenon-video"
+                ]
+                const planes = [
+                    "#socrates_01-target-video-element",
+                    "#diogenes_01-target-video-element",
+                    "#cleantes_01-target-video-element",
+                    "#zenon_02-target-video-element"
+                ]
 
-                targetVideoElement = document.getElementById('diogenes_01-target-video-element');
+                for (let index=0; index< targets.length; index++) {
+                    const t = document.getElementById(targets[index]);
+                    const v = document.querySelector(videos[index]);
+                    const p = document.querySelector(planes[index]);    
 
-                if (targetVideoElement) {
-                    targetVideoElement.setAttribute(
-                        'material',
-                        'shader: chromakey; src: #diogenes-thumb; color: 0 1 0'
-                    );
-                }
+                    if (!t || !v || !p) {
+                        continue;
+                    }
 
-                targetVideoElement = document.getElementById('cleantes_01-target-video-element');
-
-                if (targetVideoElement) {
-                    targetVideoElement.setAttribute(
-                        'material',
-                        'shader: chromakey; src: #cleantes-thumb; color: 0 1 0'
-                    );
-                }
-
-                targetVideoElement = document.getElementById('zenon_02-target-video-element');
-
-                if (targetVideoElement) {
-                    targetVideoElement.setAttribute(
-                        'material',
-                        'shader: chromakey; src: #zenon-thumb; color: 0 1 0'
-                    );
+                    t.addEventListener('xrextraslost', () => {
+                        if (!v.paused) {
+                            p.emit('click'); // lets xrextras-play-video reset its internal state
+                        }
+                        v.pause();
+                        v.currentTime = 0;
+                    });
                 }
             });
         </script>

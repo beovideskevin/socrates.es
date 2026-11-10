@@ -1,175 +1,230 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
        <loc>https://www.socrates.es/</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>1.0000</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/nous</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp1_00-arqueologia-y-prehistoria-de-la-etica</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/yo-no-soy-una-victima</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp1_01-los-filosofos-de-asia-menor</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/athens-open-art</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp1_02-los-filosofos-de-italia</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/vr-show</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp1_03-los-fisicos</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/la-muerte-de-pirro</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp2_00-socrates</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/?page=1</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/?page=2</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/?page=3</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/?page=4</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/tesis</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/arte</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/acerca</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/contacto</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?tag=socrates</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?tag=arte</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?tag=ASCII</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?tag=estoicismo</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?tag=marcoaurelio</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?tag=cesar</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/cognitive-bias</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.6400</priority>
+       <loc>https://www.socrates.es/post/athens-open-art</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/la-historia-del-miedo</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.6400</priority>
+       <loc>https://www.socrates.es/post/vr-show</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/cual-es-la-mejor-forma-de-morir</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.6400</priority>
+       <loc>https://www.socrates.es/post/la-muerte-de-pirro</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/post/mi-dialogo-con-socrates</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.6400</priority>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/post/dioses-olvidados</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/post/cp2_01-los-sofistas</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/en-cierto-sentido-el-presidente-si-es-un-rey</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp2_02-el-problema-socratico</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/Es-interesante-que-la-filosofía-socrática-empiece-en-el-mercado</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp2_03-relacion-con-los-cosmologicos</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/cp1_00-arqueologia-y-prehistoria-de-la-etica</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp2_04-vs-los-sofistas</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/cp1_01-los-filosofos-de-asia-menor</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp2_05-la-filosofia-como-forma-de-vida</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/cp1_02-los-filosofos-de-italia</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp2_06-la-amistad</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/cp1_03-los-fisicos</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp2_07-sophrosyne</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
-       <loc>https://www.socrates.es/post/cp2_00-socrates</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <loc>https://www.socrates.es/post/cp2_08-el-alma-y-la-virtud</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/post/cp2_09-racionalismo-extremo</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/post/cp2_10-metodo-socratico</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/post/cp2_11-escepticismo</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/post/cp2_12-posicion-politica</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/post/cp2_13-muerte-de-socrates</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/post/cp3-bibliografia</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/tesis?page=1</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/tesis?page=2</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/tesis?page=3</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/tesis?page=4</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/arte?page=1</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.socrates.es/arte?page=2</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
@@ -178,119 +233,49 @@
        <priority>0.6400</priority>
   </url>
   <url>
+       <loc>https://www.socrates.es/post/Es-interesante-que-la-filosofía-socrática-empiece-en-el-mercado</loc>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
        <loc>https://www.socrates.es/etiqueta?page=1&amp;tag=socrates</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?page=2&amp;tag=socrates</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?page=3&amp;tag=socrates</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?page=4&amp;tag=socrates</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?page=1&amp;tag=arte</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?page=1&amp;tag=ASCII</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?page=1&amp;tag=estoicismo</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/etiqueta?page=1&amp;tag=marcoaurelio</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
+       <lastmod>2026-11-09T13:56:17+00:00</lastmod>
        <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/etiqueta?page=1&amp;tag=cesar</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_01-los-sofistas</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_02-el-problema-socratico</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_03-relacion-con-los-cosmologicos</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_04-vs-los-sofistas</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_05-la-filosofia-como-forma-de-vida</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_06-la-amistad</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_07-sophrosyne</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_08-el-alma-y-la-virtud</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_09-racionalismo-extremo</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_10-metodo-socratico</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_11-escepticismo</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_12-posicion-politica</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp2_13-muerte-de-socrates</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.socrates.es/post/cp3-bibliografia</loc>
-       <lastmod>2026-10-04T20:26:09+00:00</lastmod>
-       <priority>0.5120</priority>
   </url>
   <url>
        <loc>https://www.socrates.es/static/edd/sitio.html</loc>

@@ -93,7 +93,6 @@
                     id="marcus-aurelius-video"
                     crossorigin="anonymous"
                     src="assets/videos/marcus-aurelius.mp4#t=0.001"
-                    loop="true"
                 ></video>
             </a-assets>
 
@@ -143,9 +142,11 @@
                 }
 
                 target.addEventListener('xrextraslost', () => {
+                    if (!video.paused) {
+                        plane.emit('click'); // lets xrextras-play-video reset its internal state
+                    }
                     video.pause();
                     video.currentTime = 0;
-                    plane.emit('click'); // lets xrextras-play-video reset its internal state
                 });
             });
         </script>
