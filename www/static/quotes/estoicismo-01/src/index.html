@@ -253,8 +253,9 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const quoteH3 = document.getElementById("#quoteH3");
-                const quoteH1 = document.getElementById("#quoteH1");
+                const quote = document.getElementById("quoteWrapper");
+                const quoteH3 = document.getElementById("quoteH3");
+                const quoteH1 = document.getElementById("quoteH1");
 
                 const targets = [
                     {
@@ -308,16 +309,18 @@
                     };
 
                     target.addEventListener('xrextrasfound', () => {
-                        quoteH3.innerHtml = qName;
-                        quoteH1.innerHtml = qQuote;
+                        quote.setAttribute("display", "flex");
+                        quoteH3.innerHTML = qQuote;
+                        quoteH1.innerHTML = qName;
                     });
 
                     target.addEventListener('xrextraslost', () => {
                         showThumb();
                         video.pause();
                         video.currentTime = 0;
-                        quoteH3.innerHtml = "";
-                        quoteH1.innerHtml = "";
+                        quoteH3.innerHTML = "";
+                        quoteH1.innerHTML = "";
+                        quote.setAttribute("display", "none");
                     });
 
                     video.addEventListener('ended', () => {
