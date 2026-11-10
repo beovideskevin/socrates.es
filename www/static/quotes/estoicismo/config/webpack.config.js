@@ -83,8 +83,8 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(srcPath, 'index-greece.html'),
-      filename: 'index-greece.html',
+      template: path.join(srcPath, 'index.html'),
+      filename: 'index.html',
       inject: false,
     }),
     new HtmlWebpackPlugin({
