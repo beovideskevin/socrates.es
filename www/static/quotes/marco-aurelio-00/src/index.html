@@ -151,6 +151,7 @@
 
                 video.addEventListener("ended", (event) => {
                     plane.emit('click'); // lets xrextras-play-video reset its internal state
+                    video.currentTime = 0;
                 });
 
             });
