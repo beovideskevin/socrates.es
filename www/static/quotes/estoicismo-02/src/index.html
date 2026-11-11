@@ -29,10 +29,32 @@
             crossorigin="anonymous"
         ></script>
         <script src="https://unpkg.com/aframe-chromakey-material@1.1.4/dist/aframe-chromakey-material.min.js"></script>
+        <script>
+            AFRAME.registerComponent('chromakey-video-trigger', {
+                schema: {
+                    video: { type: 'selector' },
+                    videoPlane: { type: 'selector' }
+                },
+                init: function () {
+                    const video = this.data.video;
+                    const videoPlane = this.data.videoPlane;
+                    const thumbPlane = this.el;
 
+                    thumbPlane.addEventListener('click', () => {
+                        thumbPlane.setAttribute('visible', 'false');
+                        videoPlane.setAttribute('visible', 'true');
+                        video.play().catch((error) => {
+                            console.error('Unable to play video:', error);
+                            thumbPlane.setAttribute('visible', 'true');
+                            videoPlane.setAttribute('visible', 'false');
+                        });
+                    });
+                }
+            });
+        </script>
         <style>
             #quoteWrapper {
-                display: flex;
+                display: none;
                 align-items: center;
                 justify-content: center;
                 position: absolute;
@@ -70,7 +92,6 @@
                 font-size: 1.0rem;
                 line-height: 1.4rem;
             }
-
         </style>
     </head>
     <body>
@@ -84,6 +105,23 @@
             xrweb="disableWorldTracking: true"
         >
             <a-assets>
+                <img
+                    id="seneca-thumb"
+                    src="assets/images/thumbs/seneca_05_play.jpg"
+                />
+                <img
+                    id="epicteto-thumb"
+                    src="assets/images/thumbs/epicteto_01_play.jpg"
+                />
+                <img
+                    id="marcoaurelio-1-thumb"
+                    src="assets/images/thumbs/marcoaurelio_01_play.jpg"
+                />
+                <img
+                    id="marcoaurelio-2-thumb"
+                    src="assets/images/thumbs/marcoaurelio_02_play.jpg"
+                />
+
                 <video
                     id="seneca-video"
                     crossorigin="anonymous"
@@ -91,7 +129,6 @@
                     webkit-playsinline
                     src="assets/videos/seneca_05_bg_sm22.mp4#t=0.001"
                 ></video>
-
                 <video
                     id="epicteto-video"
                     crossorigin="anonymous"
@@ -99,7 +136,6 @@
                     webkit-playsinline
                     src="assets/videos/epicteto_01_bg_sm22.mp4#t=0.001"
                 ></video>
-
                 <video
                     id="marcus-aurelius-1-video"
                     crossorigin="anonymous"
@@ -107,7 +143,6 @@
                     webkit-playsinline
                     src="assets/videos/marcoaurelio_01_bg_sm22.mp4#t=0.001"
                 ></video>
-
                 <video
                     id="marcus-aurelius-2-video"
                     crossorigin="anonymous"
@@ -135,9 +170,17 @@
             <xrextras-named-image-target name="seneca_05" id="seneca">
                 <a-entity 
                     id="seneca-target-video-element"
-                    xrextras-play-video="video: #seneca-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #seneca-video; color: 0 1 0" 
+                    visible="false"
+                >
+                </a-entity>
+                <a-entity
+                    id="seneca-target-thumb-element"
+                    class="cantap"
+                    chromakey-video-trigger="video: #seneca-video; videoPlane: #seneca-target-video-element"
+                    geometry="primitive: plane; height: 1.07; width: 0.8;"
+                    material="shader: flat; src: #seneca-thumb; transparent: true"
                 >
                 </a-entity>
             </xrextras-named-image-target>
@@ -145,9 +188,17 @@
             <xrextras-named-image-target name="epicteto_01" id="epicteto">
                 <a-entity 
                     id="epicteto-target-video-element"
-                    xrextras-play-video="video: #epicteto-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #epicteto-video; color: 0 1 0" 
+                    visible="false"
+                >
+                </a-entity>
+                <a-entity
+                    id="epicteto-target-thumb-element"
+                    class="cantap"
+                    chromakey-video-trigger="video: #epicteto-video; videoPlane: #epicteto-target-video-element"
+                    geometry="primitive: plane; height: 1.07; width: 0.8;"
+                    material="shader: flat; src: #epicteto-thumb; transparent: true"
                 >
                 </a-entity>
             </xrextras-named-image-target>
@@ -155,9 +206,17 @@
             <xrextras-named-image-target name="marcoaurelio_01" id="marcoaurelio_01">
                 <a-entity 
                     id="marcoaurelio_01-target-video-element"
-                    xrextras-play-video="video: #marcus-aurelius-1-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #marcus-aurelius-1-video; color: 0 1 0" 
+                    visible="false"
+                >
+                </a-entity>
+                <a-entity
+                    id="marcoaurelio_01-target-thumb-element"
+                    class="cantap"
+                    chromakey-video-trigger="video: #marcus-aurelius-1-video; videoPlane: #marcoaurelio_01-target-video-element"
+                    geometry="primitive: plane; height: 1.07; width: 0.8;"
+                    material="shader: flat; src: #marcoaurelio-1-thumb; transparent: true"
                 >
                 </a-entity>
             </xrextras-named-image-target>
@@ -165,51 +224,108 @@
             <xrextras-named-image-target name="marcoaurelio_02" id="marcoaurelio_02">
                 <a-entity 
                     id="marcoaurelio_02-target-video-element"
-                    xrextras-play-video="video: #marcus-aurelius-2-video; canstop: true"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: chromakey; src: #marcus-aurelius-2-video; color: 0 1 0" 
+                    visible="false"
+                >
+                </a-entity>
+                <a-entity
+                    id="marcoaurelio_02-target-thumb-element"
+                    class="cantap"
+                    chromakey-video-trigger="video: #marcus-aurelius-2-video; videoPlane: #marcoaurelio_02-target-video-element"
+                    geometry="primitive: plane; height: 1.07; width: 0.8;"
+                    material="shader: flat; src: #marcoaurelio-2-thumb; transparent: true"
                 >
                 </a-entity>
             </xrextras-named-image-target>
         </a-scene>
 
+        <div id="quoteWrapper">
+            <div id="quote" class="">
+                <div>
+                    <h3 class="" id="quoteH3"></h3>
+                    <h1 class="" id="quoteH1"></h1>
+                </div>
+            </div>
+        </div>
+
         <script>
             document.addEventListener('DOMContentLoaded', () => {
+                const quote = document.getElementById("quoteWrapper");
+                const quoteH3 = document.getElementById("quoteH3");
+                const quoteH1 = document.getElementById("quoteH1");
+
                 const targets = [
-                    "#marcoaurelio_02", "#marcoaurelio_01", "#epicteto", "#seneca" 
-                ];
-                const videos = [
-                    "#marcus-aurelius-2-video", "#marcus-aurelius-1-video", "#epicteto-video", "#seneca-video"
-                ];
-                const planes = [
-                    "#marcoaurelio_02-target-video-element",
-                    "#marcoaurelio_01-target-video-element",
-                    "#epicteto-target-video-element",
-                    "#seneca-target-video-element"
+                    {
+                        id: 'seneca',
+                        video: 'seneca-video',
+                        videoPlane: 'seneca-target-video-element',
+                        thumbPlane: 'seneca-target-thumb-element',
+                        name: "Lucio Anneo Séneca",
+                        quote: "El hombre que sufre antes de que sea necesario, sufre más de lo necesario.",
+                    },
+                    {
+                        id: 'epicteto',
+                        video: 'epicteto-video',
+                        videoPlane: 'epicteto-target-video-element',
+                        thumbPlane: 'epicteto-target-thumb-element',
+                        name: "Epicteto",
+                        quote: "A las personas no les molestan las cosas, sino las opiniones que les dan a esas cosas.",
+                    },
+                    {
+                        id: 'marcoaurelio_01',
+                        video: 'marcus-aurelius-1-video',
+                        videoPlane: 'marcoaurelio_01-target-video-element',
+                        thumbPlane: 'marcoaurelio_01-target-thumb-element',
+                        name: "Marco Aurelio Antonino",
+                        quote: "Piensa que estás muerto. Ya has vivido tu vida. Ahora aprovecha lo que te queda de ella y vívela como deberías.",
+                    },
+                    {
+                        id: 'marcoaurelio_02',
+                        video: 'marcus-aurelius-2-video',
+                        videoPlane: 'marcoaurelio_02-target-video-element',
+                        thumbPlane: 'marcoaurelio_02-target-thumb-element',
+                        name: "Marco Aurelio Antonino",
+                        quote: "La vida de un hombre es lo que sus pensamientos hacen de ella.",
+                    }
                 ];
 
-                for (let index=0; index < targets.length; index++) {
-                    const t = document.getElementById(targets[index]);
-                    const v = document.getElementById(videos[index]);
-                    const p = document.getElementById(planes[index]);
+                targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name: qName, quote: qQuote }) => {
+                    const target = document.getElementById(id);
+                    const video = document.getElementById(videoId);
+                    const videoPlane = document.getElementById(videoPlaneId);
+                    const thumbPlane = document.getElementById(thumbPlaneId);
 
-                    if (!t || !v || !p) {
-                        continue;
+                    if (!target || !video || !videoPlane || !thumbPlane) {
+                        console.error(`Missing video target elements for ${id}`);
+                        return;
                     }
 
-                    t.addEventListener('xrextraslost', () => {
-                        if (!v.paused) {
-                            p.emit('click'); // lets xrextras-play-video reset its internal state
-                        }
-                        v.pause();
-                        v.currentTime = 0;
+                    const showThumb = () => {
+                        thumbPlane.setAttribute('visible', 'true');
+                        videoPlane.setAttribute('visible', 'false');
+                    };
+
+                    target.addEventListener('xrextrasfound', () => {
+                        quote.style.display = "flex";
+                        quoteH3.textContent = qQuote;
+                        quoteH1.textContent = qName;
                     });
 
-                    v.addEventListener("ended", (event) => {
-                        p.emit('click'); // lets xrextras-play-video reset its internal state
-                        v.currentTime = 0;
+                    target.addEventListener('xrextraslost', () => {
+                        showThumb();
+                        video.pause();
+                        video.currentTime = 0;
+                        quoteH3.textContent = "";
+                        quoteH1.textContent = "";
+                        quote.style.display = "none";
                     });
-                }
+
+                    video.addEventListener('ended', () => {
+                        showThumb();
+                        video.currentTime = 0;
+                    });
+                });
             });
         </script>
     </body>
