@@ -180,7 +180,6 @@
                 <a-entity
                     id="socrates-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger="video: #socrates-video; videoPlane: #socrates-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #socrates-thumb; transparent: true"
                 >
@@ -198,7 +197,6 @@
                 <a-entity
                     id="diogenes-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger="video: #diogenes-video; videoPlane: #diogenes-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #diogenes-thumb; transparent: true"
                 >
@@ -216,7 +214,6 @@
                 <a-entity
                     id="cleantes-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger="video: #cleantes-video; videoPlane: #cleantes-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #cleantes-thumb; transparent: true"
                 >
@@ -234,7 +231,6 @@
                 <a-entity
                     id="zenon-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger="video: #zenon-video; videoPlane: #zenon-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #zenon-thumb; transparent: true"
                 >
@@ -303,6 +299,16 @@
                         return;
                     }
 
+                    const handleClick = () => {
+                        thumbPlane.setAttribute('visible', 'false');
+                        videoPlane.setAttribute('visible', 'true');
+                        video.play().catch((error) => {
+                            console.error('Unable to play video:', error);
+                            thumbPlane.setAttribute('visible', 'true');
+                            videoPlane.setAttribute('visible', 'false');
+                        });
+                    }
+
                     const showThumb = () => {
                         thumbPlane.setAttribute('visible', 'true');
                         videoPlane.setAttribute('visible', 'false');
@@ -312,9 +318,11 @@
                         quote.style.display = "flex";
                         quoteH3.textContent = qQuote;
                         quoteH1.textContent = qName;
+                        thumbPlane.addEventListener('click', handleClick);
                     });
 
                     target.addEventListener('xrextraslost', () => {
+                        thumbPlane.removeEventListener('click', handleClick);
                         showThumb();
                         video.pause();
                         video.currentTime = 0;
