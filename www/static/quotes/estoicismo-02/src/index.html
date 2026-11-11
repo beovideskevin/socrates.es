@@ -29,29 +29,6 @@
             crossorigin="anonymous"
         ></script>
         <script src="https://unpkg.com/aframe-chromakey-material@1.1.4/dist/aframe-chromakey-material.min.js"></script>
-        <script>
-            AFRAME.registerComponent('chromakey-video-trigger', {
-                schema: {
-                    video: { type: 'selector' },
-                    videoPlane: { type: 'selector' }
-                },
-                init: function () {
-                    const video = this.data.video;
-                    const videoPlane = this.data.videoPlane;
-                    const thumbPlane = this.el;
-
-                    thumbPlane.addEventListener('click', () => {
-                        thumbPlane.setAttribute('visible', 'false');
-                        videoPlane.setAttribute('visible', 'true');
-                        video.play().catch((error) => {
-                            console.error('Unable to play video:', error);
-                            thumbPlane.setAttribute('visible', 'true');
-                            videoPlane.setAttribute('visible', 'false');
-                        });
-                    });
-                }
-            });
-        </script>
         <style>
             #quoteWrapper {
                 display: none;
@@ -178,7 +155,6 @@
                 <a-entity
                     id="seneca-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger="video: #seneca-video; videoPlane: #seneca-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #seneca-thumb; transparent: true"
                 >
@@ -196,7 +172,6 @@
                 <a-entity
                     id="epicteto-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger="video: #epicteto-video; videoPlane: #epicteto-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #epicteto-thumb; transparent: true"
                 >
@@ -214,7 +189,6 @@
                 <a-entity
                     id="marcoaurelio_01-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger="video: #marcus-aurelius-1-video; videoPlane: #marcoaurelio_01-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #marcoaurelio-1-thumb; transparent: true"
                 >
@@ -232,7 +206,6 @@
                 <a-entity
                     id="marcoaurelio_02-target-thumb-element"
                     class="cantap"
-                    chromakey-video-trigger="video: #marcus-aurelius-2-video; videoPlane: #marcoaurelio_02-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
                     material="shader: flat; src: #marcoaurelio-2-thumb; transparent: true"
                 >
@@ -306,13 +279,25 @@
                         videoPlane.setAttribute('visible', 'false');
                     };
 
+                    const handleClick = () => {
+                        thumbPlane.setAttribute('visible', 'false');
+                        videoPlane.setAttribute('visible', 'true');
+                        video.play().catch((error) => {
+                            console.error('Unable to play video:', error);
+                            thumbPlane.setAttribute('visible', 'true');
+                            videoPlane.setAttribute('visible', 'false');
+                        });
+                    }
+
                     target.addEventListener('xrextrasfound', () => {
                         quote.style.display = "flex";
                         quoteH3.textContent = qQuote;
                         quoteH1.textContent = qName;
+                        thumbPlane.addEventListener('click', handleClick);
                     });
 
                     target.addEventListener('xrextraslost', () => {
+                        thumbPlane.removeEventListener('click', handleClick);
                         showThumb();
                         video.pause();
                         video.currentTime = 0;

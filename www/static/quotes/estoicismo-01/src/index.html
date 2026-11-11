@@ -30,29 +30,6 @@
             crossorigin="anonymous"
         ></script>
         <script src="https://unpkg.com/aframe-chromakey-material@1.1.4/dist/aframe-chromakey-material.min.js"></script>
-        <script>
-            AFRAME.registerComponent('chromakey-video-trigger', {
-                schema: {
-                    video: { type: 'selector' },
-                    videoPlane: { type: 'selector' }
-                },
-                init: function () {
-                    const video = this.data.video;
-                    const videoPlane = this.data.videoPlane;
-                    const thumbPlane = this.el;
-
-                    thumbPlane.addEventListener('click', () => {
-                        thumbPlane.setAttribute('visible', 'false');
-                        videoPlane.setAttribute('visible', 'true');
-                        video.play().catch((error) => {
-                            console.error('Unable to play video:', error);
-                            thumbPlane.setAttribute('visible', 'true');
-                            videoPlane.setAttribute('visible', 'false');
-                        });
-                    });
-                }
-            });
-        </script>
         <style>
             #quoteWrapper {
                 display: none;
