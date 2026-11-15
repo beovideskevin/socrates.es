@@ -298,9 +298,15 @@
                         const revealVideo = () => {
                             thumbPlane.setAttribute('visible', 'false');
                             videoPlane.setAttribute('visible', 'true');
-                            if (videoPlane && videoPlane.components.material) {
-                                videoPlane.components.material.update();
+
+                            const shaderMaterial = videoPlane.components.material.material;
+                            if (shaderMaterial && shaderMaterial.uniforms && shaderMaterial.uniforms.myTexture) {
+                                shaderMaterial.uniforms.myTexture.value.needsUpdate = true;
                             }
+                            if (activeMaterial.map) {
+                                activeMaterial.map.needsUpdate = true;
+                            }
+                
                             if (revealVideoOnPlaying === revealVideo) {
                                 revealVideoOnPlaying = null;
                             }
