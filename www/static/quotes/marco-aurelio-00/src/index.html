@@ -45,7 +45,7 @@
                             // Hide thumb, show video plane
                             thumbPlane.setAttribute('visible', 'false');
                             videoPlane.setAttribute('visible', 'true');
-                        
+
                             // Update the material so to avoid the black frame at the start of the video
                             const shaderMaterial = videoPlane.components.material.material;
                             if (shaderMaterial && shaderMaterial.uniforms && shaderMaterial.uniforms.myTexture) {
@@ -124,6 +124,7 @@
             </a-assets>
 
             <a-camera
+                id="camera"
                 position="0 0 0"
                 raycaster="objects: .cantap"
                 cursor="fuse: false; rayOrigin: mouse;"
