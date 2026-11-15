@@ -280,6 +280,15 @@
                 const quoteH1 = document.getElementById("quoteH1");
                 const cameraEl = document.getElementById('camera');
                 const sceneEl = document.getElementById('scene');
+
+                sceneEl.addEventListener('xrimagefound', (event) => {
+                    if (sceneEl.object3D) {
+                        sceneEl.object3D.updateMatrixWorld(true);
+                    }
+                    if (cameraEl && cameraEl.components.raycaster) {
+                        cameraEl.components.raycaster.refreshObjects();
+                    }
+                });
                 
                 targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name: qName, quote: qQuote }) => {
                     const target = document.getElementById(id);
@@ -296,13 +305,6 @@
                         if (show) {
                             thumbPlane.setAttribute('visible', 'true');
                             videoPlane.setAttribute('visible', 'false');
-
-                            if (sceneEl.object3D) {
-                                sceneEl.object3D.updateMatrixWorld(true);
-                            }
-                            if (cameraEl && cameraEl.components.raycaster) {
-                                cameraEl.components.raycaster.refreshObjects();
-                            }
                         }
                         else {
                             thumbPlane.setAttribute('visible', 'false');
