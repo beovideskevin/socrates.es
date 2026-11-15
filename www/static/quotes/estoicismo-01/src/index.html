@@ -21,12 +21,16 @@
             crossorigin="anonymous"
             data-preload-chunks="slam"
         ></script>
-        <script
+        <!-- <script
             src="https://cdn.jsdelivr.net/npm/@8thwall/landing-page@1/dist/landing-page.js"
             crossorigin="anonymous"
-        ></script>
-        <script
+        ></script> -->
+        <!-- <script
             src="https://cdn.jsdelivr.net/npm/@8thwall/xrextras@1/dist/xrextras.js"
+            crossorigin="anonymous"
+        ></script> -->
+        <script
+            src="./external/xrextras/xrextras.js"
             crossorigin="anonymous"
         ></script>
         <script src="https://unpkg.com/aframe-chromakey-material@1.1.4/dist/aframe-chromakey-material.min.js"></script>
@@ -76,6 +80,7 @@
     <body>
         <script src="bundle.js"></script>
         <a-scene
+            xrextras-loading
             xrextras-runtime-error
             renderer="colorManagement:true"
             xrweb="disableWorldTracking: false"
