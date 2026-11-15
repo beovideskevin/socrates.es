@@ -288,13 +288,29 @@
                         return;
                     }
 
+                    let revealVideoOnPlaying = null;
+
                     const handleClick = () => {
-                        thumbPlane.setAttribute('visible', 'false');
-                        videoPlane.setAttribute('visible', 'true');
+                        if (revealVideoOnPlaying) {
+                            video.removeEventListener('playing', revealVideoOnPlaying);
+                        }
+
+                        const revealVideo = () => {
+                            thumbPlane.setAttribute('visible', 'false');
+                            videoPlane.setAttribute('visible', 'true');
+                            if (revealVideoOnPlaying === revealVideo) {
+                                revealVideoOnPlaying = null;
+                            }
+                        };
+                        revealVideoOnPlaying = revealVideo;
+                        video.addEventListener('playing', revealVideo, { once: true });
+
                         video.play().catch((error) => {
+                            if (revealVideoOnPlaying === revealVideo) {
+                                video.removeEventListener('playing', revealVideo);
+                                revealVideoOnPlaying = null;
+                            }
                             console.error('Unable to play video:', error);
-                            thumbPlane.setAttribute('visible', 'true');
-                            videoPlane.setAttribute('visible', 'false');
                         });
                     }
 
@@ -312,6 +328,10 @@
 
                     target.addEventListener('xrextraslost', () => {
                         thumbPlane.removeEventListener('click', handleClick);
+                        if (revealVideoOnPlaying) {
+                            video.removeEventListener('playing', revealVideoOnPlaying);
+                            revealVideoOnPlaying = null;
+                        }
                         showThumb();
                         video.pause();
                         video.currentTime = 0;
