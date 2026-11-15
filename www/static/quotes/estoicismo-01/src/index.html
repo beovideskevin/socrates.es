@@ -274,6 +274,10 @@
                 ];
                 
                 const sceneEl = document.querySelector('a-scene');
+                markerEl.addEventListener('markerFound', () => {
+                  sceneEl.components.raycaster.refreshObjects();
+                });
+
                 const quote = document.getElementById("quoteWrapper");
                 const quoteH3 = document.getElementById("quoteH3");
                 const quoteH1 = document.getElementById("quoteH1");
@@ -293,9 +297,6 @@
                         if (show) {
                             thumbPlane.setAttribute('visible', 'true');
                             videoPlane.setAttribute('visible', 'false');
-
-                            // Fix the missing clicks
-                            sceneEl.components.raycaster.refreshObjects();
                         }
                         else {
                             thumbPlane.setAttribute('visible', 'false');
@@ -337,6 +338,7 @@
                     });
 
                     target.addEventListener('xrextraslost', () => {
+                        toggleThumb();
                         thumbPlane.removeEventListener('click', handleClick);
 
                         if (!video.paused) {
