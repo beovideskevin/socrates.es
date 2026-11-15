@@ -296,11 +296,11 @@
                         }
 
                         const revealVideo = () => {
+                            thumbPlane.setAttribute('visible', 'false');
+                            videoPlane.setAttribute('visible', 'true');
                             if (videoPlane && videoPlane.components.material) {
                                 videoPlane.components.material.update();
                             }
-                            thumbPlane.setAttribute('visible', 'false');
-                            videoPlane.setAttribute('visible', 'true');
                             if (revealVideoOnPlaying === revealVideo) {
                                 revealVideoOnPlaying = null;
                             }
