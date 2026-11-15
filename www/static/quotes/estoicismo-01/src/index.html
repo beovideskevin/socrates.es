@@ -144,6 +144,7 @@
             </a-assets>
 
             <a-camera
+                id="camera"
                 position="0 4 10"
                 raycaster="objects: .cantap"
                 cursor="fuse: false; rayOrigin: mouse;"
@@ -273,15 +274,11 @@
                     }
                 ];
                 
-                const sceneEl = document.querySelector('a-scene');
-                markerEl.addEventListener('markerFound', () => {
-                  sceneEl.components.raycaster.refreshObjects();
-                });
-
                 const quote = document.getElementById("quoteWrapper");
                 const quoteH3 = document.getElementById("quoteH3");
                 const quoteH1 = document.getElementById("quoteH1");
-
+                const cameraEl = document.getElementById('camera');
+                
                 targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name: qName, quote: qQuote }) => {
                     const target = document.getElementById(id);
                     const videoPlane = document.getElementById(videoPlaneId);
@@ -297,6 +294,10 @@
                         if (show) {
                             thumbPlane.setAttribute('visible', 'true');
                             videoPlane.setAttribute('visible', 'false');
+
+                            if (cameraEl && cameraEl.components.raycaster) {
+                                cameraEl.components.raycaster.refreshObjects();
+                            }
                         }
                         else {
                             thumbPlane.setAttribute('visible', 'false');
@@ -329,7 +330,6 @@
 
                     target.addEventListener('xrextrasfound', () => {
                         toggleThumb();
-                        
                         thumbPlane.addEventListener('click', handleClick);
                         
                         quote.style.display = "flex";
