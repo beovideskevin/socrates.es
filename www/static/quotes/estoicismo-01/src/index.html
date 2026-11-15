@@ -281,7 +281,7 @@
                     const target = document.getElementById(id);
                     const videoPlane = document.getElementById(videoPlaneId);
                     const thumbPlane = document.getElementById(thumbPlaneId);
-                    const video = videoPlane.components.material.material.map.image // document.getElementById(videoId);
+                    const video = document.getElementById(videoId);
 
                     if (!target || !video || !videoPlane || !thumbPlane) {
                         console.error(`Missing video target elements for ${id}`);
@@ -296,6 +296,9 @@
                         }
 
                         const revealVideo = () => {
+                            if (videoPlane && videoPlane.components.material) {
+                                videoPlane.components.material.update();
+                            }
                             thumbPlane.setAttribute('visible', 'false');
                             videoPlane.setAttribute('visible', 'true');
                             if (revealVideoOnPlaying === revealVideo) {
