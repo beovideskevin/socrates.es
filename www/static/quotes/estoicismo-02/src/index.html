@@ -104,28 +104,40 @@
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
+                    loading="eager"
+                    preload="auto"
                     src="assets/videos/seneca_05_bg_sm22.mp4#t=0.001"
+                    poster="assets/images/seneca_05_web.jpg"
                 ></video>
                 <video
                     id="epicteto-video"
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
+                    loading="eager"
+                    preload="auto"
                     src="assets/videos/epicteto_01_bg_sm22.mp4#t=0.001"
+                    poster="assets/images/epicteto_01_web.jpg"
                 ></video>
                 <video
                     id="marcus-aurelius-1-video"
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
+                    loading="eager"
+                    preload="auto"
                     src="assets/videos/marcoaurelio_01_bg_sm22.mp4#t=0.001"
+                    poster="assets/images/marcoaurelio_01_web.jpg"
                 ></video>
                 <video
                     id="marcus-aurelius-2-video"
                     crossorigin="anonymous"
                     playsinline
                     webkit-playsinline
+                    loading="eager"
+                    preload="auto"
                     src="assets/videos/marcoaurelio_02_bg_sm22.mp4#t=0.001"
+                    poster="assets/images/marcoaurelio_02_web.jpg"
                 ></video>
             </a-assets>
 
@@ -224,10 +236,6 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const quote = document.getElementById("quoteWrapper");
-                const quoteH3 = document.getElementById("quoteH3");
-                const quoteH1 = document.getElementById("quoteH1");
-
                 const targets = [
                     {
                         id: 'seneca',
@@ -263,51 +271,80 @@
                     }
                 ];
 
+                const quote = document.getElementById("quoteWrapper");
+                const quoteH3 = document.getElementById("quoteH3");
+                const quoteH1 = document.getElementById("quoteH1");
+
                 targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name: qName, quote: qQuote }) => {
                     const target = document.getElementById(id);
-                    const video = document.getElementById(videoId);
                     const videoPlane = document.getElementById(videoPlaneId);
                     const thumbPlane = document.getElementById(thumbPlaneId);
+                    const video = document.getElementById(videoId);
 
                     if (!target || !video || !videoPlane || !thumbPlane) {
                         console.error(`Missing video target elements for ${id}`);
                         return;
                     }
 
-                    const showThumb = () => {
-                        thumbPlane.setAttribute('visible', 'true');
-                        videoPlane.setAttribute('visible', 'false');
+                    const toggleThumb = (show=true) => {
+                        if (show) {
+                            thumbPlane.setAttribute('visible', 'true');
+                            videoPlane.setAttribute('visible', 'false');
+                        }
+                        else {
+                            thumbPlane.setAttribute('visible', 'false');
+                            videoPlane.setAttribute('visible', 'true');
+                        }
                     };
 
                     const handleClick = () => {
-                        thumbPlane.setAttribute('visible', 'false');
-                        videoPlane.setAttribute('visible', 'true');
+                        const revealVideo = () => {
+                            toggleThumb(false);
+                        
+                            const shaderMaterial = videoPlane.components.material.material;
+                            if (shaderMaterial && shaderMaterial.uniforms && shaderMaterial.uniforms.myTexture) {
+                                shaderMaterial.uniforms.myTexture.value.needsUpdate = true;
+                            }
+                            if (activeMaterial.map) {
+                                activeMaterial.map.needsUpdate = true;
+                            }
+                        };
+                        video.addEventListener('playing', revealVideo, { once: true });
+
                         video.play().catch((error) => {
+                            if (revealVideoOnPlaying === revealVideo) {
+                                video.removeEventListener('playing', revealVideo);
+                                revealVideoOnPlaying = null;
+                            }
                             console.error('Unable to play video:', error);
-                            thumbPlane.setAttribute('visible', 'true');
-                            videoPlane.setAttribute('visible', 'false');
                         });
                     }
 
                     target.addEventListener('xrextrasfound', () => {
+                        toggleThumb();
+
+                        thumbPlane.addEventListener('click', handleClick);
+
                         quote.style.display = "flex";
                         quoteH3.textContent = qQuote;
                         quoteH1.textContent = qName;
-                        thumbPlane.addEventListener('click', handleClick);
                     });
 
                     target.addEventListener('xrextraslost', () => {
                         thumbPlane.removeEventListener('click', handleClick);
-                        showThumb();
-                        video.pause();
-                        video.currentTime = 0;
+
+                        if (!video.paused) {
+                            video.pause();
+                            video.currentTime = 0;    
+                        }
+                        
                         quoteH3.textContent = "";
                         quoteH1.textContent = "";
                         quote.style.display = "none";
                     });
 
                     video.addEventListener('ended', () => {
-                        showThumb();
+                        toggleThumb();
                         video.currentTime = 0;
                     });
                 });

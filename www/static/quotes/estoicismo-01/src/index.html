@@ -162,7 +162,7 @@
                 <a-entity 
                     id="socrates-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #socrates-video; color: 0 1 0; transparent: true; alphaTest: 0.5" 
+                    material="shader: chromakey; src: #socrates-video; color: 0 1 0" 
                     visible="false"
                 >
                 </a-entity>
@@ -179,7 +179,7 @@
                 <a-entity 
                     id="diogenes-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #diogenes-video; color: 0 1 0; transparent: true; alphaTest: 0.5" 
+                    material="shader: chromakey; src: #diogenes-video; color: 0 1 0" 
                     visible="false"
                 >
                 </a-entity>
@@ -196,7 +196,7 @@
                 <a-entity 
                     id="cleantes-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #cleantes-video; color: 0 1 0; transparent: true; alphaTest: 0.5" 
+                    material="shader: chromakey; src: #cleantes-video; color: 0 1 0" 
                     visible="false"
                 >
                 </a-entity>
@@ -213,7 +213,7 @@
                 <a-entity 
                     id="zenon-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #zenon-video; color: 0 1 0; transparent: true; alphaTest: 0.5" 
+                    material="shader: chromakey; src: #zenon-video; color: 0 1 0" 
                     visible="false"
                 >
                 </a-entity>
@@ -238,10 +238,6 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const quote = document.getElementById("quoteWrapper");
-                const quoteH3 = document.getElementById("quoteH3");
-                const quoteH1 = document.getElementById("quoteH1");
-
                 const targets = [
                     {
                         id: 'socrates',
@@ -277,6 +273,10 @@
                     }
                 ];
 
+                const quote = document.getElementById("quoteWrapper");
+                const quoteH3 = document.getElementById("quoteH3");
+                const quoteH1 = document.getElementById("quoteH1");
+
                 targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name: qName, quote: qQuote }) => {
                     const target = document.getElementById(id);
                     const videoPlane = document.getElementById(videoPlaneId);
@@ -288,17 +288,21 @@
                         return;
                     }
 
-                    let revealVideoOnPlaying = null;
-
-                    const handleClick = () => {
-                        if (revealVideoOnPlaying) {
-                            video.removeEventListener('playing', revealVideoOnPlaying);
+                    const toggleThumb = (show=true) => {
+                        if (show) {
+                            thumbPlane.setAttribute('visible', 'true');
+                            videoPlane.setAttribute('visible', 'false');
                         }
-
-                        const revealVideo = () => {
+                        else {
                             thumbPlane.setAttribute('visible', 'false');
                             videoPlane.setAttribute('visible', 'true');
+                        }
+                    };
 
+                    const handleClick = () => {
+                        const revealVideo = () => {
+                            toggleThumb(false);
+                        
                             const shaderMaterial = videoPlane.components.material.material;
                             if (shaderMaterial && shaderMaterial.uniforms && shaderMaterial.uniforms.myTexture) {
                                 shaderMaterial.uniforms.myTexture.value.needsUpdate = true;
@@ -306,12 +310,7 @@
                             if (activeMaterial.map) {
                                 activeMaterial.map.needsUpdate = true;
                             }
-                
-                            if (revealVideoOnPlaying === revealVideo) {
-                                revealVideoOnPlaying = null;
-                            }
                         };
-                        revealVideoOnPlaying = revealVideo;
                         video.addEventListener('playing', revealVideo, { once: true });
 
                         video.play().catch((error) => {
@@ -323,34 +322,31 @@
                         });
                     }
 
-                    const showThumb = () => {
-                        thumbPlane.setAttribute('visible', 'true');
-                        videoPlane.setAttribute('visible', 'false');
-                    };
-
                     target.addEventListener('xrextrasfound', () => {
+                        toggleThumb();
+                        
+                        thumbPlane.addEventListener('click', handleClick);
+                        
                         quote.style.display = "flex";
                         quoteH3.textContent = qQuote;
                         quoteH1.textContent = qName;
-                        thumbPlane.addEventListener('click', handleClick);
                     });
 
                     target.addEventListener('xrextraslost', () => {
                         thumbPlane.removeEventListener('click', handleClick);
-                        if (revealVideoOnPlaying) {
-                            video.removeEventListener('playing', revealVideoOnPlaying);
-                            revealVideoOnPlaying = null;
+
+                        if (!video.paused) {
+                            video.pause();
+                            video.currentTime = 0;    
                         }
-                        showThumb();
-                        video.pause();
-                        video.currentTime = 0;
+
                         quoteH3.textContent = "";
                         quoteH1.textContent = "";
                         quote.style.display = "none";
                     });
 
                     video.addEventListener('ended', () => {
-                        showThumb();
+                        toggleThumb();
                         video.currentTime = 0;
                     });
                 });

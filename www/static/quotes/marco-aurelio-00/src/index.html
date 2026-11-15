@@ -36,12 +36,21 @@
                     const thumbPlane = this.el;
 
                     thumbPlane.addEventListener('click', () => {
-                        // Hide thumb, show video plane
-                        thumbPlane.setAttribute('visible', 'false');
-                        videoPlane.setAttribute('visible', 'true');
-                        
                         // Play the video
-                        video.play();
+                        video.play().then(() => {
+                            // Hide thumb, show video plane
+                            thumbPlane.setAttribute('visible', 'false');
+                            videoPlane.setAttribute('visible', 'true');
+                        
+                            // Update the material so to avoid the black frame at the start of the video
+                            const shaderMaterial = videoPlane.components.material.material;
+                            if (shaderMaterial && shaderMaterial.uniforms && shaderMaterial.uniforms.myTexture) {
+                                shaderMaterial.uniforms.myTexture.value.needsUpdate = true;
+                            }
+                            if (activeMaterial.map) {
+                                activeMaterial.map.needsUpdate = true;
+                            }
+                        });
                     });
                 }
             });
@@ -106,10 +115,12 @@
                 <video
                     id="marcus-aurelius-video"
                     crossorigin="anonymous"
-                    preload="auto"
                     playsinline
                     webkit-playsinline
+                    loading="eager"
+                    preload="auto"
                     src="assets/videos/marcus-aurelius.mp4#t=0.001"
+                    poster="assets/images/marcus-aurelius.png"
                 ></video>
             </a-assets>
 
