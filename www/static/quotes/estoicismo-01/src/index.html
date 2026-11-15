@@ -179,7 +179,7 @@
                 <a-entity 
                     id="diogenes-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #diogenes-video; color: 0 1 0" 
+                    material="shader: chromakey; src: #diogenes-video; color: 0 1 0; transparent: true; alphaTest: 0.5" 
                     visible="false"
                 >
                 </a-entity>
@@ -196,7 +196,7 @@
                 <a-entity 
                     id="cleantes-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #cleantes-video; color: 0 1 0" 
+                    material="shader: chromakey; src: #cleantes-video; color: 0 1 0; transparent: true; alphaTest: 0.5" 
                     visible="false"
                 >
                 </a-entity>
@@ -213,7 +213,7 @@
                 <a-entity 
                     id="zenon-target-video-element"
                     geometry="primitive: plane; height: 1.07; width: 0.8;"
-                    material="shader: chromakey; src: #zenon-video; color: 0 1 0" 
+                    material="shader: chromakey; src: #zenon-video; color: 0 1 0; transparent: true; alphaTest: 0.5" 
                     visible="false"
                 >
                 </a-entity>
@@ -279,9 +279,9 @@
 
                 targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name: qName, quote: qQuote }) => {
                     const target = document.getElementById(id);
-                    const video = document.getElementById(videoId);
                     const videoPlane = document.getElementById(videoPlaneId);
                     const thumbPlane = document.getElementById(thumbPlaneId);
+                    const video = videoPlane.components.material.material.map.image // document.getElementById(videoId);
 
                     if (!target || !video || !videoPlane || !thumbPlane) {
                         console.error(`Missing video target elements for ${id}`);
