@@ -77,11 +77,11 @@
         <script src="bundle.js"></script>
         <a-scene
             xrextras-gesture-detector
-            landing-page
+            
             xrextras-loading
             xrextras-runtime-error
             renderer="colorManagement:true"
-            xrweb="disableWorldTracking: true"
+            xrweb="disableWorldTracking: false"
         >
             <a-assets>
                 <img
@@ -145,6 +145,8 @@
 
             <a-camera
                 position="0 4 10"
+                raycaster="objects: .cantap"
+                cursor="fuse: false; rayOrigin: mouse;"
             >
             </a-camera>
 
