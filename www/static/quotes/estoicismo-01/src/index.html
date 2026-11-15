@@ -146,6 +146,7 @@
             </a-assets>
 
             <a-camera
+                id="camera"
                 position="0 0 0"
                 raycaster="objects: .cantap"
                 cursor="fuse: false; rayOrigin: mouse;"
@@ -278,6 +279,7 @@
                 const quote = document.getElementById("quoteWrapper");
                 const quoteH3 = document.getElementById("quoteH3");
                 const quoteH1 = document.getElementById("quoteH1");
+                const cameraEl = document.getElementById("camera")
 
                 targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name: qName, quote: qQuote }) => {
                     const target = document.getElementById(id);
@@ -290,21 +292,17 @@
                         return;
                     }
 
-                    const toggleThumb = (show=true) => {
-                        if (show) {
-                            thumbPlane.setAttribute('visible', 'true');
-                            videoPlane.setAttribute('visible', 'false');
-                        }
-                        else {
-                            thumbPlane.setAttribute('visible', 'false');
-                            videoPlane.setAttribute('visible', 'true');
-                        }
-                    };
+                    const toggleEl = ({thumb, video}) => {
+                        thumbPlane.setAttribute('visible', thumb);
+                        videoPlane.setAttribute('visible', video);
+
+                        thumbPlane.classList.toggle('cantap', thumb);
+                        cameraEl.components.raycaster.refreshObjects();
+                    }
 
                     const handleClick = () => {
                         video.play().then(() => {
-                            toggleThumb(false);
-                        
+                            toggleEl({thumb: false, video: true});
                             const shaderMaterial = videoPlane.components.material.material;
                             if (shaderMaterial && shaderMaterial.uniforms && shaderMaterial.uniforms.myTexture) {
                                 shaderMaterial.uniforms.myTexture.value.needsUpdate = true;
@@ -320,13 +318,14 @@
                     thumbPlane.addEventListener('click', handleClick);
 
                     target.addEventListener('xrextrasfound', () => {
-                        toggleThumb();
+                        toggleEl({thumb: true, video: false});
                         quote.style.display = "flex";
                         quoteH3.textContent = qQuote;
                         quoteH1.textContent = qName;
                     });
 
                     target.addEventListener('xrextraslost', () => {
+                        toggleEl({thumb: false, video: false});
                         if (!video.paused) {
                             video.pause();
                             video.currentTime = 0;    
@@ -338,7 +337,7 @@
                     });
 
                     video.addEventListener('ended', () => {
-                        toggleThumb();
+                        toggleEl({thumb: true, video: false});
                         video.currentTime = 0;
                     });
                 });
