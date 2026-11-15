@@ -51,9 +51,6 @@
                             if (shaderMaterial && shaderMaterial.uniforms && shaderMaterial.uniforms.myTexture) {
                                 shaderMaterial.uniforms.myTexture.value.needsUpdate = true;
                             }
-                            if (activeMaterial.map) {
-                                activeMaterial.map.needsUpdate = true;
-                            }
                         });
                     });
                 }

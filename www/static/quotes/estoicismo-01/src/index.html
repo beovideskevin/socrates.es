@@ -7,12 +7,14 @@
             content="width=device-width, initial-scale=1.0, user-scalable=no"
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+
         <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
         <title>Socrates.es - Todos los hombres son mortales, Socrates es un hombre, Socrates es mortal.</title>
         <script
             crossorigin="anonymous"
             src="./external/scripts/8frame-1.5.0.min.js"
         ></script>
+
         <script
             src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js"
             async
@@ -82,7 +84,6 @@
             xrextras-runtime-error
             renderer="colorManagement:true"
             xrweb="disableWorldTracking: true"
-            id="scene"
         >
             <a-assets>
                 <img
@@ -145,7 +146,6 @@
             </a-assets>
 
             <a-camera
-                id="camera"
                 position="0 4 10"
                 raycaster="objects: .cantap"
                 cursor="fuse: false; rayOrigin: mouse;"
@@ -274,22 +274,11 @@
                         quote: "El fin es vivir conforme a la naturaleza, quiere decir vivir según la virtud, puesto que la naturaleza nos conduce a ella.",
                     }
                 ];
-                
+
                 const quote = document.getElementById("quoteWrapper");
                 const quoteH3 = document.getElementById("quoteH3");
                 const quoteH1 = document.getElementById("quoteH1");
-                const cameraEl = document.getElementById('camera');
-                const sceneEl = document.getElementById('scene');
 
-                sceneEl.addEventListener('xrimagefound', (event) => {
-                    if (sceneEl.object3D) {
-                        sceneEl.object3D.updateMatrixWorld(true);
-                    }
-                    if (cameraEl && cameraEl.components.raycaster) {
-                        cameraEl.components.raycaster.refreshObjects();
-                    }
-                });
-                
                 targets.forEach(({ id, video: videoId, videoPlane: videoPlaneId, thumbPlane: thumbPlaneId, name: qName, quote: qQuote }) => {
                     const target = document.getElementById(id);
                     const videoPlane = document.getElementById(videoPlaneId);
@@ -313,15 +302,12 @@
                     };
 
                     const handleClick = () => {
+                        toggleThumb(false);
                         const revealVideo = () => {
-                            toggleThumb(false);
                         
                             const shaderMaterial = videoPlane.components.material.material;
                             if (shaderMaterial && shaderMaterial.uniforms && shaderMaterial.uniforms.myTexture) {
                                 shaderMaterial.uniforms.myTexture.value.needsUpdate = true;
-                            }
-                            if (activeMaterial.map) {
-                                activeMaterial.map.needsUpdate = true;
                             }
                         };
                         video.addEventListener('playing', revealVideo, { once: true });
@@ -329,7 +315,6 @@
                         video.play().catch((error) => {
                             if (revealVideoOnPlaying === revealVideo) {
                                 video.removeEventListener('playing', revealVideo);
-                                revealVideoOnPlaying = null;
                             }
                             console.error('Unable to play video:', error);
                         });
@@ -337,6 +322,7 @@
 
                     target.addEventListener('xrextrasfound', () => {
                         toggleThumb();
+                        
                         thumbPlane.addEventListener('click', handleClick);
                         
                         quote.style.display = "flex";
@@ -345,7 +331,6 @@
                     });
 
                     target.addEventListener('xrextraslost', () => {
-                        toggleThumb();
                         thumbPlane.removeEventListener('click', handleClick);
 
                         if (!video.paused) {

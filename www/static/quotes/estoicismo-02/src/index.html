@@ -299,15 +299,13 @@
                     };
 
                     const handleClick = () => {
+                        toggleThumb(false);
+                        
                         const revealVideo = () => {
-                            toggleThumb(false);
                         
                             const shaderMaterial = videoPlane.components.material.material;
                             if (shaderMaterial && shaderMaterial.uniforms && shaderMaterial.uniforms.myTexture) {
                                 shaderMaterial.uniforms.myTexture.value.needsUpdate = true;
-                            }
-                            if (activeMaterial.map) {
-                                activeMaterial.map.needsUpdate = true;
                             }
                         };
                         video.addEventListener('playing', revealVideo, { once: true });
@@ -315,7 +313,6 @@
                         video.play().catch((error) => {
                             if (revealVideoOnPlaying === revealVideo) {
                                 video.removeEventListener('playing', revealVideo);
-                                revealVideoOnPlaying = null;
                             }
                             console.error('Unable to play video:', error);
                         });
