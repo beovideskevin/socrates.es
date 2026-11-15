@@ -7,14 +7,12 @@
             content="width=device-width, initial-scale=1.0, user-scalable=no"
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-
         <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
         <title>Socrates.es - Todos los hombres son mortales, Socrates es un hombre, Socrates es mortal.</title>
         <script
             crossorigin="anonymous"
             src="./external/scripts/8frame-1.5.0.min.js"
         ></script>
-
         <script
             src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js"
             async
@@ -83,7 +81,7 @@
             xrextras-loading
             xrextras-runtime-error
             renderer="colorManagement:true"
-            xrweb="disableWorldTracking: false"
+            xrweb="disableWorldTracking: true"
         >
             <a-assets>
                 <img
@@ -274,7 +272,8 @@
                         quote: "El fin es vivir conforme a la naturaleza, quiere decir vivir según la virtud, puesto que la naturaleza nos conduce a ella.",
                     }
                 ];
-
+                
+                const sceneEl = document.querySelector('a-scene');
                 const quote = document.getElementById("quoteWrapper");
                 const quoteH3 = document.getElementById("quoteH3");
                 const quoteH1 = document.getElementById("quoteH1");
@@ -294,6 +293,9 @@
                         if (show) {
                             thumbPlane.setAttribute('visible', 'true');
                             videoPlane.setAttribute('visible', 'false');
+
+                            // Fix the missing clicks
+                            sceneEl.components.raycaster.refreshObjects();
                         }
                         else {
                             thumbPlane.setAttribute('visible', 'false');
